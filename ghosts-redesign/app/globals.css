@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&display=swap');
+
+:root {
+  /* Midnight Clarity Palette */
+  --color-deep-navy: #0B1D3A;
+  --color-mist-white: #F6F9FC;
+  --color-sky-blue: #A3C9E2;
+  --color-teal-grey: #7CAAB0;
+  --color-slate-ink: #1A2E3B;
+  
+  /* Phantom Glow (use sparingly) */
+  --color-neon-mint: #A8FFE4;
+  --color-orchid-grey: #C6C9D1;
+  
+  /* Semantic assignments */
+  --color-primary-bg: var(--color-deep-navy);
+  --color-secondary-bg: var(--color-mist-white);
+  --color-text: var(--color-slate-ink);
+  --color-text-secondary: var(--color-teal-grey);
+  --color-accent: var(--color-sky-blue);
+  --color-border: var(--color-teal-grey);
+  
+  /* Typography */
+  --font-body: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Hanken Grotesk', sans-serif;
+  
+  /* Spacing (editorial restraint) */
+  --space-xs: 16px;
+  --space-sm: 32px;
+  --space-md: 48px;
+  --space-lg: 80px;
+  --space-xl: 120px;
+  
+  --max-text-width: 680px;
+  --max-content-width: 1200px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  height: 100%;
+  background: var(--color-mist-white);
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography - Restrained Hierarchy */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-sm);
+  color: var(--color-text);
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--color-deep-navy);
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+p {
+  margin-bottom: var(--space-sm);
+  max-width: var(--max-text-width);
+}
+
+/* Links - Subtle, not loud */
+a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+a:hover {
+  border-bottom-color: var(--color-sky-blue);
+}
+
+/* Lists - Clean structure */
+ul, ol {
+  margin-bottom: var(--space-sm);
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+/* Dividers - Subtle structure */
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: var(--space-lg) 0;
+  opacity: 0.3;
+}
+
+/* Section styling */
+.section {
+  padding: var(--space-xl) var(--space-lg);
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+}
+
+.section--narrow {
+  max-width: var(--max-text-width);
+  margin: 0 auto;
+}
+
+.section--centered {
+  text-align: center;
+}
+
+.section--centered p {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Mobile responsive - proper scaling */
+@media (max-width: 768px) {
+  :root {
+    --space-lg: 48px;
+    --space-xl: 64px;
+  }
+  
+  body {
+    font-size: 16px;
+  }
+  
+  h1 {
+    font-size: 32px;
+  }
+  
+  h2 {
+    font-size: 24px;
+  }
+  
+  h3 {
+    font-size: 18px;
+  }
+  
+  .section {
+    padding: var(--space-lg) var(--space-md);
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --space-md: 24px;
+    --space-lg: 32px;
+    --space-xl: 48px;
+  }
+  
+  body {
+    font-size: 16px;
+  }
+  
+  h1 {
+    font-size: 28px;
+  }
+  
+  h2 {
+    font-size: 22px;
+  }
+}
