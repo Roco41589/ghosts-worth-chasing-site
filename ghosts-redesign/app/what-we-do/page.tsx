@@ -6,15 +6,23 @@ import Image from 'next/image'
 export default function WhatWeDo() {
   return (
     <>
-      <section className="section section--narrow section--centered">
-        <h1 style={{ color: 'var(--color-deep-navy)' }}>What We Do</h1>
+      <section style={{ 
+        padding: 'var(--space-lg) var(--space-md) var(--space-md) var(--space-md)',
+        textAlign: 'center',
+      }}>
+        <h1 style={{ 
+          color: 'var(--color-deep-navy)',
+          marginBottom: 'var(--space-sm)',
+        }}>
+          What We Do
+        </h1>
         <p style={{ 
           color: 'var(--color-text-secondary)',
           fontWeight: 300,
           fontSize: '18px',
           lineHeight: 1.6,
           maxWidth: '700px',
-          margin: '0 auto 32px auto',
+          margin: '0 auto',
         }}>
           Ghosts Worth Chasing operates in three distinct modes, each with separate accounting, 
           criteria, and oversight. Funds are not commingled. Each mode serves a different time 
@@ -26,11 +34,11 @@ export default function WhatWeDo() {
         padding: '0 var(--space-md) var(--space-xl) var(--space-md)',
       }}>
         <div style={{
-          maxWidth: '1200px',
+          maxWidth: '900px',
           margin: '0 auto',
           display: 'grid',
           gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '24px',
+          gap: '20px',
         }}>
           {/* Individual Support Card */}
           <Link 
@@ -38,7 +46,7 @@ export default function WhatWeDo() {
             style={{
               border: '3px solid var(--color-sky-blue)',
               borderRadius: '12px',
-              padding: '32px 24px',
+              padding: '32px 20px',
               background: 'var(--color-deep-navy)',
               textDecoration: 'none',
               color: 'var(--color-mist-white)',
@@ -47,8 +55,8 @@ export default function WhatWeDo() {
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'space-between',
-              gap: '20px',
-              minHeight: '200px',
+              gap: '24px',
+              minHeight: '220px',
               textAlign: 'center',
             }}
             onMouseEnter={(e) => {
@@ -83,10 +91,10 @@ export default function WhatWeDo() {
             
             <h2 style={{ 
               fontFamily: 'Regika, serif',
-              fontSize: '22px',
+              fontSize: '32px',
               color: 'var(--color-mist-white)',
               margin: 0,
-              lineHeight: 1.2,
+              lineHeight: 1.1,
             }}>
               Individual Support
             </h2>
@@ -109,7 +117,7 @@ export default function WhatWeDo() {
             style={{
               border: '3px solid var(--color-sky-blue)',
               borderRadius: '12px',
-              padding: '32px 24px',
+              padding: '32px 20px',
               background: 'var(--color-deep-navy)',
               textDecoration: 'none',
               color: 'var(--color-mist-white)',
@@ -118,8 +126,8 @@ export default function WhatWeDo() {
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'space-between',
-              gap: '20px',
-              minHeight: '200px',
+              gap: '24px',
+              minHeight: '220px',
               textAlign: 'center',
             }}
             onMouseEnter={(e) => {
@@ -154,10 +162,10 @@ export default function WhatWeDo() {
             
             <h2 style={{ 
               fontFamily: 'Regika, serif',
-              fontSize: '22px',
+              fontSize: '32px',
               color: 'var(--color-mist-white)',
               margin: 0,
-              lineHeight: 1.2,
+              lineHeight: 1.1,
             }}>
               Organizational Grants
             </h2>
@@ -180,7 +188,7 @@ export default function WhatWeDo() {
             style={{
               border: '3px solid var(--color-sky-blue)',
               borderRadius: '12px',
-              padding: '32px 24px',
+              padding: '32px 20px',
               background: 'var(--color-deep-navy)',
               textDecoration: 'none',
               color: 'var(--color-mist-white)',
@@ -189,8 +197,8 @@ export default function WhatWeDo() {
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'space-between',
-              gap: '20px',
-              minHeight: '200px',
+              gap: '24px',
+              minHeight: '220px',
               textAlign: 'center',
             }}
             onMouseEnter={(e) => {
@@ -225,10 +233,10 @@ export default function WhatWeDo() {
             
             <h2 style={{ 
               fontFamily: 'Regika, serif',
-              fontSize: '22px',
+              fontSize: '32px',
               color: 'var(--color-mist-white)',
               margin: 0,
-              lineHeight: 1.2,
+              lineHeight: 1.1,
             }}>
               Endowment
             </h2>
