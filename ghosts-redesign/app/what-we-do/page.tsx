@@ -261,12 +261,6 @@ export default function WhatWeDo() {
     </>
   )
 }
-          Ghosts Worth Chasing operates in three distinct modes, each with separate accounting, 
-          criteria, and oversight. Funds are not commingled. Each mode serves a different time 
-          horizon and type of need.
-        </p>
-      </section>
-
       <section className="section">
         <div style={{
           maxWidth: 'var(--max-content-width)',
