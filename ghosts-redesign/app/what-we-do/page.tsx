@@ -261,13 +261,6 @@ export default function WhatWeDo() {
     </>
   )
 }
-or: 'var(--color-text-secondary)',
-          fontWeight: 300,
-          fontSize: '18px',
-          lineHeight: 1.6,
-          maxWidth: '700px',
-          margin: '0 auto',
-        }}>
           Ghosts Worth Chasing operates in three distinct modes, each with separate accounting, 
           criteria, and oversight. Funds are not commingled. Each mode serves a different time 
           horizon and type of need.
