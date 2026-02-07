@@ -41,7 +41,7 @@ export default function RootLayout({
               flexShrink: 0,
             }}>
               <Image 
-                src="/logo.png" 
+                src="/logo.svg" 
                 alt="Ghosts Worth Chasing" 
                 width={40}
                 height={40}
