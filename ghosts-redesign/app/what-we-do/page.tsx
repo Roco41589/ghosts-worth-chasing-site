@@ -14,7 +14,7 @@ export default function WhatWeDo() {
           fontSize: '18px',
           lineHeight: 1.6,
           maxWidth: '700px',
-          margin: '0 auto',
+          margin: '0 auto 32px auto',
         }}>
           Ghosts Worth Chasing operates in three distinct modes, each with separate accounting, 
           criteria, and oversight. Funds are not commingled. Each mode serves a different time 
@@ -22,14 +22,15 @@ export default function WhatWeDo() {
         </p>
       </section>
 
-      <section className="section">
+      <section style={{ 
+        padding: '0 var(--space-md) var(--space-xl) var(--space-md)',
+      }}>
         <div style={{
-          maxWidth: 'var(--max-content-width)',
+          maxWidth: '1200px',
           margin: '0 auto',
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: 'var(--space-lg)',
-          padding: '0 var(--space-md)',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: '24px',
         }}>
           {/* Individual Support Card */}
           <Link 
@@ -37,7 +38,7 @@ export default function WhatWeDo() {
             style={{
               border: '3px solid var(--color-sky-blue)',
               borderRadius: '12px',
-              padding: 'var(--space-xl)',
+              padding: '32px 24px',
               background: 'var(--color-deep-navy)',
               textDecoration: 'none',
               color: 'var(--color-mist-white)',
@@ -46,8 +47,8 @@ export default function WhatWeDo() {
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'space-between',
-              gap: 'var(--space-lg)',
-              minHeight: '280px',
+              gap: '20px',
+              minHeight: '200px',
               textAlign: 'center',
             }}
             onMouseEnter={(e) => {
@@ -60,8 +61,8 @@ export default function WhatWeDo() {
             }}
           >
             <div style={{
-              width: '64px',
-              height: '64px',
+              width: '48px',
+              height: '48px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -69,8 +70,8 @@ export default function WhatWeDo() {
               <Image 
                 src="/individualgrants.png" 
                 alt="Individual Support"
-                width={64}
-                height={64}
+                width={48}
+                height={48}
                 style={{
                   width: '100%',
                   height: '100%',
@@ -82,15 +83,16 @@ export default function WhatWeDo() {
             
             <h2 style={{ 
               fontFamily: 'Regika, serif',
-              fontSize: '28px',
+              fontSize: '22px',
               color: 'var(--color-mist-white)',
               margin: 0,
+              lineHeight: 1.2,
             }}>
               Individual Support
             </h2>
             
             <div style={{
-              fontSize: '15px',
+              fontSize: '14px',
               color: 'var(--color-sky-blue)',
               fontWeight: 500,
               display: 'flex',
@@ -107,7 +109,7 @@ export default function WhatWeDo() {
             style={{
               border: '3px solid var(--color-sky-blue)',
               borderRadius: '12px',
-              padding: 'var(--space-xl)',
+              padding: '32px 24px',
               background: 'var(--color-deep-navy)',
               textDecoration: 'none',
               color: 'var(--color-mist-white)',
@@ -116,8 +118,8 @@ export default function WhatWeDo() {
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'space-between',
-              gap: 'var(--space-lg)',
-              minHeight: '280px',
+              gap: '20px',
+              minHeight: '200px',
               textAlign: 'center',
             }}
             onMouseEnter={(e) => {
@@ -130,8 +132,8 @@ export default function WhatWeDo() {
             }}
           >
             <div style={{
-              width: '64px',
-              height: '64px',
+              width: '48px',
+              height: '48px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -139,8 +141,8 @@ export default function WhatWeDo() {
               <Image 
                 src="/corporategrants.png" 
                 alt="Organizational Grants"
-                width={64}
-                height={64}
+                width={48}
+                height={48}
                 style={{
                   width: '100%',
                   height: '100%',
@@ -152,15 +154,16 @@ export default function WhatWeDo() {
             
             <h2 style={{ 
               fontFamily: 'Regika, serif',
-              fontSize: '28px',
+              fontSize: '22px',
               color: 'var(--color-mist-white)',
               margin: 0,
+              lineHeight: 1.2,
             }}>
               Organizational Grants
             </h2>
             
             <div style={{
-              fontSize: '15px',
+              fontSize: '14px',
               color: 'var(--color-sky-blue)',
               fontWeight: 500,
               display: 'flex',
@@ -177,7 +180,7 @@ export default function WhatWeDo() {
             style={{
               border: '3px solid var(--color-sky-blue)',
               borderRadius: '12px',
-              padding: 'var(--space-xl)',
+              padding: '32px 24px',
               background: 'var(--color-deep-navy)',
               textDecoration: 'none',
               color: 'var(--color-mist-white)',
@@ -186,8 +189,8 @@ export default function WhatWeDo() {
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'space-between',
-              gap: 'var(--space-lg)',
-              minHeight: '280px',
+              gap: '20px',
+              minHeight: '200px',
               textAlign: 'center',
             }}
             onMouseEnter={(e) => {
@@ -200,8 +203,8 @@ export default function WhatWeDo() {
             }}
           >
             <div style={{
-              width: '64px',
-              height: '64px',
+              width: '48px',
+              height: '48px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -209,8 +212,8 @@ export default function WhatWeDo() {
               <Image 
                 src="/endownment.png" 
                 alt="Endowment"
-                width={64}
-                height={64}
+                width={48}
+                height={48}
                 style={{
                   width: '100%',
                   height: '100%',
@@ -222,15 +225,16 @@ export default function WhatWeDo() {
             
             <h2 style={{ 
               fontFamily: 'Regika, serif',
-              fontSize: '28px',
+              fontSize: '22px',
               color: 'var(--color-mist-white)',
               margin: 0,
+              lineHeight: 1.2,
             }}>
               Endowment
             </h2>
             
             <div style={{
-              fontSize: '15px',
+              fontSize: '14px',
               color: 'var(--color-sky-blue)',
               fontWeight: 500,
               display: 'flex',
@@ -246,7 +250,7 @@ export default function WhatWeDo() {
       <section className="section section--narrow section--centered" style={{
         borderTop: '1px solid var(--color-border)',
         paddingTop: 'var(--space-lg)',
-        marginTop: 'var(--space-xl)',
+        marginTop: 0,
       }}>
         <p style={{ 
           fontWeight: 300,
