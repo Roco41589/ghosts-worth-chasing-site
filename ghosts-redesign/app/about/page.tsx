@@ -1,3 +1,5 @@
+import BoardInquiryForm from '../components/BoardInquiryForm'
+
 export default function About() {
   return (
     <>
@@ -61,10 +63,8 @@ export default function About() {
             <li>Social services or direct assistance programs</li>
             <li>Organizational capacity building</li>
           </ul>
-          <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)' }}>
-            If you are interested in board service or wish to recommend candidates, contact us 
-            at the email address below.
-          </p>
+          
+          <BoardInquiryForm />
         </div>
       </section>
 
@@ -102,7 +102,7 @@ export default function About() {
 
       <section className="section section--narrow section--centered">
         <p style={{ marginBottom: '16px', fontWeight: 300 }}>
-          For inquiries about board service, partnerships, or general questions:
+          For inquiries about partnerships or general questions:
         </p>
         <p style={{ marginTop: 'var(--space-sm)' }}>
           <a 
