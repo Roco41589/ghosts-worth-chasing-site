@@ -1,9 +1,22 @@
+'use client'
+
 import Link from 'next/link'
 
 export default function Endowment() {
   return (
     <>
-      <section className="section section--narrow">
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .cards-grid {
+            grid-template-columns: 1fr !important;
+            max-width: 400px !important;
+          }
+        }
+      `}</style>
+
+      <section style={{ 
+        padding: 'var(--space-lg) var(--space-md) var(--space-md) var(--space-md)',
+      }}>
         <Link 
           href="/what-we-do" 
           style={{ 
@@ -19,7 +32,11 @@ export default function Endowment() {
           ← Back to What We Do
         </Link>
         
-        <h1 style={{ color: 'var(--color-deep-navy)', marginBottom: 'var(--space-sm)' }}>
+        <h1 style={{ 
+          color: 'var(--color-deep-navy)', 
+          marginBottom: 'var(--space-sm)',
+          textAlign: 'center',
+        }}>
           Endowment
         </h1>
         
@@ -28,7 +45,10 @@ export default function Endowment() {
           color: 'var(--color-text-secondary)',
           lineHeight: 1.6,
           fontWeight: 300,
-          marginBottom: 'var(--space-lg)',
+          marginBottom: 'var(--space-md)',
+          textAlign: 'center',
+          maxWidth: '700px',
+          margin: '0 auto var(--space-md) auto',
         }}>
           A portion of contributed capital is reserved for perpetual operation. These funds 
           are invested conservatively and distributed according to a formal spending policy.
@@ -39,6 +59,8 @@ export default function Endowment() {
           padding: 'var(--space-md)',
           borderLeft: '2px solid var(--color-sky-blue)',
           background: 'rgba(163, 201, 226, 0.05)',
+          maxWidth: '700px',
+          margin: '0 auto var(--space-lg) auto',
         }}>
           <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)', marginBottom: '8px' }}>
             <strong style={{ color: 'var(--color-deep-navy)' }}>Current endowment size:</strong> Disclosed annually
@@ -52,135 +74,255 @@ export default function Endowment() {
         </div>
       </section>
 
-      <section className="section section--narrow">
-        <h2 style={{ 
-          fontSize: '20px',
-          marginBottom: 'var(--space-sm)',
-          color: 'var(--color-deep-navy)',
-        }}>
-          Purpose
-        </h2>
-        
-        <p style={{ marginBottom: 'var(--space-sm)' }}>
-          The endowment exists to ensure:
-        </p>
-        
-        <ul style={{ 
-          marginLeft: '24px', 
-          marginBottom: 'var(--space-md)',
-          color: 'var(--color-text)',
-          lineHeight: 1.7,
-        }}>
-          <li>Organizational continuity beyond founding leadership</li>
-          <li>Independence from fundraising pressure</li>
-          <li>Stable funding for long-term commitments</li>
-        </ul>
-        
-        <p>
-          Endowment funds are governed separately from operating capital. Investment allocation 
-          and withdrawal rates are published annually in the Resources section.
-        </p>
-      </section>
+      <section style={{ 
+        padding: '0 var(--space-md) var(--space-xl) var(--space-md)',
+      }}>
+        <div 
+          className="cards-grid"
+          style={{
+            maxWidth: '1000px',
+            margin: '0 auto',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(2, 1fr)',
+            gap: '20px',
+          }}
+        >
+          {/* Purpose Card */}
+          <Link 
+            href="/what-we-do/endowment/purpose"
+            style={{
+              border: '3px solid var(--color-sky-blue)',
+              borderRadius: '12px',
+              padding: '32px 24px',
+              background: 'var(--color-deep-navy)',
+              textDecoration: 'none',
+              color: 'var(--color-mist-white)',
+              transition: 'all 0.2s ease',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '16px',
+              minHeight: '160px',
+              textAlign: 'center',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-4px)'
+              e.currentTarget.style.boxShadow = '0 8px 24px rgba(11, 29, 58, 0.15)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)'
+              e.currentTarget.style.boxShadow = 'none'
+            }}
+          >
+            <h2 style={{ 
+              fontFamily: 'Regika, serif',
+              fontSize: '28px',
+              color: 'var(--color-mist-white)',
+              margin: 0,
+              lineHeight: 1.1,
+            }}>
+              Purpose
+            </h2>
+            
+            <div style={{
+              fontSize: '14px',
+              color: 'var(--color-sky-blue)',
+              fontWeight: 500,
+            }}>
+              Learn more →
+            </div>
+          </Link>
 
-      <section className="section section--narrow">
-        <h2 style={{ 
-          fontSize: '20px',
-          marginBottom: 'var(--space-sm)',
-          color: 'var(--color-deep-navy)',
-        }}>
-          Investment Policy
-        </h2>
-        
-        <p style={{ marginBottom: 'var(--space-sm)' }}>
-          The endowment is managed with the following principles:
-        </p>
-        
-        <ul style={{ 
-          marginLeft: '24px', 
-          marginBottom: 'var(--space-md)',
-          color: 'var(--color-text)',
-          lineHeight: 1.7,
-        }}>
-          <li>Capital preservation over growth maximization</li>
-          <li>Diversification across asset classes and geographies</li>
-          <li>Low-cost index funds and institutional-grade vehicles</li>
-          <li>No speculative positions or concentrated bets</li>
-        </ul>
-        
-        <p>
-          The Investment Committee reviews asset allocation quarterly and rebalances as needed. 
-          Full investment guidelines are available in the governance documents.
-        </p>
-      </section>
+          {/* Investment Policy Card */}
+          <Link 
+            href="/what-we-do/endowment/investment-policy"
+            style={{
+              border: '3px solid var(--color-sky-blue)',
+              borderRadius: '12px',
+              padding: '32px 24px',
+              background: 'var(--color-deep-navy)',
+              textDecoration: 'none',
+              color: 'var(--color-mist-white)',
+              transition: 'all 0.2s ease',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '16px',
+              minHeight: '160px',
+              textAlign: 'center',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-4px)'
+              e.currentTarget.style.boxShadow = '0 8px 24px rgba(11, 29, 58, 0.15)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)'
+              e.currentTarget.style.boxShadow = 'none'
+            }}
+          >
+            <h2 style={{ 
+              fontFamily: 'Regika, serif',
+              fontSize: '28px',
+              color: 'var(--color-mist-white)',
+              margin: 0,
+              lineHeight: 1.1,
+            }}>
+              Investment Policy
+            </h2>
+            
+            <div style={{
+              fontSize: '14px',
+              color: 'var(--color-sky-blue)',
+              fontWeight: 500,
+            }}>
+              Learn more →
+            </div>
+          </Link>
 
-      <section className="section section--narrow">
-        <h2 style={{ 
-          fontSize: '20px',
-          marginBottom: 'var(--space-sm)',
-          color: 'var(--color-deep-navy)',
-        }}>
-          Spending Policy
-        </h2>
-        
-        <p style={{ marginBottom: 'var(--space-md)' }}>
-          Endowment distributions follow a conservative spending policy designed to maintain 
-          real purchasing power over time. The current policy allows for annual distributions 
-          of 3-5% of the trailing three-year average endowment value.
-        </p>
-        
-        <p>
-          Distributions are allocated to operating expenses and strategic reserves. In years 
-          when investment returns significantly exceed the spending rate, excess returns may 
-          be reinvested or directed to special initiatives at the board's discretion.
-        </p>
-      </section>
+          {/* Spending Policy Card */}
+          <Link 
+            href="/what-we-do/endowment/spending-policy"
+            style={{
+              border: '3px solid var(--color-sky-blue)',
+              borderRadius: '12px',
+              padding: '32px 24px',
+              background: 'var(--color-deep-navy)',
+              textDecoration: 'none',
+              color: 'var(--color-mist-white)',
+              transition: 'all 0.2s ease',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '16px',
+              minHeight: '160px',
+              textAlign: 'center',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-4px)'
+              e.currentTarget.style.boxShadow = '0 8px 24px rgba(11, 29, 58, 0.15)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)'
+              e.currentTarget.style.boxShadow = 'none'
+            }}
+          >
+            <h2 style={{ 
+              fontFamily: 'Regika, serif',
+              fontSize: '28px',
+              color: 'var(--color-mist-white)',
+              margin: 0,
+              lineHeight: 1.1,
+            }}>
+              Spending Policy
+            </h2>
+            
+            <div style={{
+              fontSize: '14px',
+              color: 'var(--color-sky-blue)',
+              fontWeight: 500,
+            }}>
+              Learn more →
+            </div>
+          </Link>
 
-      <section className="section section--narrow">
-        <h2 style={{ 
-          fontSize: '20px',
-          marginBottom: 'var(--space-sm)',
-          color: 'var(--color-deep-navy)',
-        }}>
-          Transparency & Reporting
-        </h2>
-        
-        <p style={{ marginBottom: 'var(--space-sm)' }}>
-          The following information is published annually:
-        </p>
-        
-        <ul style={{ 
-          marginLeft: '24px', 
-          marginBottom: 'var(--space-md)',
-          color: 'var(--color-text)',
-          lineHeight: 1.7,
-        }}>
-          <li>Total endowment value</li>
-          <li>Asset allocation by category</li>
-          <li>Investment returns (gross and net of fees)</li>
-          <li>Annual distributions and spending rate</li>
-        </ul>
-        
-        <p>
-          These reports are available in the Resources section. Audited financial statements 
-          are published following completion of the annual audit process.
-        </p>
-      </section>
+          {/* Transparency & Reporting Card */}
+          <Link 
+            href="/what-we-do/endowment/transparency"
+            style={{
+              border: '3px solid var(--color-sky-blue)',
+              borderRadius: '12px',
+              padding: '32px 24px',
+              background: 'var(--color-deep-navy)',
+              textDecoration: 'none',
+              color: 'var(--color-mist-white)',
+              transition: 'all 0.2s ease',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '16px',
+              minHeight: '160px',
+              textAlign: 'center',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-4px)'
+              e.currentTarget.style.boxShadow = '0 8px 24px rgba(11, 29, 58, 0.15)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)'
+              e.currentTarget.style.boxShadow = 'none'
+            }}
+          >
+            <h2 style={{ 
+              fontFamily: 'Regika, serif',
+              fontSize: '28px',
+              color: 'var(--color-mist-white)',
+              margin: 0,
+              lineHeight: 1.1,
+            }}>
+              Transparency & Reporting
+            </h2>
+            
+            <div style={{
+              fontSize: '14px',
+              color: 'var(--color-sky-blue)',
+              fontWeight: 500,
+            }}>
+              Learn more →
+            </div>
+          </Link>
 
-      <section className="section section--narrow">
-        <h2 style={{ 
-          fontSize: '20px',
-          marginBottom: 'var(--space-sm)',
-          color: 'var(--color-deep-navy)',
-        }}>
-          Philosophy
-        </h2>
-        
-        <p>
-          The endowment is not a growth vehicle. It is institutional infrastructure. Its purpose 
-          is to ensure the foundation can honor commitments, maintain independence, and operate 
-          beyond the tenure of any individual board member or donor. We optimize for stability, 
-          not returns.
-        </p>
+          {/* Philosophy Card - spans 2 columns */}
+          <Link 
+            href="/what-we-do/endowment/philosophy"
+            style={{
+              border: '3px solid var(--color-sky-blue)',
+              borderRadius: '12px',
+              padding: '32px 24px',
+              background: 'var(--color-deep-navy)',
+              textDecoration: 'none',
+              color: 'var(--color-mist-white)',
+              transition: 'all 0.2s ease',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '16px',
+              minHeight: '160px',
+              textAlign: 'center',
+              gridColumn: '1 / -1',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-4px)'
+              e.currentTarget.style.boxShadow = '0 8px 24px rgba(11, 29, 58, 0.15)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)'
+              e.currentTarget.style.boxShadow = 'none'
+            }}
+          >
+            <h2 style={{ 
+              fontFamily: 'Regika, serif',
+              fontSize: '28px',
+              color: 'var(--color-mist-white)',
+              margin: 0,
+              lineHeight: 1.1,
+            }}>
+              Philosophy
+            </h2>
+            
+            <div style={{
+              fontSize: '14px',
+              color: 'var(--color-sky-blue)',
+              fontWeight: 500,
+            }}>
+              Learn more →
+            </div>
+          </Link>
+        </div>
       </section>
     </>
   )
