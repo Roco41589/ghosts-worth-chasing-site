@@ -34,30 +34,30 @@ export default function Footer() {
       <div style={{
         maxWidth: 'var(--max-content-width)',
         margin: '0 auto',
-        padding: '48px var(--space-md) 32px var(--space-md)',
+        padding: '32px var(--space-md) 24px var(--space-md)',
       }}>
         {/* Main Footer Content - Two Columns */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: '1fr auto',
-          gap: 'var(--space-lg)',
-          marginBottom: 'var(--space-lg)',
+          gap: '32px',
+          marginBottom: '24px',
         }}>
           {/* Left Column - Newsletter Signup */}
           <div>
             <h3 style={{
-              fontSize: '22px',
+              fontSize: '20px',
               fontWeight: 500,
               color: 'var(--color-deep-navy)',
-              marginBottom: '8px',
+              marginBottom: '6px',
             }}>
               Stay Connected
             </h3>
             <p style={{
-              fontSize: '15px',
+              fontSize: '14px',
               color: 'var(--color-text-secondary)',
-              marginBottom: '20px',
-              lineHeight: 1.6,
+              marginBottom: '16px',
+              lineHeight: 1.5,
             }}>
               Get the latest Ghosts Worth Chasing news, stories and announcements in your inbox
             </p>
@@ -251,7 +251,7 @@ export default function Footer() {
         <hr style={{
           border: 'none',
           borderTop: '1px solid var(--color-border)',
-          margin: '32px 0 24px 0',
+          margin: '20px 0 16px 0',
         }} />
 
         {/* Bottom Row - Logo/Name and Copyright/Social */}
@@ -264,7 +264,7 @@ export default function Footer() {
           <div>
             <h2 style={{
               fontFamily: 'Regika, serif',
-              fontSize: '28px',
+              fontSize: '24px',
               color: 'var(--color-deep-navy)',
               margin: 0,
               lineHeight: 1,
