@@ -15,12 +15,26 @@ export default function BoardInquiryForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     
-    // For now, just show success message
-    // Later: connect to email service endpoint or Airtable
-    console.log('Form submitted:', formData)
+    // Create email body
+    const emailBody = `
+Board Service Inquiry
+
+Name: ${formData.name}
+Email: ${formData.email}
+Professional Background: ${formData.background}
+Areas of Expertise: ${formData.expertise}
+
+${formData.message ? `Additional Information:\n${formData.message}` : ''}
+    `.trim()
+    
+    // Send via mailto (opens user's email client)
+    const mailtoLink = `mailto:contact@ghostsworthchasing.org?subject=Board%20Service%20Inquiry%20-%20${encodeURIComponent(formData.name)}&body=${encodeURIComponent(emailBody)}`
+    window.location.href = mailtoLink
+    
+    // Show success message
     setSubmitted(true)
     
-    // Reset form after 3 seconds
+    // Reset form after 5 seconds
     setTimeout(() => {
       setSubmitted(false)
       setFormData({
