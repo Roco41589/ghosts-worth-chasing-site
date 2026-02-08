@@ -2,10 +2,48 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function Navigation() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Detect mobile viewport
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  const closeDropdown = () => {
+    setIsDropdownOpen(false)
+    setActiveSubmenu(null)
+  }
+
+  const subMenus = {
+    'individual-support': [
+      { label: 'Eligibility', href: '/what-we-do/individual-support/eligibility' },
+      { label: 'Application', href: '/what-we-do/individual-support/application' },
+      { label: 'Philosophy', href: '/what-we-do/individual-support/philosophy' },
+    ],
+    'organizational-grants': [
+      { label: 'Selection Criteria', href: '/what-we-do/organizational-grants/criteria' },
+      { label: 'Grant Structure', href: '/what-we-do/organizational-grants/structure' },
+      { label: 'Application Process', href: '/what-we-do/organizational-grants/application' },
+      { label: 'Philosophy', href: '/what-we-do/organizational-grants/philosophy' },
+    ],
+    'endowment': [
+      { label: 'Purpose', href: '/what-we-do/endowment/purpose' },
+      { label: 'Investment Policy', href: '/what-we-do/endowment/investment-policy' },
+      { label: 'Spending Policy', href: '/what-we-do/endowment/spending-policy' },
+      { label: 'Transparency', href: '/what-we-do/endowment/transparency' },
+      { label: 'Philosophy', href: '/what-we-do/endowment/philosophy' },
+    ],
+  }
 
   return (
     <header style={{
@@ -66,8 +104,8 @@ export default function Navigation() {
               position: 'relative',
               whiteSpace: 'nowrap',
             }}
-            onMouseEnter={() => setIsDropdownOpen(true)}
-            onMouseLeave={() => setIsDropdownOpen(false)}
+            onMouseEnter={() => !isMobile && setIsDropdownOpen(true)}
+            onMouseLeave={() => !isMobile && closeDropdown()}
           >
             <Link 
               href="/what-we-do"
@@ -76,6 +114,11 @@ export default function Navigation() {
                 textDecoration: 'none',
                 display: 'block',
                 paddingBottom: '8px',
+              }}
+              onClick={(e) => {
+                if (isMobile) {
+                  closeDropdown()
+                }
               }}
             >
               What We Do
@@ -86,7 +129,8 @@ export default function Navigation() {
               <div style={{
                 position: 'absolute',
                 top: '100%',
-                left: 0,
+                left: '50%',
+                transform: 'translateX(-50%)',
                 paddingTop: '8px',
                 zIndex: 1001,
               }}>
@@ -98,51 +142,200 @@ export default function Navigation() {
                   minWidth: '220px',
                   padding: '8px 0',
                 }}>
-                  <Link
-                    href="/what-we-do/individual-support"
-                    style={{
-                      display: 'block',
-                      padding: '12px 20px',
-                      color: 'var(--color-slate-ink)',
-                      textDecoration: 'none',
-                      fontSize: '15px',
-                      transition: 'background 0.2s ease',
-                    }}
-                    onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(163, 201, 226, 0.1)'}
-                    onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+                  {/* Individual Support */}
+                  <div
+                    style={{ position: 'relative' }}
+                    onMouseEnter={() => !isMobile && setActiveSubmenu('individual-support')}
+                    onMouseLeave={() => !isMobile && setActiveSubmenu(null)}
                   >
-                    Individual Support
-                  </Link>
-                  <Link
-                    href="/what-we-do/organizational-grants"
-                    style={{
-                      display: 'block',
-                      padding: '12px 20px',
-                      color: 'var(--color-slate-ink)',
-                      textDecoration: 'none',
-                      fontSize: '15px',
-                      transition: 'background 0.2s ease',
-                    }}
-                    onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(163, 201, 226, 0.1)'}
-                    onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+                    <Link
+                      href="/what-we-do/individual-support"
+                      style={{
+                        display: 'block',
+                        padding: '12px 20px',
+                        color: 'var(--color-slate-ink)',
+                        textDecoration: 'none',
+                        fontSize: '15px',
+                        transition: 'background 0.2s ease',
+                        background: activeSubmenu === 'individual-support' ? 'rgba(163, 201, 226, 0.1)' : 'transparent',
+                      }}
+                      onClick={() => isMobile && closeDropdown()}
+                      onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(163, 201, 226, 0.1)'}
+                      onMouseLeave={(e) => {
+                        if (activeSubmenu !== 'individual-support') {
+                          e.currentTarget.style.background = 'transparent'
+                        }
+                      }}
+                    >
+                      Individual Support {!isMobile && '→'}
+                    </Link>
+                    
+                    {/* Individual Support Submenu (Desktop only) */}
+                    {!isMobile && activeSubmenu === 'individual-support' && (
+                      <div style={{
+                        position: 'absolute',
+                        left: '100%',
+                        top: 0,
+                        marginLeft: '4px',
+                        background: 'var(--color-mist-white)',
+                        border: '1px solid var(--color-border)',
+                        borderRadius: '4px',
+                        boxShadow: '0 4px 12px rgba(11, 29, 58, 0.1)',
+                        minWidth: '200px',
+                        padding: '8px 0',
+                      }}>
+                        {subMenus['individual-support'].map((item) => (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            style={{
+                              display: 'block',
+                              padding: '12px 20px',
+                              color: 'var(--color-slate-ink)',
+                              textDecoration: 'none',
+                              fontSize: '15px',
+                              transition: 'background 0.2s ease',
+                            }}
+                            onClick={closeDropdown}
+                            onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(163, 201, 226, 0.1)'}
+                            onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+                          >
+                            {item.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Organizational Grants */}
+                  <div
+                    style={{ position: 'relative' }}
+                    onMouseEnter={() => !isMobile && setActiveSubmenu('organizational-grants')}
+                    onMouseLeave={() => !isMobile && setActiveSubmenu(null)}
                   >
-                    Organizational Grants
-                  </Link>
-                  <Link
-                    href="/what-we-do/endowment"
-                    style={{
-                      display: 'block',
-                      padding: '12px 20px',
-                      color: 'var(--color-slate-ink)',
-                      textDecoration: 'none',
-                      fontSize: '15px',
-                      transition: 'background 0.2s ease',
-                    }}
-                    onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(163, 201, 226, 0.1)'}
-                    onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+                    <Link
+                      href="/what-we-do/organizational-grants"
+                      style={{
+                        display: 'block',
+                        padding: '12px 20px',
+                        color: 'var(--color-slate-ink)',
+                        textDecoration: 'none',
+                        fontSize: '15px',
+                        transition: 'background 0.2s ease',
+                        background: activeSubmenu === 'organizational-grants' ? 'rgba(163, 201, 226, 0.1)' : 'transparent',
+                      }}
+                      onClick={() => isMobile && closeDropdown()}
+                      onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(163, 201, 226, 0.1)'}
+                      onMouseLeave={(e) => {
+                        if (activeSubmenu !== 'organizational-grants') {
+                          e.currentTarget.style.background = 'transparent'
+                        }
+                      }}
+                    >
+                      Organizational Grants {!isMobile && '→'}
+                    </Link>
+                    
+                    {/* Organizational Grants Submenu (Desktop only) */}
+                    {!isMobile && activeSubmenu === 'organizational-grants' && (
+                      <div style={{
+                        position: 'absolute',
+                        left: '100%',
+                        top: 0,
+                        marginLeft: '4px',
+                        background: 'var(--color-mist-white)',
+                        border: '1px solid var(--color-border)',
+                        borderRadius: '4px',
+                        boxShadow: '0 4px 12px rgba(11, 29, 58, 0.1)',
+                        minWidth: '200px',
+                        padding: '8px 0',
+                      }}>
+                        {subMenus['organizational-grants'].map((item) => (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            style={{
+                              display: 'block',
+                              padding: '12px 20px',
+                              color: 'var(--color-slate-ink)',
+                              textDecoration: 'none',
+                              fontSize: '15px',
+                              transition: 'background 0.2s ease',
+                            }}
+                            onClick={closeDropdown}
+                            onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(163, 201, 226, 0.1)'}
+                            onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+                          >
+                            {item.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Endowment */}
+                  <div
+                    style={{ position: 'relative' }}
+                    onMouseEnter={() => !isMobile && setActiveSubmenu('endowment')}
+                    onMouseLeave={() => !isMobile && setActiveSubmenu(null)}
                   >
-                    Endowment
-                  </Link>
+                    <Link
+                      href="/what-we-do/endowment"
+                      style={{
+                        display: 'block',
+                        padding: '12px 20px',
+                        color: 'var(--color-slate-ink)',
+                        textDecoration: 'none',
+                        fontSize: '15px',
+                        transition: 'background 0.2s ease',
+                        background: activeSubmenu === 'endowment' ? 'rgba(163, 201, 226, 0.1)' : 'transparent',
+                      }}
+                      onClick={() => isMobile && closeDropdown()}
+                      onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(163, 201, 226, 0.1)'}
+                      onMouseLeave={(e) => {
+                        if (activeSubmenu !== 'endowment') {
+                          e.currentTarget.style.background = 'transparent'
+                        }
+                      }}
+                    >
+                      Endowment {!isMobile && '→'}
+                    </Link>
+                    
+                    {/* Endowment Submenu (Desktop only) */}
+                    {!isMobile && activeSubmenu === 'endowment' && (
+                      <div style={{
+                        position: 'absolute',
+                        left: '100%',
+                        top: 0,
+                        marginLeft: '4px',
+                        background: 'var(--color-mist-white)',
+                        border: '1px solid var(--color-border)',
+                        borderRadius: '4px',
+                        boxShadow: '0 4px 12px rgba(11, 29, 58, 0.1)',
+                        minWidth: '200px',
+                        padding: '8px 0',
+                      }}>
+                        {subMenus['endowment'].map((item) => (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            style={{
+                              display: 'block',
+                              padding: '12px 20px',
+                              color: 'var(--color-slate-ink)',
+                              textDecoration: 'none',
+                              fontSize: '15px',
+                              transition: 'background 0.2s ease',
+                            }}
+                            onClick={closeDropdown}
+                            onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(163, 201, 226, 0.1)'}
+                            onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+                          >
+                            {item.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             )}
