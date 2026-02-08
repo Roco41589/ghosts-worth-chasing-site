@@ -103,7 +103,6 @@ export default function Navigation() {
             style={{ 
               position: 'relative',
               whiteSpace: 'nowrap',
-              paddingBottom: '8px',
             }}
             onMouseEnter={() => !isMobile && setIsDropdownOpen(true)}
             onMouseLeave={() => !isMobile && closeDropdown()}
@@ -113,7 +112,6 @@ export default function Navigation() {
               style={{
                 color: 'inherit',
                 textDecoration: 'none',
-                display: 'block',
               }}
               onClick={(e) => {
                 if (isMobile) {
@@ -123,6 +121,17 @@ export default function Navigation() {
             >
               What We Do
             </Link>
+            
+            {/* Invisible hover bridge */}
+            {isDropdownOpen && (
+              <div style={{
+                position: 'absolute',
+                top: '100%',
+                left: 0,
+                right: 0,
+                height: '8px',
+              }} />
+            )}
             
             {/* Dropdown Menu */}
             {isDropdownOpen && (
