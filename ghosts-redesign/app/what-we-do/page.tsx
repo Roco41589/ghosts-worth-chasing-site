@@ -6,6 +6,15 @@ import Image from 'next/image'
 export default function WhatWeDo() {
   return (
     <>
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .cards-grid {
+            grid-template-columns: 1fr !important;
+            max-width: 400px !important;
+          }
+        }
+      `}</style>
+
       <section style={{ 
         padding: 'var(--space-lg) var(--space-md) var(--space-md) var(--space-md)',
         textAlign: 'center',
@@ -33,13 +42,16 @@ export default function WhatWeDo() {
       <section style={{ 
         padding: '0 var(--space-md) var(--space-xl) var(--space-md)',
       }}>
-        <div style={{
-          maxWidth: '900px',
-          margin: '0 auto',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '20px',
-        }}>
+        <div 
+          className="cards-grid"
+          style={{
+            maxWidth: '900px',
+            margin: '0 auto',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '20px',
+          }}
+        >
           {/* Individual Support Card */}
           <Link 
             href="/what-we-do/individual-support"
