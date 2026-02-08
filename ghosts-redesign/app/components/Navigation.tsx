@@ -103,6 +103,7 @@ export default function Navigation() {
             style={{ 
               position: 'relative',
               whiteSpace: 'nowrap',
+              paddingBottom: '8px',
             }}
             onMouseEnter={() => !isMobile && setIsDropdownOpen(true)}
             onMouseLeave={() => !isMobile && closeDropdown()}
@@ -113,7 +114,6 @@ export default function Navigation() {
                 color: 'inherit',
                 textDecoration: 'none',
                 display: 'block',
-                paddingBottom: '8px',
               }}
               onClick={(e) => {
                 if (isMobile) {
@@ -129,8 +129,7 @@ export default function Navigation() {
               <div style={{
                 position: 'absolute',
                 top: '100%',
-                left: '50%',
-                transform: 'translateX(-50%)',
+                left: 0,
                 paddingTop: '8px',
                 zIndex: 1001,
               }}>
