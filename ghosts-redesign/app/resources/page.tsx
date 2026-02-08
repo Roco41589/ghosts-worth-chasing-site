@@ -34,7 +34,29 @@ export default function Resources() {
           }}>
             <li>Articles of Incorporation</li>
             <li>Bylaws</li>
-            <li>Conflict of Interest Policy</li>
+           <li>
+  <a
+    href="/documents/conflict-of-interest-policy.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+    style={{
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: '8px',
+      color: 'var(--color-deep-navy)',
+      textDecoration: 'none',
+    }}
+  >
+    <img
+      src="/icons8-pdf-30.png"
+      alt="PDF"
+      width={18}
+      height={18}
+      style={{ opacity: 0.7 }}
+    />
+    <span>Conflict of Interest Policy</span>
+  </a>
+</li>
             <li>Board Composition and Selection Criteria</li>
             <li>Investment Policy Statement</li>
             <li>Spending Policy</li>
