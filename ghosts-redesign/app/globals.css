@@ -188,3 +188,12 @@ hr {
     font-size: 22px;
   }
 }
+/* Reduce excessive section bottom padding */
+.section {
+  padding-bottom: var(--space-md) !important;
+}
+
+/* Ensure body has no default margin */
+body {
+  margin: 0;
+}
