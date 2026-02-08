@@ -29,34 +29,34 @@ export default function Footer() {
     <footer style={{
       borderTop: '1px solid var(--color-slate-ink)',
       background: 'var(--color-mist-white)',
-      marginTop: 'var(--space-xl)',
+      marginTop: 'var(--space-lg)',
     }}>
       <div style={{
         maxWidth: 'var(--max-content-width)',
         margin: '0 auto',
-        padding: 'var(--space-xl) var(--space-md)',
+        padding: '48px var(--space-md) 32px var(--space-md)',
       }}>
         {/* Main Footer Content - Two Columns */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: '1fr auto',
-          gap: 'var(--space-xl)',
-          marginBottom: 'var(--space-xl)',
+          gap: 'var(--space-lg)',
+          marginBottom: 'var(--space-lg)',
         }}>
           {/* Left Column - Newsletter Signup */}
           <div>
             <h3 style={{
-              fontSize: '24px',
+              fontSize: '22px',
               fontWeight: 500,
               color: 'var(--color-deep-navy)',
-              marginBottom: 'var(--space-sm)',
+              marginBottom: '8px',
             }}>
               Stay Connected
             </h3>
             <p style={{
               fontSize: '15px',
               color: 'var(--color-text-secondary)',
-              marginBottom: 'var(--space-md)',
+              marginBottom: '20px',
               lineHeight: 1.6,
             }}>
               Get the latest Ghosts Worth Chasing news, stories and announcements in your inbox
@@ -78,8 +78,8 @@ export default function Footer() {
                 <div style={{
                   display: 'grid',
                   gridTemplateColumns: '2fr 1fr 1fr',
-                  gap: '12px',
-                  marginBottom: '16px',
+                  gap: '10px',
+                  marginBottom: '12px',
                 }}>
                   <div>
                     <label htmlFor="email" style={{
@@ -251,7 +251,7 @@ export default function Footer() {
         <hr style={{
           border: 'none',
           borderTop: '1px solid var(--color-border)',
-          margin: 'var(--space-lg) 0',
+          margin: '32px 0 24px 0',
         }} />
 
         {/* Bottom Row - Logo/Name and Copyright/Social */}
@@ -264,7 +264,7 @@ export default function Footer() {
           <div>
             <h2 style={{
               fontFamily: 'Regika, serif',
-              fontSize: '32px',
+              fontSize: '28px',
               color: 'var(--color-deep-navy)',
               margin: 0,
               lineHeight: 1,
@@ -280,7 +280,7 @@ export default function Footer() {
             <p style={{
               fontSize: '13px',
               color: 'var(--color-text-secondary)',
-              marginBottom: '12px',
+              marginBottom: '8px',
             }}>
               © {new Date().getFullYear()} Ghosts Worth Chasing
             </p>
