@@ -440,6 +440,9 @@ export default function Navigation() {
               textDecoration: 'none',
               transition: 'all 0.2s ease',
               boxShadow: '0 0 20px rgba(168, 255, 228, 0.4)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.boxShadow = '0 0 30px rgba(168, 255, 228, 0.6)'
@@ -450,8 +453,32 @@ export default function Navigation() {
               e.currentTarget.style.transform = 'translateY(0)'
             }}
           >
+            <span className="heart-icon" style={{ 
+              fontSize: '18px',
+              display: 'inline-block',
+            }}>
+              ❤️
+            </span>
             Donate
           </Link>
+          
+          {/* Heart animation styles */}
+          <style jsx global>{`
+            @keyframes heartbeat {
+              0%, 100% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 0px rgba(239, 68, 68, 0));
+              }
+              50% {
+                transform: scale(1.15);
+                filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.8));
+              }
+            }
+            
+            .heart-icon {
+              animation: heartbeat 1.5s ease-in-out infinite;
+            }
+          `}</style>
         </div>
       </nav>
     </header>
