@@ -9,7 +9,7 @@ export default function Navigation() {
   const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false)
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
   const [isMobile, setIsMobile] = useState(false)
- 
+
   // Detect mobile viewport
   useEffect(() => {
     const checkMobile = () => {
@@ -428,7 +428,30 @@ export default function Navigation() {
             )}
           </div>
           
-          <Link href="/donate" style={{ whiteSpace: 'nowrap' }}>Donate</Link>
+          <Link 
+            href="/donate" 
+            style={{ 
+              whiteSpace: 'nowrap',
+              padding: '10px 24px',
+              background: 'var(--color-neon-mint)',
+              color: 'var(--color-deep-navy)',
+              borderRadius: '4px',
+              fontWeight: 600,
+              textDecoration: 'none',
+              transition: 'all 0.2s ease',
+              boxShadow: '0 0 20px rgba(168, 255, 228, 0.4)',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.boxShadow = '0 0 30px rgba(168, 255, 228, 0.6)'
+              e.currentTarget.style.transform = 'translateY(-2px)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.boxShadow = '0 0 20px rgba(168, 255, 228, 0.4)'
+              e.currentTarget.style.transform = 'translateY(0)'
+            }}
+          >
+            Donate
+          </Link>
         </div>
       </nav>
     </header>
