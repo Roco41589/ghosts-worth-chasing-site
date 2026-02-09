@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 
 export default function Navigation() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false)
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
   const [isMobile, setIsMobile] = useState(false)
 
@@ -353,7 +354,80 @@ export default function Navigation() {
           <Link href="/impact" style={{ whiteSpace: 'nowrap' }}>Impact</Link>
           <Link href="/hall-of-ghosts" style={{ whiteSpace: 'nowrap' }}>Hall of Ghosts</Link>
           <Link href="/resources" style={{ whiteSpace: 'nowrap' }}>Resources</Link>
-          <Link href="/about" style={{ whiteSpace: 'nowrap' }}>About</Link>
+          
+          {/* About with Dropdown */}
+          <div 
+            style={{ 
+              position: 'relative',
+              whiteSpace: 'nowrap',
+            }}
+            onMouseEnter={() => !isMobile && setIsAboutDropdownOpen(true)}
+            onMouseLeave={() => !isMobile && setIsAboutDropdownOpen(false)}
+          >
+            <Link 
+              href="/about"
+              style={{
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+              onClick={(e) => {
+                if (isMobile) {
+                  setIsAboutDropdownOpen(false)
+                }
+              }}
+            >
+              About
+            </Link>
+            
+            {/* Invisible hover bridge */}
+            {isAboutDropdownOpen && (
+              <div style={{
+                position: 'absolute',
+                top: '100%',
+                left: 0,
+                right: 0,
+                height: '8px',
+              }} />
+            )}
+            
+            {/* About Dropdown Menu */}
+            {isAboutDropdownOpen && (
+              <div style={{
+                position: 'absolute',
+                top: '100%',
+                left: 0,
+                paddingTop: '8px',
+                zIndex: 1001,
+              }}>
+                <div style={{
+                  background: 'var(--color-mist-white)',
+                  border: '1px solid var(--color-border)',
+                  borderRadius: '4px',
+                  boxShadow: '0 4px 12px rgba(11, 29, 58, 0.1)',
+                  minWidth: '180px',
+                  padding: '8px 0',
+                }}>
+                  <Link
+                    href="/financials"
+                    style={{
+                      display: 'block',
+                      padding: '12px 20px',
+                      color: 'var(--color-slate-ink)',
+                      textDecoration: 'none',
+                      fontSize: '15px',
+                      transition: 'background 0.2s ease',
+                    }}
+                    onClick={() => setIsAboutDropdownOpen(false)}
+                    onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(163, 201, 226, 0.1)'}
+                    onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+                  >
+                    Financials
+                  </Link>
+                </div>
+              </div>
+            )}
+          </div>
+          
           <Link href="/donate" style={{ whiteSpace: 'nowrap' }}>Donate</Link>
         </div>
       </nav>
