@@ -1,3 +1,5 @@
+import DonationForm from '../components/DonationForm-complete'
+
 export default function Donate() {
   return (
     <>
@@ -87,9 +89,35 @@ export default function Donate() {
         <hr />
       </div>
 
+      <section className="section">
+        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+          <h2 style={{ textAlign: 'center' }}>Contribute</h2>
+          <p style={{ 
+            textAlign: 'center',
+            color: 'var(--color-text-secondary)',
+            marginBottom: 'var(--space-md)',
+            fontWeight: 300,
+          }}>
+            While operational grantmaking will begin upon 501(c)(3) determination, early 
+            contributions help establish the endowment and operational reserves. Payment 
+            processing will be activated once tax-exempt status is confirmed.
+          </p>
+          
+          <DonationForm />
+        </div>
+      </section>
+
+      <div style={{
+        maxWidth: 'var(--max-content-width)',
+        margin: '0 auto',
+        padding: '0 var(--space-lg)',
+      }}>
+        <hr />
+      </div>
+
       <section className="section section--narrow section--centered">
         <p style={{ marginBottom: '16px', fontWeight: 300 }}>
-          If you wish to discuss future support or planned giving, contact:
+          For questions about contributing, planned giving, or DAF recommendations:
         </p>
         <p style={{ marginTop: 'var(--space-sm)' }}>
           <a 
