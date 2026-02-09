@@ -160,8 +160,9 @@ export default function DonationForm() {
                   color: amount === preset && !customAmount ? 'var(--color-mist-white)' : 'var(--color-slate-ink)',
                   border: 'none',
                   borderRadius: '50px',
-                  fontSize: '18px',
-                  fontWeight: 600,
+                  fontSize: '16px',
+                  fontWeight: 500,
+                  fontFamily: 'var(--font-body)',
                   cursor: 'pointer',
                   transition: 'all 0.2s ease',
                 }}
@@ -175,8 +176,9 @@ export default function DonationForm() {
                 left: '20px',
                 top: '50%',
                 transform: 'translateY(-50%)',
-                fontSize: '18px',
-                fontWeight: 600,
+                fontSize: '16px',
+                fontWeight: 500,
+                fontFamily: 'var(--font-body)',
                 color: customAmount ? 'var(--color-mist-white)' : 'var(--color-slate-ink)',
                 pointerEvents: 'none',
               }}>
@@ -194,8 +196,9 @@ export default function DonationForm() {
                   color: customAmount ? 'var(--color-mist-white)' : 'var(--color-slate-ink)',
                   border: 'none',
                   borderRadius: '50px',
-                  fontSize: '18px',
-                  fontWeight: 600,
+                  fontSize: '16px',
+                  fontWeight: 500,
+                  fontFamily: 'var(--font-body)',
                   textAlign: 'center',
                 }}
               />
