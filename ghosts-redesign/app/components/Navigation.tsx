@@ -9,7 +9,7 @@ export default function Navigation() {
   const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false)
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
   const [isMobile, setIsMobile] = useState(false)
-
+ 
   // Detect mobile viewport
   useEffect(() => {
     const checkMobile = () => {
