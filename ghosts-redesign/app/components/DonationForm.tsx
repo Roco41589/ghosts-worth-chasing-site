@@ -187,6 +187,7 @@ export default function DonationForm() {
               <input
                 type="number"
                 placeholder="Other"
+                min="1"
                 value={customAmount}
                 onChange={(e) => setCustomAmount(e.target.value)}
                 style={{
@@ -246,6 +247,93 @@ export default function DonationForm() {
               Dedicate this gift in honor or memory of someone special
             </span>
           </label>
+
+          {/* Conditional Dedication Fields */}
+          {dedication && (
+            <div style={{
+              marginTop: '16px',
+              padding: '20px',
+              background: 'rgba(163, 201, 226, 0.05)',
+              border: '1px solid var(--color-border)',
+              borderRadius: '8px',
+            }}>
+              <div style={{ marginBottom: '16px' }}>
+                <label htmlFor="dedicationType" style={{
+                  display: 'block',
+                  fontSize: '14px',
+                  fontWeight: 500,
+                  color: 'var(--color-slate-ink)',
+                  marginBottom: '6px',
+                }}>
+                  Honoree Gift Type
+                </label>
+                <select
+                  id="dedicationType"
+                  style={{
+                    width: '100%',
+                    padding: '12px',
+                    border: '1px solid var(--color-border)',
+                    borderRadius: '4px',
+                    fontSize: '15px',
+                    fontFamily: 'inherit',
+                  }}
+                >
+                  <option value="">Select</option>
+                  <option value="honor">In Honor Of</option>
+                  <option value="memory">In Memory Of</option>
+                </select>
+              </div>
+
+              <div style={{ marginBottom: '16px' }}>
+                <label htmlFor="honoreeName" style={{
+                  display: 'block',
+                  fontSize: '14px',
+                  fontWeight: 500,
+                  color: 'var(--color-slate-ink)',
+                  marginBottom: '6px',
+                }}>
+                  Honoree Name
+                </label>
+                <input
+                  type="text"
+                  id="honoreeName"
+                  style={{
+                    width: '100%',
+                    padding: '12px',
+                    border: '1px solid var(--color-border)',
+                    borderRadius: '4px',
+                    fontSize: '15px',
+                    fontFamily: 'inherit',
+                  }}
+                />
+              </div>
+
+              <div>
+                <label htmlFor="dedicationMessage" style={{
+                  display: 'block',
+                  fontSize: '14px',
+                  fontWeight: 500,
+                  color: 'var(--color-slate-ink)',
+                  marginBottom: '6px',
+                }}>
+                  Message (optional)
+                </label>
+                <textarea
+                  id="dedicationMessage"
+                  rows={3}
+                  style={{
+                    width: '100%',
+                    padding: '12px',
+                    border: '1px solid var(--color-border)',
+                    borderRadius: '4px',
+                    fontSize: '15px',
+                    fontFamily: 'inherit',
+                    resize: 'vertical',
+                  }}
+                />
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Billing Information */}
@@ -343,6 +431,34 @@ export default function DonationForm() {
               </span>
             </label>
           </div>
+
+          {/* Conditional Company Name Field */}
+          {formData.isCompany && (
+            <div style={{ marginBottom: '16px' }}>
+              <label htmlFor="companyName" style={{
+                display: 'block',
+                fontSize: '14px',
+                fontWeight: 500,
+                color: 'var(--color-slate-ink)',
+                marginBottom: '6px',
+              }}>
+                Company or Organization Name
+              </label>
+              <input
+                type="text"
+                id="companyName"
+                required
+                style={{
+                  width: '100%',
+                  padding: '12px',
+                  border: '1px solid var(--color-border)',
+                  borderRadius: '4px',
+                  fontSize: '15px',
+                  fontFamily: 'inherit',
+                }}
+              />
+            </div>
+          )}
 
           {/* Address 1 */}
           <div style={{ marginBottom: '16px' }}>
