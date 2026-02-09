@@ -454,7 +454,7 @@ export default function Navigation() {
             }}
           >
             <span className="heart-icon" style={{ 
-              fontSize: '18px',
+              fontSize: '12px',
               display: 'inline-block',
             }}>
               ❤️
