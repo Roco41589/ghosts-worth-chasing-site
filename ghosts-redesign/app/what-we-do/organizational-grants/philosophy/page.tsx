@@ -11,49 +11,62 @@ export default function Philosophy() {
       {/* Sticky Header Section */}
       <div style={{
         position: 'sticky',
-        top: '72px', // Height of your nav bar
+        top: '72px',
         background: 'var(--color-mist-white)',
         borderBottom: '1px solid var(--color-border)',
-        padding: 'var(--space-md) 0',
+        padding: '12px var(--space-md)',
         zIndex: 100,
       }}>
         <div style={{
-          maxWidth: 'var(--max-text-width)',
+          maxWidth: 'var(--max-content-width)',
           margin: '0 auto',
-          padding: '0 var(--space-md)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '24px',
         }}>
           <Link 
             href="/what-we-do/organizational-grants" 
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             style={{ 
-              fontSize: '14px',
+              fontSize: '13px',
               color: 'var(--color-deep-navy)',
               textDecoration: 'none',
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '8px',
-              padding: '8px 16px',
+              gap: '6px',
+              padding: '6px 12px',
               border: '1px solid var(--color-border)',
               borderRadius: '4px',
               transition: 'all 0.2s ease',
-              marginBottom: '16px',
               background: isHovered ? 'rgba(163, 201, 226, 0.1)' : 'transparent',
               borderColor: isHovered ? 'var(--color-sky-blue)' : 'var(--color-border)',
+              whiteSpace: 'nowrap',
+              flexShrink: 0,
             }}
           >
-            ← Our Funding Model
+            ← Back
           </Link>
           
           <h1 style={{ 
             color: 'var(--color-deep-navy)', 
-            marginBottom: 0,
-            fontSize: '32px',
+            margin: 0,
+            fontSize: '24px',
+            fontWeight: 500,
           }}>
             Grantmaking Philosophy
           </h1>
         </div>
       </div>
+
+      {/* Mobile Styles */}
+      <style jsx>{`
+        @media (max-width: 768px) {
+          h1 {
+            font-size: 20px !important;
+          }
+        }
+      `}</style>
 
       {/* Content Section */}
       <section className="section section--narrow">
