@@ -29,7 +29,7 @@ export default function OrganizationalGrants() {
             marginBottom: 'var(--space-md)',
           }}
         >
-          ← Back to What We Do
+          ← Our Funding Model
         </Link>
         
         <h1 style={{ 
@@ -45,32 +45,72 @@ export default function OrganizationalGrants() {
           color: 'var(--color-text-secondary)',
           lineHeight: 1.6,
           fontWeight: 300,
+          marginBottom: 'var(--space-sm)',
+          textAlign: 'center',
+          maxWidth: '700px',
+          margin: '0 auto var(--space-sm) auto',
+        }}>
+          We fund aligned nonprofits working on long-horizon challenges where traditional 
+          philanthropy is poorly suited. Grants support institutional capacity, not specific projects.
+        </p>
+
+        <p style={{ 
+          fontSize: '15px',
+          color: 'var(--color-text-secondary)',
+          lineHeight: 1.6,
           marginBottom: 'var(--space-md)',
           textAlign: 'center',
           maxWidth: '700px',
           margin: '0 auto var(--space-md) auto',
         }}>
-          We fund aligned nonprofits working on long-horizon challenges where traditional 
-          philanthropy is poorly suited. Grants are multi-year and support institutional capacity, 
-          not specific projects.
+          The foundation does not operate an open application pipeline. Organizations are identified 
+          through deliberate sourcing and board review.
         </p>
 
         <div style={{ 
-          marginBottom: 'var(--space-lg)',
+          marginBottom: 'var(--space-md)',
           padding: 'var(--space-md)',
           borderLeft: '2px solid var(--color-sky-blue)',
           background: 'rgba(163, 201, 226, 0.05)',
           maxWidth: '700px',
-          margin: '0 auto var(--space-lg) auto',
+          margin: '0 auto var(--space-md) auto',
         }}>
+          <h3 style={{
+            fontSize: '16px',
+            fontWeight: 600,
+            color: 'var(--color-deep-navy)',
+            marginBottom: '12px',
+          }}>
+            Stewardship Approach
+          </h3>
           <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)', marginBottom: '8px' }}>
-            <strong style={{ color: 'var(--color-deep-navy)' }}>Typical award range:</strong> $50,000–$200,000 over 2–3 years
-          </p>
-          <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)', marginBottom: '8px' }}>
-            <strong style={{ color: 'var(--color-deep-navy)' }}>Annual budget allocation:</strong> 40% of distributable funds
+            Capital is deployed selectively under board governance. The foundation is not obligated to deploy 
+            capital annually. Restraint is considered a feature of good stewardship, not a limitation.
           </p>
           <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)', marginBottom: 0 }}>
-            <strong style={{ color: 'var(--color-deep-navy)' }}>Review process:</strong> Rolling basis with external advisory committee
+            Decisions are made on a deliberate timeline that prioritizes institutional alignment and long-term sustainability.
+          </p>
+        </div>
+
+        <div style={{ 
+          marginBottom: 'var(--space-lg)',
+          padding: 'var(--space-md)',
+          border: '1px solid var(--color-border)',
+          borderRadius: '8px',
+          maxWidth: '700px',
+          margin: '0 auto var(--space-lg) auto',
+        }}>
+          <h3 style={{
+            fontSize: '16px',
+            fontWeight: 600,
+            color: 'var(--color-deep-navy)',
+            marginBottom: '12px',
+          }}>
+            What We Do Not Do
+          </h3>
+          <p style={{ fontSize: '14px', color: 'var(--color-text)', marginBottom: 0, lineHeight: 1.6 }}>
+            Ghosts Worth Chasing does not fund short-term pilots, donor-directed projects, or visibility-driven initiatives. 
+            We do not fund work optimized for urgency or measurable short-term outcomes.
           </p>
         </div>
       </section>
@@ -88,7 +128,7 @@ export default function OrganizationalGrants() {
             gap: '20px',
           }}
         >
-          {/* Selection Criteria Card */}
+          {/* How Organizations Are Evaluated Card */}
           <Link 
             href="/what-we-do/organizational-grants/criteria"
             style={{
@@ -118,12 +158,12 @@ export default function OrganizationalGrants() {
           >
             <h2 style={{ 
               fontFamily: 'Regika, serif',
-              fontSize: '28px',
+              fontSize: '26px',
               color: 'var(--color-mist-white)',
               margin: 0,
-              lineHeight: 1.1,
+              lineHeight: 1.2,
             }}>
-              Selection Criteria
+              How Organizations Are Evaluated
             </h2>
             
             <div style={{
@@ -135,7 +175,7 @@ export default function OrganizationalGrants() {
             </div>
           </Link>
 
-          {/* Grant Structure Card */}
+          {/* How Grants Are Structured Card */}
           <Link 
             href="/what-we-do/organizational-grants/structure"
             style={{
@@ -165,12 +205,12 @@ export default function OrganizationalGrants() {
           >
             <h2 style={{ 
               fontFamily: 'Regika, serif',
-              fontSize: '28px',
+              fontSize: '26px',
               color: 'var(--color-mist-white)',
               margin: 0,
-              lineHeight: 1.1,
+              lineHeight: 1.2,
             }}>
-              Grant Structure
+              How Grants Are Structured
             </h2>
             
             <div style={{
@@ -182,7 +222,7 @@ export default function OrganizationalGrants() {
             </div>
           </Link>
 
-          {/* Application Process Card */}
+          {/* How Decisions Are Made Card */}
           <Link 
             href="/what-we-do/organizational-grants/application"
             style={{
@@ -212,12 +252,12 @@ export default function OrganizationalGrants() {
           >
             <h2 style={{ 
               fontFamily: 'Regika, serif',
-              fontSize: '28px',
+              fontSize: '26px',
               color: 'var(--color-mist-white)',
               margin: 0,
-              lineHeight: 1.1,
+              lineHeight: 1.2,
             }}>
-              Application Process
+              How Decisions Are Made
             </h2>
             
             <div style={{
@@ -229,7 +269,7 @@ export default function OrganizationalGrants() {
             </div>
           </Link>
 
-          {/* Philosophy Card */}
+          {/* Grantmaking Philosophy Card */}
           <Link 
             href="/what-we-do/organizational-grants/philosophy"
             style={{
@@ -259,12 +299,12 @@ export default function OrganizationalGrants() {
           >
             <h2 style={{ 
               fontFamily: 'Regika, serif',
-              fontSize: '28px',
+              fontSize: '26px',
               color: 'var(--color-mist-white)',
               margin: 0,
-              lineHeight: 1.1,
+              lineHeight: 1.2,
             }}>
-              Philosophy
+              Grantmaking Philosophy
             </h2>
             
             <div style={{
