@@ -2,26 +2,60 @@ import Link from 'next/link'
 
 export default function Philosophy() {
   return (
-    <section className="section section--narrow">
-      <Link 
-        href="/what-we-do/organizational-grants" 
-        style={{ 
-          fontSize: '14px',
-          color: 'var(--color-teal-grey)',
-          textDecoration: 'none',
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '8px',
-          marginBottom: 'var(--space-md)',
-        }}
-      >
-        ← Our Funding Model
-      </Link>
-      
-      <h1 style={{ color: 'var(--color-deep-navy)', marginBottom: 'var(--space-md)' }}>
-        Grantmaking Philosophy
-      </h1>
-      
+    <>
+      {/* Sticky Header Section */}
+      <div style={{
+        position: 'sticky',
+        top: '72px', // Height of your nav bar
+        background: 'var(--color-mist-white)',
+        borderBottom: '1px solid var(--color-border)',
+        padding: 'var(--space-md) 0',
+        zIndex: 100,
+      }}>
+        <div style={{
+          maxWidth: 'var(--max-text-width)',
+          margin: '0 auto',
+          padding: '0 var(--space-md)',
+        }}>
+          <Link 
+            href="/what-we-do/organizational-grants" 
+            style={{ 
+              fontSize: '14px',
+              color: 'var(--color-deep-navy)',
+              textDecoration: 'none',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '8px 16px',
+              border: '1px solid var(--color-border)',
+              borderRadius: '4px',
+              transition: 'all 0.2s ease',
+              marginBottom: '16px',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(163, 201, 226, 0.1)'
+              e.currentTarget.style.borderColor = 'var(--color-sky-blue)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'transparent'
+              e.currentTarget.style.borderColor = 'var(--color-border)'
+            }}
+          >
+            ← Our Funding Model
+          </Link>
+          
+          <h1 style={{ 
+            color: 'var(--color-deep-navy)', 
+            marginBottom: 0,
+            fontSize: '32px',
+          }}>
+            Grantmaking Philosophy
+          </h1>
+        </div>
+      </div>
+
+      {/* Content Section */}
+      <section className="section section--narrow">
       <p>
         Most philanthropy optimizes for measurable outcomes on short timelines. This creates 
         structural pressure toward visible, fundable work at the expense of foundational capacity. 
@@ -44,5 +78,6 @@ export default function Philosophy() {
         a long-term sustainability engine. The endowment remains structurally prioritized over time.
       </p>
     </section>
+    </>
   )
 }
