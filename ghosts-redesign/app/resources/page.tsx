@@ -1,3 +1,5 @@
+'use client'
+
 export default function Resources() {
   return (
     <>
@@ -274,14 +276,6 @@ export default function Resources() {
                 fontSize: '15px',
                 fontWeight: 500,
                 transition: 'all 0.2s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'var(--color-slate-ink)'
-                e.currentTarget.style.transform = 'translateY(-2px)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'var(--color-deep-navy)'
-                e.currentTarget.style.transform = 'translateY(0)'
               }}
             >
               View Financial Documents →
