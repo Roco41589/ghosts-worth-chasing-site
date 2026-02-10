@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export default function Criteria() {
+export default function DecisionProcess() {
   return (
     <section className="section section--narrow">
       <Link 
@@ -19,28 +19,28 @@ export default function Criteria() {
       </Link>
       
       <h1 style={{ color: 'var(--color-deep-navy)', marginBottom: 'var(--space-md)' }}>
-        How Organizations Are Evaluated
+        How Decisions Are Made
       </h1>
       
       <p>
-        Organizations must meet baseline criteria to be considered. Mission alignment matters. 
-        Operational legitimacy matters. Ethical posture matters. Organizations must demonstrate 
-        adequate financial and internal controls and an absence of material conflicts of interest.
+        Organizations may be proposed by the Founder or Board members. Proposals are evaluated using 
+        a weighted scoring framework that measures mission alignment, operational capacity, and 
+        stewardship quality.
       </p>
 
       <p>
-        Failing any threshold disqualifies an organization regardless of popularity or visibility.
+        Directors score independently and blindly. Scores are aggregated to inform funding decisions. 
+        The Founder retains limited veto authority as a safeguard, exercised sparingly.
       </p>
 
       <p>
-        Evaluation emphasizes stewardship capacity, not scale. The foundation looks for organizations 
-        where incremental support matters and where capital can be deployed with confidence in 
-        responsible use.
+        The foundation does not operate an open application process. Organizations are identified 
+        through deliberate sourcing, board review, and sector expertise.
       </p>
 
       <p>
-        Organizations are assessed for alignment with the foundation's mission, operational durability, 
-        and commitment to work that resists easy quantification or short-term metrics.
+        Decisions are made on a timeline that prioritizes thoroughness over speed. The foundation 
+        is not required to deploy capital annually. Restraint is considered a feature of good stewardship.
       </p>
     </section>
   )
