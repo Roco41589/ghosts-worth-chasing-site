@@ -435,7 +435,7 @@ export default function Navigation() {
               padding: '10px 24px',
               background: 'var(--color-sky-blue)',
               color: 'var(--color-deep-navy)',
-              border: '2px solid var(--color-sky-blue)',
+              border: '1px solid var(--color-deep-navy)',
               borderRadius: '50px',
               fontWeight: 600,
               textDecoration: 'none',
