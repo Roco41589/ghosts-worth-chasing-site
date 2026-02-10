@@ -1,75 +1,27 @@
-'use client'
-
 import Link from 'next/link'
-import { useState } from 'react'
 
 export default function Philosophy() {
-  const [isHovered, setIsHovered] = useState(false)
-
   return (
-    <>
-      {/* Sticky Header Section */}
-      <div style={{
-        position: 'sticky',
-        top: '72px',
-        background: 'var(--color-mist-white)',
-        borderBottom: '1px solid var(--color-border)',
-        padding: '12px var(--space-md)',
-        zIndex: 100,
-      }}>
-        <div style={{
-          maxWidth: 'var(--max-content-width)',
-          margin: '0 auto',
-          display: 'flex',
+    <section className="section section--narrow">
+      <Link 
+        href="/what-we-do/organizational-grants" 
+        style={{ 
+          fontSize: '14px',
+          color: 'var(--color-teal-grey)',
+          textDecoration: 'none',
+          display: 'inline-flex',
           alignItems: 'center',
-          gap: '24px',
-        }}>
-          <Link 
-            href="/what-we-do/organizational-grants" 
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            style={{ 
-              fontSize: '13px',
-              color: 'var(--color-deep-navy)',
-              textDecoration: 'none',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              padding: '6px 12px',
-              border: '1px solid var(--color-border)',
-              borderRadius: '4px',
-              transition: 'all 0.2s ease',
-              background: isHovered ? 'rgba(163, 201, 226, 0.1)' : 'transparent',
-              borderColor: isHovered ? 'var(--color-sky-blue)' : 'var(--color-border)',
-              whiteSpace: 'nowrap',
-              flexShrink: 0,
-            }}
-          >
-            ← Back
-          </Link>
-          
-          <h1 style={{ 
-            color: 'var(--color-deep-navy)', 
-            margin: 0,
-            fontSize: '24px',
-            fontWeight: 500,
-          }}>
-            Grantmaking Philosophy
-          </h1>
-        </div>
-      </div>
-
-      {/* Mobile Styles */}
-      <style jsx>{`
-        @media (max-width: 768px) {
-          h1 {
-            font-size: 20px !important;
-          }
-        }
-      `}</style>
-
-      {/* Content Section */}
-      <section className="section section--narrow">
+          gap: '8px',
+          marginBottom: 'var(--space-md)',
+        }}
+      >
+        ← Our Funding Model
+      </Link>
+      
+      <h1 style={{ color: 'var(--color-deep-navy)', marginBottom: 'var(--space-md)' }}>
+        Grantmaking Philosophy
+      </h1>
+      
       <p>
         Most philanthropy optimizes for measurable outcomes on short timelines. This creates 
         structural pressure toward visible, fundable work at the expense of foundational capacity. 
@@ -92,6 +44,5 @@ export default function Philosophy() {
         a long-term sustainability engine. The endowment remains structurally prioritized over time.
       </p>
     </section>
-    </>
   )
 }
