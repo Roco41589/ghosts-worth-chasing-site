@@ -188,3 +188,6 @@ hr {
     font-size: 22px;
   }
 }
+.section {
+  padding-bottom: var(--space-md) !important;
+}
