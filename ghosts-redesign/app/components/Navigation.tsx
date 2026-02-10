@@ -433,23 +433,24 @@ export default function Navigation() {
             style={{ 
               whiteSpace: 'nowrap',
               padding: '10px 24px',
-              background: 'var(--color-neon-mint)',
-              color: 'var(--color-deep-navy)',
+              background: 'var(--color-deep-navy)',
+              color: 'var(--color-mist-white)',
+              border: '2px solid var(--color-sky-blue)',
               borderRadius: '4px',
               fontWeight: 600,
               textDecoration: 'none',
               transition: 'all 0.2s ease',
-              boxShadow: '0 0 20px rgba(168, 255, 228, 0.4)',
+              boxShadow: '0 0 15px rgba(163, 201, 226, 0.3)',
               display: 'inline-flex',
               alignItems: 'center',
               gap: '8px',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.boxShadow = '0 0 30px rgba(168, 255, 228, 0.6)'
+              e.currentTarget.style.boxShadow = '0 0 25px rgba(163, 201, 226, 0.5)'
               e.currentTarget.style.transform = 'translateY(-2px)'
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.boxShadow = '0 0 20px rgba(168, 255, 228, 0.4)'
+              e.currentTarget.style.boxShadow = '0 0 15px rgba(163, 201, 226, 0.3)'
               e.currentTarget.style.transform = 'translateY(0)'
             }}
           >
