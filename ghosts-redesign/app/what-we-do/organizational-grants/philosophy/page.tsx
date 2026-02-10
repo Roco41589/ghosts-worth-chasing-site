@@ -15,11 +15,11 @@ export default function Philosophy() {
           marginBottom: 'var(--space-md)',
         }}
       >
-        ← Back to Organizational Grants
+        ← Our Funding Model
       </Link>
       
       <h1 style={{ color: 'var(--color-deep-navy)', marginBottom: 'var(--space-md)' }}>
-        Philosophy
+        Grantmaking Philosophy
       </h1>
       
       <p>
@@ -28,7 +28,21 @@ export default function Philosophy() {
         Organizational grants exist to support institutions willing to do necessary work that 
         cannot be easily quantified or celebrated.
       </p>
+
+      <p>
+        The foundation operates on long horizons. Capital is deployed deliberately. Decisions 
+        prioritize alignment and durability over urgency or visibility.
+      </p>
+
+      <p>
+        Grants support institutional capacity, not specific projects. The foundation does not 
+        impose donor-directed mandates or require alignment with narrow programmatic goals.
+      </p>
+
+      <p>
+        Organizational grants function as near-term mission support. The endowment functions as 
+        a long-term sustainability engine. The endowment remains structurally prioritized over time.
+      </p>
     </section>
   )
 }
-
