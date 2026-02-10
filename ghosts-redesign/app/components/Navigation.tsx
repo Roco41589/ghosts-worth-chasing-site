@@ -351,15 +351,29 @@ export default function Navigation() {
           </div>
 
           {/* Regular Links */}
-          <Link href="/impact" style={{ whiteSpace: 'nowrap' }}>Impact</Link>
-          <Link href="/hall-of-ghosts" style={{ whiteSpace: 'nowrap' }}>Hall of Ghosts</Link>
-          <Link href="/resources" style={{ whiteSpace: 'nowrap' }}>Resources</Link>
+          <Link href="/impact" style={{ 
+            whiteSpace: 'nowrap',
+            paddingLeft: '24px',
+            borderLeft: '1px solid var(--color-border)',
+          }}>Impact</Link>
+          <Link href="/hall-of-ghosts" style={{ 
+            whiteSpace: 'nowrap',
+            paddingLeft: '24px',
+            borderLeft: '1px solid var(--color-border)',
+          }}>Hall of Ghosts</Link>
+          <Link href="/resources" style={{ 
+            whiteSpace: 'nowrap',
+            paddingLeft: '24px',
+            borderLeft: '1px solid var(--color-border)',
+          }}>Resources</Link>
           
           {/* About with Dropdown */}
           <div 
             style={{ 
               position: 'relative',
               whiteSpace: 'nowrap',
+              paddingLeft: '24px',
+              borderLeft: '1px solid var(--color-border)',
             }}
             onMouseEnter={() => !isMobile && setIsAboutDropdownOpen(true)}
             onMouseLeave={() => !isMobile && setIsAboutDropdownOpen(false)}
