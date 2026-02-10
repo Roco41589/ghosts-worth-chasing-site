@@ -1,6 +1,11 @@
+'use client'
+
 import Link from 'next/link'
+import { useState } from 'react'
 
 export default function Philosophy() {
+  const [isHovered, setIsHovered] = useState(false)
+
   return (
     <>
       {/* Sticky Header Section */}
@@ -19,6 +24,8 @@ export default function Philosophy() {
         }}>
           <Link 
             href="/what-we-do/organizational-grants" 
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
             style={{ 
               fontSize: '14px',
               color: 'var(--color-deep-navy)',
@@ -31,14 +38,8 @@ export default function Philosophy() {
               borderRadius: '4px',
               transition: 'all 0.2s ease',
               marginBottom: '16px',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'rgba(163, 201, 226, 0.1)'
-              e.currentTarget.style.borderColor = 'var(--color-sky-blue)'
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'transparent'
-              e.currentTarget.style.borderColor = 'var(--color-border)'
+              background: isHovered ? 'rgba(163, 201, 226, 0.1)' : 'transparent',
+              borderColor: isHovered ? 'var(--color-sky-blue)' : 'var(--color-border)',
             }}
           >
             ← Our Funding Model
