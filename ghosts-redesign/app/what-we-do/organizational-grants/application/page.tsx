@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export default function Structure() {
+export default function Criteria() {
   return (
     <section className="section section--narrow">
       <Link 
@@ -19,27 +19,28 @@ export default function Structure() {
       </Link>
       
       <h1 style={{ color: 'var(--color-deep-navy)', marginBottom: 'var(--space-md)' }}>
-        How Grants Are Structured
+        How Organizations Are Evaluated
       </h1>
       
       <p>
-        Grants are modest, intentional, and repeatable. The foundation provides multi-year support 
-        to build institutional capacity, not to fund specific projects or deliverables.
+        Organizations must meet baseline criteria to be considered. Mission alignment matters. 
+        Operational legitimacy matters. Ethical posture matters. Organizations must demonstrate 
+        adequate financial and internal controls and an absence of material conflicts of interest.
       </p>
 
       <p>
-        Funding is unrestricted. Organizations use capital as they determine appropriate. The foundation 
-        does not impose reporting burdens disproportionate to grant size.
+        Failing any threshold disqualifies an organization regardless of popularity or visibility.
       </p>
 
       <p>
-        Grants are structured to support work that cannot be easily quantified or celebrated. Preference 
-        is given to organizations willing to do necessary work that traditional philanthropy avoids.
+        Evaluation emphasizes stewardship capacity, not scale. The foundation looks for organizations 
+        where incremental support matters and where capital can be deployed with confidence in 
+        responsible use.
       </p>
 
       <p>
-        Responsible stewardship influences future funding consideration. The foundation operates on 
-        long timelines and maintains relationships with grantees beyond individual funding cycles.
+        Organizations are assessed for alignment with the foundation's mission, operational durability, 
+        and commitment to work that resists easy quantification or short-term metrics.
       </p>
     </section>
   )
