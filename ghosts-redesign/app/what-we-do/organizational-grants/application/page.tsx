@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export default function Application() {
+export default function Structure() {
   return (
     <section className="section section--narrow">
       <Link 
@@ -15,28 +15,31 @@ export default function Application() {
           marginBottom: 'var(--space-md)',
         }}
       >
-        ← Back to Organizational Grants
+        ← Our Funding Model
       </Link>
       
       <h1 style={{ color: 'var(--color-deep-navy)', marginBottom: 'var(--space-md)' }}>
-        Application Process
+        How Grants Are Structured
       </h1>
       
-      <p style={{ marginBottom: 'var(--space-sm)' }}>
-        Organizations may submit letters of inquiry at any time. The review process typically 
-        takes 60-90 days from initial inquiry to funding decision.
+      <p>
+        Grants are modest, intentional, and repeatable. The foundation provides multi-year support 
+        to build institutional capacity, not to fund specific projects or deliverables.
       </p>
-      
-      <p style={{ 
-        fontSize: '15px',
-        color: 'var(--color-text-secondary)',
-        fontStyle: 'italic',
-        padding: 'var(--space-sm)',
-        background: 'rgba(163, 201, 226, 0.05)',
-        border: '1px solid var(--color-border)',
-      }}>
-        Note: Grantmaking will commence once the foundation's 501(c)(3) status is confirmed. 
-        Expected availability: Q2 2025.
+
+      <p>
+        Funding is unrestricted. Organizations use capital as they determine appropriate. The foundation 
+        does not impose reporting burdens disproportionate to grant size.
+      </p>
+
+      <p>
+        Grants are structured to support work that cannot be easily quantified or celebrated. Preference 
+        is given to organizations willing to do necessary work that traditional philanthropy avoids.
+      </p>
+
+      <p>
+        Responsible stewardship influences future funding consideration. The foundation operates on 
+        long timelines and maintains relationships with grantees beyond individual funding cycles.
       </p>
     </section>
   )
