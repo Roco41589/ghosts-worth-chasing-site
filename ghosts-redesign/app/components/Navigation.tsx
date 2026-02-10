@@ -353,29 +353,37 @@ export default function Navigation() {
           {/* Regular Links */}
           <Link href="/impact" style={{ 
             whiteSpace: 'nowrap',
-            marginLeft: '24px',
             borderLeft: '1px solid var(--color-border)',
             paddingLeft: '24px',
-          }}>Impact</Link>
+            borderBottom: 'none',
+          }}
+          onMouseEnter={(e) => e.currentTarget.style.borderBottom = 'none'}
+          onMouseLeave={(e) => e.currentTarget.style.borderBottom = 'none'}
+          >Impact</Link>
           <Link href="/hall-of-ghosts" style={{ 
             whiteSpace: 'nowrap',
-            marginLeft: '24px',
             borderLeft: '1px solid var(--color-border)',
             paddingLeft: '24px',
-          }}>Hall of Ghosts</Link>
+            borderBottom: 'none',
+          }}
+          onMouseEnter={(e) => e.currentTarget.style.borderBottom = 'none'}
+          onMouseLeave={(e) => e.currentTarget.style.borderBottom = 'none'}
+          >Hall of Ghosts</Link>
           <Link href="/resources" style={{ 
             whiteSpace: 'nowrap',
-            marginLeft: '24px',
             borderLeft: '1px solid var(--color-border)',
             paddingLeft: '24px',
-          }}>Resources</Link>
+            borderBottom: 'none',
+          }}
+          onMouseEnter={(e) => e.currentTarget.style.borderBottom = 'none'}
+          onMouseLeave={(e) => e.currentTarget.style.borderBottom = 'none'}
+          >Resources</Link>
           
           {/* About with Dropdown */}
           <div 
             style={{ 
               position: 'relative',
               whiteSpace: 'nowrap',
-              marginLeft: '24px',
               borderLeft: '1px solid var(--color-border)',
               paddingLeft: '24px',
             }}
