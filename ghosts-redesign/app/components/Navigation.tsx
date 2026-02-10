@@ -433,10 +433,10 @@ export default function Navigation() {
             style={{ 
               whiteSpace: 'nowrap',
               padding: '10px 24px',
-              background: 'var(--color-deep-navy)',
-              color: 'var(--color-mist-white)',
+              background: 'var(--color-sky-blue)',
+              color: 'var(--color-deep-navy)',
               border: '2px solid var(--color-sky-blue)',
-              borderRadius: '4px',
+              borderRadius: '50px',
               fontWeight: 600,
               textDecoration: 'none',
               transition: 'all 0.2s ease',
