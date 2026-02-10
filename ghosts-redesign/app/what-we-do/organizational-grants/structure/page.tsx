@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export default function Criteria() {
+export default function Structure() {
   return (
     <section className="section section--narrow">
       <Link 
@@ -15,31 +15,31 @@ export default function Criteria() {
           marginBottom: 'var(--space-md)',
         }}
       >
-        ← Back to Organizational Grants
+        ← Our Funding Model
       </Link>
       
       <h1 style={{ color: 'var(--color-deep-navy)', marginBottom: 'var(--space-md)' }}>
-        Selection Criteria
+        How Grants Are Structured
       </h1>
       
-      <p style={{ marginBottom: 'var(--space-sm)' }}>
-        We prioritize organizations that are:
-      </p>
-      
-      <ul style={{ 
-        marginLeft: '24px', 
-        marginBottom: 'var(--space-md)',
-        color: 'var(--color-text)',
-        lineHeight: 1.7,
-      }}>
-        <li>Under-resourced relative to mission complexity</li>
-        <li>Operating with intellectual honesty</li>
-        <li>Building durable infrastructure, not chasing visibility</li>
-      </ul>
-      
       <p>
-        Grants are made on a rolling basis. Applications are reviewed by an external 
-        advisory committee comprised of practitioners with domain expertise.
+        Grants are modest, intentional, and repeatable. The foundation provides multi-year support 
+        to build institutional capacity, not to fund specific projects or deliverables.
+      </p>
+
+      <p>
+        Funding is unrestricted. Organizations use capital as they determine appropriate. The foundation 
+        does not impose reporting burdens disproportionate to grant size.
+      </p>
+
+      <p>
+        Grants are structured to support work that cannot be easily quantified or celebrated. Preference 
+        is given to organizations willing to do necessary work that traditional philanthropy avoids.
+      </p>
+
+      <p>
+        Responsible stewardship influences future funding consideration. The foundation operates on 
+        long timelines and maintains relationships with grantees beyond individual funding cycles.
       </p>
     </section>
   )
