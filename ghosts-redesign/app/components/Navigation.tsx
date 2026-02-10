@@ -353,18 +353,21 @@ export default function Navigation() {
           {/* Regular Links */}
           <Link href="/impact" style={{ 
             whiteSpace: 'nowrap',
-            paddingLeft: '24px',
+            marginLeft: '24px',
             borderLeft: '1px solid var(--color-border)',
+            paddingLeft: '24px',
           }}>Impact</Link>
           <Link href="/hall-of-ghosts" style={{ 
             whiteSpace: 'nowrap',
-            paddingLeft: '24px',
+            marginLeft: '24px',
             borderLeft: '1px solid var(--color-border)',
+            paddingLeft: '24px',
           }}>Hall of Ghosts</Link>
           <Link href="/resources" style={{ 
             whiteSpace: 'nowrap',
-            paddingLeft: '24px',
+            marginLeft: '24px',
             borderLeft: '1px solid var(--color-border)',
+            paddingLeft: '24px',
           }}>Resources</Link>
           
           {/* About with Dropdown */}
@@ -372,8 +375,9 @@ export default function Navigation() {
             style={{ 
               position: 'relative',
               whiteSpace: 'nowrap',
-              paddingLeft: '24px',
+              marginLeft: '24px',
               borderLeft: '1px solid var(--color-border)',
+              paddingLeft: '24px',
             }}
             onMouseEnter={() => !isMobile && setIsAboutDropdownOpen(true)}
             onMouseLeave={() => !isMobile && setIsAboutDropdownOpen(false)}
