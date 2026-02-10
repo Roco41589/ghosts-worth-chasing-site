@@ -15,31 +15,32 @@ export default function Criteria() {
           marginBottom: 'var(--space-md)',
         }}
       >
-        ← Back to Organizational Grants
+        ← Our Funding Model
       </Link>
       
       <h1 style={{ color: 'var(--color-deep-navy)', marginBottom: 'var(--space-md)' }}>
-        Selection Criteria
+        How Organizations Are Evaluated
       </h1>
       
-      <p style={{ marginBottom: 'var(--space-sm)' }}>
-        We prioritize organizations that are:
-      </p>
-      
-      <ul style={{ 
-        marginLeft: '24px', 
-        marginBottom: 'var(--space-md)',
-        color: 'var(--color-text)',
-        lineHeight: 1.7,
-      }}>
-        <li>Under-resourced relative to mission complexity</li>
-        <li>Operating with intellectual honesty</li>
-        <li>Building durable infrastructure, not chasing visibility</li>
-      </ul>
-      
       <p>
-        Grants are made on a rolling basis. Applications are reviewed by an external 
-        advisory committee comprised of practitioners with domain expertise.
+        Organizations must meet baseline criteria to be considered. Mission alignment matters. 
+        Operational legitimacy matters. Ethical posture matters. Organizations must demonstrate 
+        adequate financial and internal controls and an absence of material conflicts of interest.
+      </p>
+
+      <p>
+        Failing any threshold disqualifies an organization regardless of popularity or visibility.
+      </p>
+
+      <p>
+        Evaluation emphasizes stewardship capacity, not scale. The foundation looks for organizations 
+        where incremental support matters and where capital can be deployed with confidence in 
+        responsible use.
+      </p>
+
+      <p>
+        Organizations are assessed for alignment with the foundation's mission, operational durability, 
+        and commitment to work that resists easy quantification or short-term metrics.
       </p>
     </section>
   )
