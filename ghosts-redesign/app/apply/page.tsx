@@ -44,10 +44,7 @@ export default function ApplicationFormMultiStep() {
     acceptanceComplications: '',
     acceptanceComplicationsExplain: '',
     // Follow-Up
-    sixMonthCheckIn: '',
-    twelveMonthUpdate: '',
-    publicFeature: '',
-    sharePhotoWork: '',
+    consentItems: [] as string[],
     // Final
     anythingElse: '',
     certificationConfirmed: false,
@@ -90,6 +87,14 @@ export default function ApplicationFormMultiStep() {
       } else {
         setFormData(prev => ({ ...prev, fundsUseCategories: currentValues.filter(v => v !== value) }))
       }
+    } else if (type === 'checkbox' && name === 'consentItems') {
+      const checkbox = e.target as HTMLInputElement
+      const currentValues = formData.consentItems
+      if (checkbox.checked) {
+        setFormData(prev => ({ ...prev, consentItems: [...currentValues, value] }))
+      } else {
+        setFormData(prev => ({ ...prev, consentItems: currentValues.filter(v => v !== value) }))
+      }
     } else if (type === 'file') {
       const fileInput = e.target as HTMLInputElement
       const file = fileInput.files?.[0] || null
@@ -115,7 +120,7 @@ export default function ApplicationFormMultiStep() {
       case 1:
         return !!(formData.fullName && formData.email && formData.city && formData.state && formData.age && parseInt(formData.age) >= 18)
       case 2:
-        return !!(formData.isIndividual && formData.isUSBased && formData.pursuitAreas.length > 0 && formData.supportType && formData.amountRequested && formData.partialFundingAcceptable)
+        return !!(formData.pursuitAreas.length > 0 && formData.supportType)
       case 3:
         return !!(formData.whatBuilding && formData.whyMatters && formData.specificConstraint && formData.next90Days && formData.success12Months)
       case 4:
@@ -123,7 +128,7 @@ export default function ApplicationFormMultiStep() {
       case 5:
         return !!(formData.fundsUseCategories.length > 0 && formData.fundsBreakdown && formData.acceptanceComplications)
       case 6:
-        return !!(formData.sixMonthCheckIn && formData.twelveMonthUpdate && formData.publicFeature && formData.sharePhotoWork)
+        return formData.consentItems.length > 0
       case 7:
         return formData.certificationConfirmed
       default:
@@ -411,6 +416,8 @@ export default function ApplicationFormMultiStep() {
                   value={formData.email}
                   onChange={handleChange}
                   required
+                  pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
+                  title="Please enter a valid email address"
                   style={{
                     width: '100%',
                     padding: '12px',
@@ -524,6 +531,7 @@ export default function ApplicationFormMultiStep() {
                   onChange={handleChange}
                   required
                   min="18"
+                  max="99"
                   style={{
                     width: '100%',
                     padding: '12px',
@@ -605,82 +613,10 @@ export default function ApplicationFormMultiStep() {
                 color: 'var(--color-deep-navy)',
                 marginBottom: '12px',
               }}>
-                Are you applying as an individual (not an organization)? *
-              </label>
-              <div style={{ display: 'flex', gap: '24px' }}>
-                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
-                  <input
-                    type="radio"
-                    name="isIndividual"
-                    value="yes"
-                    checked={formData.isIndividual === 'yes'}
-                    onChange={handleChange}
-                    required
-                  />
-                  <span>Yes</span>
-                </label>
-                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
-                  <input
-                    type="radio"
-                    name="isIndividual"
-                    value="no"
-                    checked={formData.isIndividual === 'no'}
-                    onChange={handleChange}
-                    required
-                  />
-                  <span>No</span>
-                </label>
-              </div>
-            </div>
-
-            <div style={{ marginBottom: '24px' }}>
-              <label style={{
-                display: 'block',
-                fontSize: '15px',
-                fontWeight: 500,
-                color: 'var(--color-deep-navy)',
-                marginBottom: '12px',
-              }}>
-                Are you currently based in the U.S.? *
-              </label>
-              <div style={{ display: 'flex', gap: '24px' }}>
-                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
-                  <input
-                    type="radio"
-                    name="isUSBased"
-                    value="yes"
-                    checked={formData.isUSBased === 'yes'}
-                    onChange={handleChange}
-                    required
-                  />
-                  <span>Yes</span>
-                </label>
-                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
-                  <input
-                    type="radio"
-                    name="isUSBased"
-                    value="no"
-                    checked={formData.isUSBased === 'no'}
-                    onChange={handleChange}
-                    required
-                  />
-                  <span>No</span>
-                </label>
-              </div>
-            </div>
-
-            <div style={{ marginBottom: '24px' }}>
-              <label style={{
-                display: 'block',
-                fontSize: '15px',
-                fontWeight: 500,
-                color: 'var(--color-deep-navy)',
-                marginBottom: '12px',
-              }}>
                 Which areas best describe what you're pursuing? * <span style={{ color: 'var(--color-teal-grey)', fontWeight: 400 }}>(Select up to 2)</span>
               </label>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                {['Education / learning', 'Creative work / art / writing', 'Civic / community impact', 'Economic mobility / career building'].map(area => (
+                {['Education / Learning', 'Creative Work / Art / Writing', 'Civic / Community Impact', 'Economic Mobility / Career Building'].map(area => (
                   <label key={area} style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
                     <input
                       type="checkbox"
@@ -787,72 +723,27 @@ export default function ApplicationFormMultiStep() {
                 color: 'var(--color-deep-navy)',
                 marginBottom: '8px',
               }}>
-                Amount requested (USD) *
+                Grant Amount *
               </label>
-              <div style={{ position: 'relative', width: '250px' }}>
-                <span style={{
-                  position: 'absolute',
-                  left: '12px',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  color: 'var(--color-text-secondary)',
-                }}>
-                  $
-                </span>
-                <input
-                  type="number"
-                  name="amountRequested"
-                  value={formData.amountRequested}
-                  onChange={handleChange}
-                  required
-                  min="1"
-                  style={{
-                    width: '100%',
-                    padding: '12px 12px 12px 24px',
-                    fontSize: '15px',
-                    border: '1px solid var(--color-border)',
-                    borderRadius: '4px',
-                    fontFamily: 'var(--font-body)',
-                  }}
-                />
+              <div style={{
+                padding: '12px',
+                fontSize: '15px',
+                border: '1px solid var(--color-border)',
+                borderRadius: '4px',
+                background: 'rgba(163, 201, 226, 0.05)',
+                color: 'var(--color-deep-navy)',
+                fontWeight: 500,
+                width: '150px',
+              }}>
+                $500
               </div>
+              <input
+                type="hidden"
+                name="amountRequested"
+                value="500"
+              />
             </div>
 
-            <div style={{ marginBottom: '24px' }}>
-              <label style={{
-                display: 'block',
-                fontSize: '15px',
-                fontWeight: 500,
-                color: 'var(--color-deep-navy)',
-                marginBottom: '12px',
-              }}>
-                If you receive partial funding, would that still help? *
-              </label>
-              <div style={{ display: 'flex', gap: '24px' }}>
-                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
-                  <input
-                    type="radio"
-                    name="partialFundingAcceptable"
-                    value="yes"
-                    checked={formData.partialFundingAcceptable === 'yes'}
-                    onChange={handleChange}
-                    required
-                  />
-                  <span>Yes</span>
-                </label>
-                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
-                  <input
-                    type="radio"
-                    name="partialFundingAcceptable"
-                    value="no"
-                    checked={formData.partialFundingAcceptable === 'no'}
-                    onChange={handleChange}
-                    required
-                  />
-                  <span>No</span>
-                </label>
-              </div>
-            </div>
           </div>
         )}
 
@@ -876,7 +767,7 @@ export default function ApplicationFormMultiStep() {
                 color: 'var(--color-deep-navy)',
                 marginBottom: '8px',
               }}>
-                What are you building, learning, or pursuing right now? * <span style={{ color: 'var(--color-teal-grey)', fontWeight: 400 }}>(max 300 words)</span>
+                What are you building, learning, or pursuing right now? * <span style={{ color: 'var(--color-teal-grey)', fontWeight: 400 }}>(max 250 words)</span>
               </label>
               <textarea
                 name="whatBuilding"
@@ -897,11 +788,11 @@ export default function ApplicationFormMultiStep() {
               />
               <div style={{
                 fontSize: '13px',
-                color: charCounts.whatBuilding > 300 ? '#ef4444' : 'var(--color-teal-grey)',
+                color: charCounts.whatBuilding > 250 ? '#ef4444' : 'var(--color-teal-grey)',
                 marginTop: '4px',
                 textAlign: 'right',
               }}>
-                {charCounts.whatBuilding} / 300 words
+                {charCounts.whatBuilding} / 250 words
               </div>
             </div>
 
@@ -958,7 +849,7 @@ export default function ApplicationFormMultiStep() {
                 color: 'var(--color-deep-navy)',
                 marginBottom: '8px',
               }}>
-                What is the specific constraint holding you back today? * <span style={{ color: 'var(--color-teal-grey)', fontWeight: 400 }}>(max 200 words)</span>
+                What is the specific constraint holding you back today? * <span style={{ color: 'var(--color-teal-grey)', fontWeight: 400 }}>(max 250 words)</span>
               </label>
               <p style={{
                 fontSize: '14px',
@@ -987,11 +878,11 @@ export default function ApplicationFormMultiStep() {
               />
               <div style={{
                 fontSize: '13px',
-                color: charCounts.specificConstraint > 200 ? '#ef4444' : 'var(--color-teal-grey)',
+                color: charCounts.specificConstraint > 250 ? '#ef4444' : 'var(--color-teal-grey)',
                 marginTop: '4px',
                 textAlign: 'right',
               }}>
-                {charCounts.specificConstraint} / 200 words
+                {charCounts.specificConstraint} / 250 words
               </div>
             </div>
 
@@ -1003,7 +894,7 @@ export default function ApplicationFormMultiStep() {
                 color: 'var(--color-deep-navy)',
                 marginBottom: '8px',
               }}>
-                If selected, what will you do in the next 90 days that you cannot do today? * <span style={{ color: 'var(--color-teal-grey)', fontWeight: 400 }}>(max 200 words)</span>
+                If selected, what will you do in the next 90 days that you cannot do today? * <span style={{ color: 'var(--color-teal-grey)', fontWeight: 400 }}>(max 250 words)</span>
               </label>
               <p style={{
                 fontSize: '14px',
@@ -1032,11 +923,11 @@ export default function ApplicationFormMultiStep() {
               />
               <div style={{
                 fontSize: '13px',
-                color: charCounts.next90Days > 200 ? '#ef4444' : 'var(--color-teal-grey)',
+                color: charCounts.next90Days > 250 ? '#ef4444' : 'var(--color-teal-grey)',
                 marginTop: '4px',
                 textAlign: 'right',
               }}>
-                {charCounts.next90Days} / 200 words
+                {charCounts.next90Days} / 250 words
               </div>
             </div>
 
@@ -1048,7 +939,7 @@ export default function ApplicationFormMultiStep() {
                 color: 'var(--color-deep-navy)',
                 marginBottom: '8px',
               }}>
-                What would "success" look like 12 months from now? * <span style={{ color: 'var(--color-teal-grey)', fontWeight: 400 }}>(max 200 words)</span>
+                What would "success" look like 12 months from now? * <span style={{ color: 'var(--color-teal-grey)', fontWeight: 400 }}>(max 250 words)</span>
               </label>
               <p style={{
                 fontSize: '14px',
@@ -1077,11 +968,11 @@ export default function ApplicationFormMultiStep() {
               />
               <div style={{
                 fontSize: '13px',
-                color: charCounts.success12Months > 200 ? '#ef4444' : 'var(--color-teal-grey)',
+                color: charCounts.success12Months > 250 ? '#ef4444' : 'var(--color-teal-grey)',
                 marginTop: '4px',
                 textAlign: 'right',
               }}>
-                {charCounts.success12Months} / 200 words
+                {charCounts.success12Months} / 250 words
               </div>
             </div>
           </div>
@@ -1107,7 +998,7 @@ export default function ApplicationFormMultiStep() {
                 color: 'var(--color-deep-navy)',
                 marginBottom: '8px',
               }}>
-                Give one example of something you finished. * <span style={{ color: 'var(--color-teal-grey)', fontWeight: 400 }}>(max 200 words)</span>
+                Give one example of something you finished. * <span style={{ color: 'var(--color-teal-grey)', fontWeight: 400 }}>(max 250 words)</span>
               </label>
               <p style={{
                 fontSize: '14px',
@@ -1136,11 +1027,11 @@ export default function ApplicationFormMultiStep() {
               />
               <div style={{
                 fontSize: '13px',
-                color: charCounts.exampleFinished > 200 ? '#ef4444' : 'var(--color-teal-grey)',
+                color: charCounts.exampleFinished > 250 ? '#ef4444' : 'var(--color-teal-grey)',
                 marginTop: '4px',
                 textAlign: 'right',
               }}>
-                {charCounts.exampleFinished} / 200 words
+                {charCounts.exampleFinished} / 250 words
               </div>
             </div>
 
@@ -1196,25 +1087,58 @@ export default function ApplicationFormMultiStep() {
                 textAlign: 'center',
                 background: 'rgba(163, 201, 226, 0.03)',
               }}>
-                <input
-                  type="file"
-                  name="artifactFile"
-                  onChange={handleChange}
-                  accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.gif"
-                  style={{
-                    display: 'block',
-                    margin: '0 auto',
-                    fontSize: '14px',
-                  }}
-                />
-                <p style={{
-                  fontSize: '13px',
-                  color: 'var(--color-teal-grey)',
-                  marginTop: '8px',
-                  marginBottom: 0,
-                }}>
-                  Max file size: 5MB
-                </p>
+                {!formData.artifactFile ? (
+                  <>
+                    <input
+                      type="file"
+                      name="artifactFile"
+                      onChange={handleChange}
+                      accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.gif"
+                      style={{
+                        display: 'block',
+                        margin: '0 auto',
+                        fontSize: '14px',
+                      }}
+                    />
+                    <p style={{
+                      fontSize: '13px',
+                      color: 'var(--color-teal-grey)',
+                      marginTop: '8px',
+                      marginBottom: 0,
+                    }}>
+                      Max file size: 5MB
+                    </p>
+                  </>
+                ) : (
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '12px',
+                  }}>
+                    <span style={{
+                      fontSize: '14px',
+                      color: 'var(--color-deep-navy)',
+                    }}>
+                      📎 {formData.artifactFile.name}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setFormData(prev => ({ ...prev, artifactFile: null }))}
+                      style={{
+                        padding: '6px 12px',
+                        fontSize: '13px',
+                        color: '#ef4444',
+                        background: 'transparent',
+                        border: '1px solid #ef4444',
+                        borderRadius: '4px',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      × Remove
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -1258,6 +1182,8 @@ export default function ApplicationFormMultiStep() {
                   value={formData.referenceEmail}
                   onChange={handleChange}
                   required
+                  pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
+                  title="Please enter a valid email address"
                   placeholder="Email address"
                   style={{
                     padding: '12px',
@@ -1318,7 +1244,7 @@ export default function ApplicationFormMultiStep() {
                 color: 'var(--color-deep-navy)',
                 marginBottom: '8px',
               }}>
-                Give a simple breakdown * <span style={{ color: 'var(--color-teal-grey)', fontWeight: 400 }}>(max 120 words)</span>
+                Give a simple breakdown * <span style={{ color: 'var(--color-teal-grey)', fontWeight: 400 }}>(max 250 words)</span>
               </label>
               <p style={{
                 fontSize: '14px',
@@ -1347,11 +1273,11 @@ export default function ApplicationFormMultiStep() {
               />
               <div style={{
                 fontSize: '13px',
-                color: charCounts.fundsBreakdown > 120 ? '#ef4444' : 'var(--color-teal-grey)',
+                color: charCounts.fundsBreakdown > 250 ? '#ef4444' : 'var(--color-teal-grey)',
                 marginTop: '4px',
                 textAlign: 'right',
               }}>
-                {charCounts.fundsBreakdown} / 120 words
+                {charCounts.fundsBreakdown} / 250 words
               </div>
             </div>
 
@@ -1425,166 +1351,63 @@ export default function ApplicationFormMultiStep() {
         {/* Step 6: Follow-Up */}
         {currentStep === 6 && (
           <div>
-            <h2 style={{
-              fontSize: '22px',
-              fontWeight: 600,
-              color: 'var(--color-deep-navy)',
-              marginBottom: 'var(--space-md)',
-            }}>
-              6. Follow-Up + Story Consent
-            </h2>
-
             <div style={{ marginBottom: '24px' }}>
               <label style={{
                 display: 'block',
                 fontSize: '15px',
                 fontWeight: 500,
                 color: 'var(--color-deep-navy)',
-                marginBottom: '12px',
+                marginBottom: '16px',
               }}>
-                If selected, are you willing to submit a 6-month check-in? *
+                If selected, are you willing to: * <span style={{ color: 'var(--color-teal-grey)', fontWeight: 400 }}>(check all that apply)</span>
               </label>
-              <div style={{ display: 'flex', gap: '24px' }}>
-                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                <label style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', cursor: 'pointer' }}>
                   <input
-                    type="radio"
-                    name="sixMonthCheckIn"
-                    value="yes"
-                    checked={formData.sixMonthCheckIn === 'yes'}
+                    type="checkbox"
+                    name="consentItems"
+                    value="6-month check-in"
+                    checked={formData.consentItems.includes('6-month check-in')}
                     onChange={handleChange}
-                    required
+                    style={{ marginTop: '3px', flexShrink: 0 }}
                   />
-                  <span>Yes</span>
+                  <span style={{ lineHeight: 1.5 }}>Submit a 6-month check-in</span>
                 </label>
-                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+                
+                <label style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', cursor: 'pointer' }}>
                   <input
-                    type="radio"
-                    name="sixMonthCheckIn"
-                    value="no"
-                    checked={formData.sixMonthCheckIn === 'no'}
+                    type="checkbox"
+                    name="consentItems"
+                    value="12-month update"
+                    checked={formData.consentItems.includes('12-month update')}
                     onChange={handleChange}
-                    required
+                    style={{ marginTop: '3px', flexShrink: 0 }}
                   />
-                  <span>No</span>
+                  <span style={{ lineHeight: 1.5 }}>Submit a 12-month impact update</span>
                 </label>
-              </div>
-            </div>
-
-            <div style={{ marginBottom: '24px' }}>
-              <label style={{
-                display: 'block',
-                fontSize: '15px',
-                fontWeight: 500,
-                color: 'var(--color-deep-navy)',
-                marginBottom: '12px',
-              }}>
-                If selected, are you willing to submit a 12-month impact update? *
-              </label>
-              <div style={{ display: 'flex', gap: '24px' }}>
-                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+                
+                <label style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', cursor: 'pointer' }}>
                   <input
-                    type="radio"
-                    name="twelveMonthUpdate"
-                    value="yes"
-                    checked={formData.twelveMonthUpdate === 'yes'}
+                    type="checkbox"
+                    name="consentItems"
+                    value="public feature"
+                    checked={formData.consentItems.includes('public feature')}
                     onChange={handleChange}
-                    required
+                    style={{ marginTop: '3px', flexShrink: 0 }}
                   />
-                  <span>Yes</span>
+                  <span style={{ lineHeight: 1.5 }}>Be featured publicly (name + story)</span>
                 </label>
-                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+                
+                <label style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', cursor: 'pointer' }}>
                   <input
-                    type="radio"
-                    name="twelveMonthUpdate"
-                    value="no"
-                    checked={formData.twelveMonthUpdate === 'no'}
+                    type="checkbox"
+                    name="consentItems"
+                    value="share photo/work"
+                    checked={formData.consentItems.includes('share photo/work')}
                     onChange={handleChange}
-                    required
+                    style={{ marginTop: '3px', flexShrink: 0 }}
                   />
-                  <span>No</span>
-                </label>
-              </div>
-            </div>
-
-            <div style={{ marginBottom: '24px' }}>
-              <label style={{
-                display: 'block',
-                fontSize: '15px',
-                fontWeight: 500,
-                color: 'var(--color-deep-navy)',
-                marginBottom: '12px',
-              }}>
-                Are you open to being featured publicly by Ghosts Worth Chasing? *
-              </label>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
-                  <input
-                    type="radio"
-                    name="publicFeature"
-                    value="yes-public"
-                    checked={formData.publicFeature === 'yes-public'}
-                    onChange={handleChange}
-                    required
-                  />
-                  <span>Yes, public name + story</span>
-                </label>
-                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
-                  <input
-                    type="radio"
-                    name="publicFeature"
-                    value="yes-anonymous"
-                    checked={formData.publicFeature === 'yes-anonymous'}
-                    onChange={handleChange}
-                    required
-                  />
-                  <span>Yes, but anonymous / first name only</span>
-                </label>
-                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
-                  <input
-                    type="radio"
-                    name="publicFeature"
-                    value="no"
-                    checked={formData.publicFeature === 'no'}
-                    onChange={handleChange}
-                    required
-                  />
-                  <span>No, keep private</span>
-                </label>
-              </div>
-            </div>
-
-            <div style={{ marginBottom: '24px' }}>
-              <label style={{
-                display: 'block',
-                fontSize: '15px',
-                fontWeight: 500,
-                color: 'var(--color-deep-navy)',
-                marginBottom: '12px',
-              }}>
-                If featured, are you open to sharing a photo and/or a small piece of your work? *
-              </label>
-              <div style={{ display: 'flex', gap: '24px' }}>
-                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
-                  <input
-                    type="radio"
-                    name="sharePhotoWork"
-                    value="yes"
-                    checked={formData.sharePhotoWork === 'yes'}
-                    onChange={handleChange}
-                    required
-                  />
-                  <span>Yes</span>
-                </label>
-                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
-                  <input
-                    type="radio"
-                    name="sharePhotoWork"
-                    value="no"
-                    checked={formData.sharePhotoWork === 'no'}
-                    onChange={handleChange}
-                    required
-                  />
-                  <span>No</span>
+                  <span style={{ lineHeight: 1.5 }}>Share a photo or piece of work if featured</span>
                 </label>
               </div>
             </div>
@@ -1611,7 +1434,7 @@ export default function ApplicationFormMultiStep() {
                 color: 'var(--color-deep-navy)',
                 marginBottom: '8px',
               }}>
-                Anything else we should know? <span style={{ color: 'var(--color-teal-grey)', fontWeight: 400 }}>(optional, max 150 words)</span>
+                Anything else we should know? <span style={{ color: 'var(--color-teal-grey)', fontWeight: 400 }}>(optional, max 250 words)</span>
               </label>
               <textarea
                 name="anythingElse"
@@ -1631,11 +1454,11 @@ export default function ApplicationFormMultiStep() {
               />
               <div style={{
                 fontSize: '13px',
-                color: charCounts.anythingElse > 150 ? '#ef4444' : 'var(--color-teal-grey)',
+                color: charCounts.anythingElse > 250 ? '#ef4444' : 'var(--color-teal-grey)',
                 marginTop: '4px',
                 textAlign: 'right',
               }}>
-                {charCounts.anythingElse} / 150 words
+                {charCounts.anythingElse} / 250 words
               </div>
             </div>
 
