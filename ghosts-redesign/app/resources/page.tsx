@@ -52,7 +52,8 @@ export default function Resources() {
               lineHeight: 2,
               color: 'var(--color-text)',
             }}>
-              <li>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span style={{ fontSize: '18px' }}>📄</span>
                 <a 
                   href="/brand/logo-package.zip"
                   style={{
@@ -64,7 +65,8 @@ export default function Resources() {
                   Logo Package (SVG, PNG, EPS)
                 </a>
               </li>
-              <li>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span style={{ fontSize: '18px' }}>📄</span>
                 <a 
                   href="/brand/visual-identity-guide.pdf"
                   style={{
@@ -76,7 +78,8 @@ export default function Resources() {
                   Visual Identity Guide (PDF)
                 </a>
               </li>
-              <li>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span style={{ fontSize: '18px' }}>📄</span>
                 <a 
                   href="/brand/typography-and-colors.pdf"
                   style={{
@@ -178,7 +181,8 @@ export default function Resources() {
               lineHeight: 2,
               color: 'var(--color-text)',
             }}>
-              <li>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span style={{ fontSize: '18px' }}>📄</span>
                 <a 
                   href="/governance/articles-of-incorporation.pdf"
                   style={{
@@ -190,7 +194,8 @@ export default function Resources() {
                   Articles of Incorporation
                 </a>
               </li>
-              <li>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span style={{ fontSize: '18px' }}>📄</span>
                 <a 
                   href="/governance/bylaws.pdf"
                   style={{
@@ -202,7 +207,8 @@ export default function Resources() {
                   Bylaws
                 </a>
               </li>
-              <li>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span style={{ fontSize: '18px' }}>📄</span>
                 <a 
                   href="/governance/conflict-of-interest-policy.pdf"
                   style={{
@@ -214,7 +220,8 @@ export default function Resources() {
                   Conflict of Interest Policy
                 </a>
               </li>
-              <li>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span style={{ fontSize: '18px' }}>📄</span>
                 <a 
                   href="/governance/irs-determination-letter.pdf"
                   style={{
