@@ -220,6 +220,15 @@ export default function ApplicationFormMultiStep() {
   ]
 
   return (
+    <>
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .two-column-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
+    
     <div style={{
       maxWidth: '800px',
       margin: '0 auto',
@@ -253,41 +262,54 @@ export default function ApplicationFormMultiStep() {
         </div>
       )}
 
-      {/* Progress Bar */}
-      <div style={{ marginBottom: 'var(--space-xl)' }}>
+      {/* Progress Tracker Container */}
+      <div style={{
+        background: 'rgba(163, 201, 226, 0.08)',
+        border: '2px solid var(--color-sky-blue)',
+        borderRadius: '12px',
+        padding: 'var(--space-md)',
+        marginBottom: 'var(--space-lg)',
+      }}>
+        <div style={{
+          textAlign: 'center',
+          marginBottom: '16px',
+        }}>
+          <div style={{
+            fontSize: '14px',
+            fontWeight: 500,
+            color: 'var(--color-teal-grey)',
+            marginBottom: '8px',
+          }}>
+            Step {currentStep} of {totalSteps}
+          </div>
+          <div style={{
+            fontSize: '20px',
+            fontWeight: 600,
+            color: 'var(--color-deep-navy)',
+          }}>
+            {stepTitles[currentStep - 1]}
+          </div>
+        </div>
+        
+        {/* Visual step indicators */}
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginBottom: '12px',
+          gap: '8px',
         }}>
-          <span style={{
-            fontSize: '14px',
-            fontWeight: 500,
-            color: 'var(--color-deep-navy)',
-          }}>
-            Step {currentStep} of {totalSteps}
-          </span>
-          <span style={{
-            fontSize: '14px',
-            color: 'var(--color-teal-grey)',
-          }}>
-            {stepTitles[currentStep - 1]}
-          </span>
-        </div>
-        <div style={{
-          width: '100%',
-          height: '8px',
-          background: 'rgba(163, 201, 226, 0.2)',
-          borderRadius: '4px',
-          overflow: 'hidden',
-        }}>
-          <div style={{
-            width: `${(currentStep / totalSteps) * 100}%`,
-            height: '100%',
-            background: 'var(--color-sky-blue)',
-            transition: 'width 0.3s ease',
-          }} />
+          {Array.from({ length: totalSteps }).map((_, index) => (
+            <div
+              key={index}
+              style={{
+                flex: 1,
+                height: '8px',
+                background: index < currentStep ? 'var(--color-sky-blue)' : 'rgba(163, 201, 226, 0.2)',
+                borderRadius: '4px',
+                transition: 'background 0.3s ease',
+              }}
+            />
+          ))}
         </div>
       </div>
 
@@ -308,127 +330,126 @@ export default function ApplicationFormMultiStep() {
         {/* Step 1: Basic Information */}
         {currentStep === 1 && (
           <div>
-            <h2 style={{
-              fontSize: '22px',
-              fontWeight: 600,
-              color: 'var(--color-deep-navy)',
-              marginBottom: 'var(--space-md)',
-            }}>
-              1. Basic Information
-            </h2>
-
-            <div style={{ marginBottom: '24px' }}>
-              <label style={{
-                display: 'block',
-                fontSize: '15px',
-                fontWeight: 500,
-                color: 'var(--color-deep-navy)',
-                marginBottom: '8px',
+            {/* Two-column grid for most fields */}
+            <div 
+              className="two-column-grid"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gap: '20px',
+                marginBottom: '16px',
               }}>
-                Full Name *
-              </label>
-              <input
-                type="text"
-                name="fullName"
-                value={formData.fullName}
-                onChange={handleChange}
-                required
-                style={{
-                  width: '100%',
-                  padding: '12px',
+              {/* Full Name */}
+              <div>
+                <label style={{
+                  display: 'block',
                   fontSize: '15px',
-                  border: '1px solid var(--color-border)',
-                  borderRadius: '4px',
-                  fontFamily: 'var(--font-body)',
-                }}
-              />
-            </div>
+                  fontWeight: 500,
+                  color: 'var(--color-deep-navy)',
+                  marginBottom: '8px',
+                }}>
+                  Full Name *
+                </label>
+                <input
+                  type="text"
+                  name="fullName"
+                  value={formData.fullName}
+                  onChange={handleChange}
+                  required
+                  style={{
+                    width: '100%',
+                    padding: '12px',
+                    fontSize: '15px',
+                    border: '1px solid var(--color-border)',
+                    borderRadius: '4px',
+                    fontFamily: 'var(--font-body)',
+                  }}
+                />
+              </div>
 
-            <div style={{ marginBottom: '24px' }}>
-              <label style={{
-                display: 'block',
-                fontSize: '15px',
-                fontWeight: 500,
-                color: 'var(--color-deep-navy)',
-                marginBottom: '8px',
-              }}>
-                Preferred Name <span style={{ color: 'var(--color-teal-grey)', fontWeight: 400 }}>(optional)</span>
-              </label>
-              <input
-                type="text"
-                name="preferredName"
-                value={formData.preferredName}
-                onChange={handleChange}
-                style={{
-                  width: '100%',
-                  padding: '12px',
+              {/* Preferred Name */}
+              <div>
+                <label style={{
+                  display: 'block',
                   fontSize: '15px',
-                  border: '1px solid var(--color-border)',
-                  borderRadius: '4px',
-                  fontFamily: 'var(--font-body)',
-                }}
-              />
-            </div>
+                  fontWeight: 500,
+                  color: 'var(--color-deep-navy)',
+                  marginBottom: '8px',
+                }}>
+                  Preferred Name <span style={{ color: 'var(--color-teal-grey)', fontWeight: 400 }}>(optional)</span>
+                </label>
+                <input
+                  type="text"
+                  name="preferredName"
+                  value={formData.preferredName}
+                  onChange={handleChange}
+                  style={{
+                    width: '100%',
+                    padding: '12px',
+                    fontSize: '15px',
+                    border: '1px solid var(--color-border)',
+                    borderRadius: '4px',
+                    fontFamily: 'var(--font-body)',
+                  }}
+                />
+              </div>
 
-            <div style={{ marginBottom: '24px' }}>
-              <label style={{
-                display: 'block',
-                fontSize: '15px',
-                fontWeight: 500,
-                color: 'var(--color-deep-navy)',
-                marginBottom: '8px',
-              }}>
-                Email *
-              </label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                style={{
-                  width: '100%',
-                  padding: '12px',
+              {/* Email */}
+              <div>
+                <label style={{
+                  display: 'block',
                   fontSize: '15px',
-                  border: '1px solid var(--color-border)',
-                  borderRadius: '4px',
-                  fontFamily: 'var(--font-body)',
-                }}
-              />
-            </div>
+                  fontWeight: 500,
+                  color: 'var(--color-deep-navy)',
+                  marginBottom: '8px',
+                }}>
+                  Email *
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  style={{
+                    width: '100%',
+                    padding: '12px',
+                    fontSize: '15px',
+                    border: '1px solid var(--color-border)',
+                    borderRadius: '4px',
+                    fontFamily: 'var(--font-body)',
+                  }}
+                />
+              </div>
 
-            <div style={{ marginBottom: '24px' }}>
-              <label style={{
-                display: 'block',
-                fontSize: '15px',
-                fontWeight: 500,
-                color: 'var(--color-deep-navy)',
-                marginBottom: '8px',
-              }}>
-                Phone <span style={{ color: 'var(--color-teal-grey)', fontWeight: 400 }}>(optional)</span>
-              </label>
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                style={{
-                  width: '100%',
-                  padding: '12px',
+              {/* Phone */}
+              <div>
+                <label style={{
+                  display: 'block',
                   fontSize: '15px',
-                  border: '1px solid var(--color-border)',
-                  borderRadius: '4px',
-                  fontFamily: 'var(--font-body)',
-                }}
-              />
-            </div>
+                  fontWeight: 500,
+                  color: 'var(--color-deep-navy)',
+                  marginBottom: '8px',
+                }}>
+                  Phone <span style={{ color: 'var(--color-teal-grey)', fontWeight: 400 }}>(optional)</span>
+                </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  style={{
+                    width: '100%',
+                    padding: '12px',
+                    fontSize: '15px',
+                    border: '1px solid var(--color-border)',
+                    borderRadius: '4px',
+                    fontFamily: 'var(--font-body)',
+                  }}
+                />
+              </div>
 
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: '2fr 1fr',
-              gap: '16px',
-              marginBottom: '24px',
-            }}>
+              {/* City */}
               <div>
                 <label style={{
                   display: 'block',
@@ -455,6 +476,8 @@ export default function ApplicationFormMultiStep() {
                   }}
                 />
               </div>
+
+              {/* State */}
               <div>
                 <label style={{
                   display: 'block',
@@ -482,64 +505,67 @@ export default function ApplicationFormMultiStep() {
                   }}
                 />
               </div>
-            </div>
 
-            <div style={{ marginBottom: '24px' }}>
-              <label style={{
-                display: 'block',
-                fontSize: '15px',
-                fontWeight: 500,
-                color: 'var(--color-deep-navy)',
-                marginBottom: '8px',
-              }}>
-                Age * <span style={{ color: 'var(--color-teal-grey)', fontWeight: 400, fontSize: '14px' }}>(must be 18+)</span>
-              </label>
-              <input
-                type="number"
-                name="age"
-                value={formData.age}
-                onChange={handleChange}
-                required
-                min="18"
-                style={{
-                  width: '150px',
-                  padding: '12px',
+              {/* Age */}
+              <div>
+                <label style={{
+                  display: 'block',
                   fontSize: '15px',
-                  border: '1px solid var(--color-border)',
-                  borderRadius: '4px',
-                  fontFamily: 'var(--font-body)',
-                }}
-              />
-            </div>
+                  fontWeight: 500,
+                  color: 'var(--color-deep-navy)',
+                  marginBottom: '8px',
+                }}>
+                  Age * <span style={{ color: 'var(--color-teal-grey)', fontWeight: 400, fontSize: '14px' }}>(must be 18+)</span>
+                </label>
+                <input
+                  type="number"
+                  name="age"
+                  value={formData.age}
+                  onChange={handleChange}
+                  required
+                  min="18"
+                  style={{
+                    width: '100%',
+                    padding: '12px',
+                    fontSize: '15px',
+                    border: '1px solid var(--color-border)',
+                    borderRadius: '4px',
+                    fontFamily: 'var(--font-body)',
+                  }}
+                />
+              </div>
 
-            <div style={{ marginBottom: '24px' }}>
-              <label style={{
-                display: 'block',
-                fontSize: '15px',
-                fontWeight: 500,
-                color: 'var(--color-deep-navy)',
-                marginBottom: '8px',
-              }}>
-                Website / Portfolio / Linktree <span style={{ color: 'var(--color-teal-grey)', fontWeight: 400 }}>(optional)</span>
-              </label>
-              <input
-                type="url"
-                name="website"
-                value={formData.website}
-                onChange={handleChange}
-                placeholder="https://"
-                style={{
-                  width: '100%',
-                  padding: '12px',
+              {/* Website */}
+              <div>
+                <label style={{
+                  display: 'block',
                   fontSize: '15px',
-                  border: '1px solid var(--color-border)',
-                  borderRadius: '4px',
-                  fontFamily: 'var(--font-body)',
-                }}
-              />
+                  fontWeight: 500,
+                  color: 'var(--color-deep-navy)',
+                  marginBottom: '8px',
+                }}>
+                  Website / Portfolio <span style={{ color: 'var(--color-teal-grey)', fontWeight: 400 }}>(optional)</span>
+                </label>
+                <input
+                  type="url"
+                  name="website"
+                  value={formData.website}
+                  onChange={handleChange}
+                  placeholder="https://"
+                  style={{
+                    width: '100%',
+                    padding: '12px',
+                    fontSize: '15px',
+                    border: '1px solid var(--color-border)',
+                    borderRadius: '4px',
+                    fontFamily: 'var(--font-body)',
+                  }}
+                />
+              </div>
             </div>
 
-            <div style={{ marginBottom: '24px' }}>
+            {/* Social Handles - full width */}
+            <div>
               <label style={{
                 display: 'block',
                 fontSize: '15px',
@@ -571,15 +597,6 @@ export default function ApplicationFormMultiStep() {
         {/* Step 2: Eligibility + Fit */}
         {currentStep === 2 && (
           <div>
-            <h2 style={{
-              fontSize: '22px',
-              fontWeight: 600,
-              color: 'var(--color-deep-navy)',
-              marginBottom: 'var(--space-md)',
-            }}>
-              2. Eligibility + Fit
-            </h2>
-
             <div style={{ marginBottom: '24px' }}>
               <label style={{
                 display: 'block',
