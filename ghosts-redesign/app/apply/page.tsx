@@ -229,7 +229,7 @@ export default function ApplicationFormMultiStep() {
         }
       `}</style>
     
-    <div style={{
+      <div style={{
       maxWidth: '800px',
       margin: '0 auto',
       padding: 'var(--space-lg) var(--space-md)',
@@ -1774,6 +1774,7 @@ export default function ApplicationFormMultiStep() {
           )}
         </div>
       </form>
-    </div>
+      </div>
+    </>
   )
 }
