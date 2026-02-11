@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { US_STATES } from './constants'
 
 export default function ApplicationFormMultiStep() {
   const [currentStep, setCurrentStep] = useState(1)
@@ -610,13 +611,11 @@ export default function ApplicationFormMultiStep() {
                 }}>
                   State *
                 </label>
-                <input
-                  type="text"
+                <select
                   name="state"
                   value={formData.state}
                   onChange={handleChange}
                   required
-                  placeholder="e.g., CA"
                   style={{
                     width: '100%',
                     padding: '12px',
@@ -624,8 +623,16 @@ export default function ApplicationFormMultiStep() {
                     border: '1px solid var(--color-border)',
                     borderRadius: '4px',
                     fontFamily: 'var(--font-body)',
+                    background: 'white',
                   }}
-                />
+                >
+                  <option value="">Select state</option>
+                  {US_STATES.map(state => (
+                    <option key={state.value} value={state.value}>
+                      {state.label}
+                    </option>
+                  ))}
+                </select>
               </div>
 
               {/* Age */}
