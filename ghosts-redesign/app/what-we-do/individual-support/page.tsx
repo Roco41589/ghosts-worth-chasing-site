@@ -11,6 +11,9 @@ export default function IndividualSupport() {
             grid-template-columns: 1fr !important;
             max-width: 400px !important;
           }
+          .principles-grid {
+            grid-template-columns: 1fr !important;
+          }
         }
       `}</style>
 
@@ -50,28 +53,161 @@ export default function IndividualSupport() {
           maxWidth: '700px',
           margin: '0 auto var(--space-md) auto',
         }}>
-          We provide direct financial assistance to individuals experiencing career transition, 
-          personal hardship, or structural disadvantage. This is not emergency relief. 
-          Applications are reviewed quarterly.
+          We support individuals willing to pursue work that matters despite structural 
+          obstacles. This is for people building toward something durable, not seeking 
+          short-term relief. Selection is rigorous and intentional.
         </p>
 
+        {/* Selection Principles Section */}
         <div style={{ 
           marginBottom: 'var(--space-lg)',
-          padding: 'var(--space-md)',
-          borderLeft: '2px solid var(--color-sky-blue)',
-          background: 'rgba(163, 201, 226, 0.05)',
-          maxWidth: '700px',
+          maxWidth: '900px',
           margin: '0 auto var(--space-lg) auto',
         }}>
-          <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)', marginBottom: '8px' }}>
-            <strong style={{ color: 'var(--color-deep-navy)' }}>Typical award range:</strong> $5,000–$25,000
-          </p>
-          <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)', marginBottom: '8px' }}>
-            <strong style={{ color: 'var(--color-deep-navy)' }}>Annual budget allocation:</strong> 30% of distributable funds
-          </p>
-          <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)', marginBottom: 0 }}>
-            <strong style={{ color: 'var(--color-deep-navy)' }}>Review cycle:</strong> Quarterly
-          </p>
+          <h2 style={{
+            fontSize: '20px',
+            fontWeight: 600,
+            color: 'var(--color-deep-navy)',
+            textAlign: 'center',
+            marginBottom: 'var(--space-md)',
+          }}>
+            Selection Principles
+          </h2>
+          
+          <div 
+            className="principles-grid"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(2, 1fr)',
+              gap: '20px',
+            }}
+          >
+            {/* Principle 1 */}
+            <div style={{
+              padding: 'var(--space-md)',
+              border: '1px solid var(--color-border)',
+              borderRadius: '8px',
+              background: 'rgba(163, 201, 226, 0.03)',
+            }}>
+              <h3 style={{
+                fontSize: '16px',
+                fontWeight: 600,
+                color: 'var(--color-deep-navy)',
+                marginBottom: '8px',
+              }}>
+                Disciplined Ambition
+              </h3>
+              <p style={{
+                fontSize: '14px',
+                color: 'var(--color-text-secondary)',
+                margin: 0,
+                lineHeight: 1.5,
+              }}>
+                Clear direction sustained over time
+              </p>
+            </div>
+
+            {/* Principle 2 */}
+            <div style={{
+              padding: 'var(--space-md)',
+              border: '1px solid var(--color-border)',
+              borderRadius: '8px',
+              background: 'rgba(163, 201, 226, 0.03)',
+            }}>
+              <h3 style={{
+                fontSize: '16px',
+                fontWeight: 600,
+                color: 'var(--color-deep-navy)',
+                marginBottom: '8px',
+              }}>
+                Structural Constraint
+              </h3>
+              <p style={{
+                fontSize: '14px',
+                color: 'var(--color-text-secondary)',
+                margin: 0,
+                lineHeight: 1.5,
+              }}>
+                Barriers beyond individual control
+              </p>
+            </div>
+
+            {/* Principle 3 */}
+            <div style={{
+              padding: 'var(--space-md)',
+              border: '1px solid var(--color-border)',
+              borderRadius: '8px',
+              background: 'rgba(163, 201, 226, 0.03)',
+            }}>
+              <h3 style={{
+                fontSize: '16px',
+                fontWeight: 600,
+                color: 'var(--color-deep-navy)',
+                marginBottom: '8px',
+              }}>
+                Demonstrable Commitment
+              </h3>
+              <p style={{
+                fontSize: '14px',
+                color: 'var(--color-text-secondary)',
+                margin: 0,
+                lineHeight: 1.5,
+              }}>
+                Evidence of sustained effort and sacrifice
+              </p>
+            </div>
+
+            {/* Principle 4 */}
+            <div style={{
+              padding: 'var(--space-md)',
+              border: '1px solid var(--color-border)',
+              borderRadius: '8px',
+              background: 'rgba(163, 201, 226, 0.03)',
+            }}>
+              <h3 style={{
+                fontSize: '16px',
+                fontWeight: 600,
+                color: 'var(--color-deep-navy)',
+                marginBottom: '8px',
+              }}>
+                Institutional Alignment
+              </h3>
+              <p style={{
+                fontSize: '14px',
+                color: 'var(--color-text-secondary)',
+                margin: 0,
+                lineHeight: 1.5,
+              }}>
+                Work that resists easy quantification
+              </p>
+            </div>
+
+            {/* Principle 5 - spans 2 columns on desktop */}
+            <div style={{
+              padding: 'var(--space-md)',
+              border: '1px solid var(--color-border)',
+              borderRadius: '8px',
+              background: 'rgba(163, 201, 226, 0.03)',
+              gridColumn: '1 / -1',
+            }}>
+              <h3 style={{
+                fontSize: '16px',
+                fontWeight: 600,
+                color: 'var(--color-deep-navy)',
+                marginBottom: '8px',
+              }}>
+                Stewardship Over Scale
+              </h3>
+              <p style={{
+                fontSize: '14px',
+                color: 'var(--color-text-secondary)',
+                margin: 0,
+                lineHeight: 1.5,
+              }}>
+                Preference for deliberate capital deployment over volume
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -84,7 +220,7 @@ export default function IndividualSupport() {
             maxWidth: '1000px',
             margin: '0 auto',
             display: 'grid',
-            gridTemplateColumns: 'repeat(2, 1fr)',
+            gridTemplateColumns: 'repeat(3, 1fr)',
             gap: '20px',
           }}
         >
@@ -118,10 +254,10 @@ export default function IndividualSupport() {
           >
             <h2 style={{ 
               fontFamily: 'Regika, serif',
-              fontSize: '28px',
+              fontSize: '26px',
               color: 'var(--color-mist-white)',
               margin: 0,
-              lineHeight: 1.1,
+              lineHeight: 1.2,
             }}>
               Eligibility
             </h2>
@@ -135,7 +271,7 @@ export default function IndividualSupport() {
             </div>
           </Link>
 
-          {/* Application Process Card */}
+          {/* Review & Process Card */}
           <Link 
             href="/what-we-do/individual-support/application"
             style={{
@@ -165,12 +301,12 @@ export default function IndividualSupport() {
           >
             <h2 style={{ 
               fontFamily: 'Regika, serif',
-              fontSize: '28px',
+              fontSize: '26px',
               color: 'var(--color-mist-white)',
               margin: 0,
-              lineHeight: 1.1,
+              lineHeight: 1.2,
             }}>
-              Application Process
+              Review & Process
             </h2>
             
             <div style={{
@@ -182,7 +318,7 @@ export default function IndividualSupport() {
             </div>
           </Link>
 
-          {/* Philosophy Card - spans 2 columns */}
+          {/* Selection Philosophy Card */}
           <Link 
             href="/what-we-do/individual-support/philosophy"
             style={{
@@ -200,7 +336,6 @@ export default function IndividualSupport() {
               gap: '16px',
               minHeight: '160px',
               textAlign: 'center',
-              gridColumn: '1 / -1',
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-4px)'
@@ -213,12 +348,12 @@ export default function IndividualSupport() {
           >
             <h2 style={{ 
               fontFamily: 'Regika, serif',
-              fontSize: '28px',
+              fontSize: '26px',
               color: 'var(--color-mist-white)',
               margin: 0,
-              lineHeight: 1.1,
+              lineHeight: 1.2,
             }}>
-              Philosophy
+              Selection Philosophy
             </h2>
             
             <div style={{
