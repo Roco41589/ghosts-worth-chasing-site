@@ -416,8 +416,8 @@ export default function ApplicationFormMultiStep() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
-                  title="Please enter a valid email address"
+                  pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+                  title="Please enter a valid email address (e.g., name@example.com)"
                   style={{
                     width: '100%',
                     padding: '12px',
@@ -1182,8 +1182,8 @@ export default function ApplicationFormMultiStep() {
                   value={formData.referenceEmail}
                   onChange={handleChange}
                   required
-                  pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
-                  title="Please enter a valid email address"
+                  pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+                  title="Please enter a valid email address (e.g., name@example.com)"
                   placeholder="Email address"
                   style={{
                     padding: '12px',
@@ -1357,10 +1357,37 @@ export default function ApplicationFormMultiStep() {
                 fontSize: '15px',
                 fontWeight: 500,
                 color: 'var(--color-deep-navy)',
-                marginBottom: '16px',
+                marginBottom: '12px',
               }}>
                 If selected, are you willing to: * <span style={{ color: 'var(--color-teal-grey)', fontWeight: 400 }}>(check all that apply)</span>
               </label>
+              
+              {/* Select All button */}
+              <button
+                type="button"
+                onClick={() => {
+                  const allItems = ['6-month check-in', '12-month update', 'public feature', 'share photo/work']
+                  if (formData.consentItems.length === 4) {
+                    setFormData(prev => ({ ...prev, consentItems: [] }))
+                  } else {
+                    setFormData(prev => ({ ...prev, consentItems: allItems }))
+                  }
+                }}
+                style={{
+                  padding: '8px 16px',
+                  fontSize: '14px',
+                  fontWeight: 500,
+                  color: 'var(--color-deep-navy)',
+                  background: 'transparent',
+                  border: '1px solid var(--color-sky-blue)',
+                  borderRadius: '4px',
+                  cursor: 'pointer',
+                  marginBottom: '16px',
+                }}
+              >
+                {formData.consentItems.length === 4 ? 'Deselect All' : 'Select All'}
+              </button>
+              
               <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 <label style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', cursor: 'pointer' }}>
                   <input
