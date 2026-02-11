@@ -307,7 +307,7 @@ export default function ApplicationFormMultiStep() {
       <div style={{
         background: 'rgba(163, 201, 226, 0.08)',
         border: '2px solid var(--color-sky-blue)',
-        borderRadius: '12px',
+        borderRadius: '16px',
         padding: 'var(--space-md)',
         marginBottom: 'var(--space-lg)',
       }}>
@@ -316,7 +316,7 @@ export default function ApplicationFormMultiStep() {
           marginBottom: '16px',
           position: 'relative',
         }}>
-          {/* Back arrow - left side */}
+          {/* Back button - left side */}
           {currentStep > 1 && (
             <button
               type="button"
@@ -326,19 +326,27 @@ export default function ApplicationFormMultiStep() {
                 left: 0,
                 top: '50%',
                 transform: 'translateY(-50%)',
-                padding: '8px 12px',
-                fontSize: '18px',
+                padding: '8px 16px',
+                fontSize: '14px',
+                fontWeight: 500,
                 color: 'var(--color-deep-navy)',
-                background: 'transparent',
+                background: 'white',
                 border: '1px solid var(--color-sky-blue)',
-                borderRadius: '4px',
+                borderRadius: '20px',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '4px',
+                gap: '6px',
+                transition: 'all 0.2s ease',
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.background = 'rgba(163, 201, 226, 0.1)'
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.background = 'white'
               }}
             >
-              ← 
+              ← Back
             </button>
           )}
           
@@ -358,7 +366,7 @@ export default function ApplicationFormMultiStep() {
             {stepTitles[currentStep - 1]}
           </div>
           
-          {/* Next/Submit arrow - right side */}
+          {/* Next button - right side */}
           {currentStep < totalSteps && (
             <button
               type="button"
@@ -368,19 +376,27 @@ export default function ApplicationFormMultiStep() {
                 right: 0,
                 top: '50%',
                 transform: 'translateY(-50%)',
-                padding: '8px 12px',
-                fontSize: '18px',
+                padding: '8px 16px',
+                fontSize: '14px',
+                fontWeight: 600,
                 color: 'var(--color-mist-white)',
                 background: 'var(--color-deep-navy)',
                 border: '1px solid var(--color-sky-blue)',
-                borderRadius: '4px',
+                borderRadius: '20px',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '4px',
+                gap: '6px',
+                transition: 'all 0.2s ease',
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.opacity = '0.9'
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.opacity = '1'
               }}
             >
-              →
+              Next →
             </button>
           )}
         </div>
@@ -628,6 +644,7 @@ export default function ApplicationFormMultiStep() {
                   name="age"
                   value={formData.age}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   required
                   min="18"
                   max="99"
@@ -635,11 +652,20 @@ export default function ApplicationFormMultiStep() {
                     width: '100%',
                     padding: '12px',
                     fontSize: '15px',
-                    border: '1px solid var(--color-border)',
+                    border: fieldErrors.age ? '1px solid #ef4444' : '1px solid var(--color-border)',
                     borderRadius: '4px',
                     fontFamily: 'var(--font-body)',
                   }}
                 />
+                {fieldErrors.age && (
+                  <div style={{
+                    fontSize: '13px',
+                    color: '#ef4444',
+                    marginTop: '4px',
+                  }}>
+                    {fieldErrors.age}
+                  </div>
+                )}
               </div>
 
               {/* Website */}
