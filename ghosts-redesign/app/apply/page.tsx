@@ -64,9 +64,45 @@ export default function ApplicationFormMultiStep() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
   const [submitError, setSubmitError] = useState('')
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({})
+
+  const validateField = (name: string, value: any): string => {
+    switch (name) {
+      case 'email':
+      case 'referenceEmail':
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+        if (!value) return 'Email is required'
+        if (!emailRegex.test(value)) return 'Please enter a valid email address'
+        return ''
+      case 'age':
+        if (!value) return 'Age is required'
+        const ageNum = parseInt(value)
+        if (ageNum < 18) return 'Must be 18 or older'
+        if (ageNum > 99) return 'Please enter a valid age'
+        return ''
+      case 'fullName':
+      case 'city':
+      case 'state':
+        if (!value || value.trim() === '') return 'This field is required'
+        return ''
+      default:
+        return ''
+    }
+  }
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target
+    const error = validateField(name, value)
+    setFieldErrors(prev => ({ ...prev, [name]: error }))
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target
+    
+    // Clear error when user starts typing
+    if (fieldErrors[name]) {
+      setFieldErrors(prev => ({ ...prev, [name]: '' }))
+    }
     
     if (type === 'checkbox' && name === 'certificationConfirmed') {
       const checkbox = e.target as HTMLInputElement
@@ -278,7 +314,34 @@ export default function ApplicationFormMultiStep() {
         <div style={{
           textAlign: 'center',
           marginBottom: '16px',
+          position: 'relative',
         }}>
+          {/* Back arrow - left side */}
+          {currentStep > 1 && (
+            <button
+              type="button"
+              onClick={prevStep}
+              style={{
+                position: 'absolute',
+                left: 0,
+                top: '50%',
+                transform: 'translateY(-50%)',
+                padding: '8px 12px',
+                fontSize: '18px',
+                color: 'var(--color-deep-navy)',
+                background: 'transparent',
+                border: '1px solid var(--color-sky-blue)',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '4px',
+              }}
+            >
+              ← 
+            </button>
+          )}
+          
           <div style={{
             fontSize: '14px',
             fontWeight: 500,
@@ -294,6 +357,32 @@ export default function ApplicationFormMultiStep() {
           }}>
             {stepTitles[currentStep - 1]}
           </div>
+          
+          {/* Next/Submit arrow - right side */}
+          {currentStep < totalSteps && (
+            <button
+              type="button"
+              onClick={nextStep}
+              style={{
+                position: 'absolute',
+                right: 0,
+                top: '50%',
+                transform: 'translateY(-50%)',
+                padding: '8px 12px',
+                fontSize: '18px',
+                color: 'var(--color-mist-white)',
+                background: 'var(--color-deep-navy)',
+                border: '1px solid var(--color-sky-blue)',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '4px',
+              }}
+            >
+              →
+            </button>
+          )}
         </div>
         
         {/* Visual step indicators */}
@@ -415,6 +504,7 @@ export default function ApplicationFormMultiStep() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   required
                   pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
                   title="Please enter a valid email address (e.g., name@example.com)"
@@ -422,11 +512,20 @@ export default function ApplicationFormMultiStep() {
                     width: '100%',
                     padding: '12px',
                     fontSize: '15px',
-                    border: '1px solid var(--color-border)',
+                    border: fieldErrors.email ? '1px solid #ef4444' : '1px solid var(--color-border)',
                     borderRadius: '4px',
                     fontFamily: 'var(--font-body)',
                   }}
                 />
+                {fieldErrors.email && (
+                  <div style={{
+                    fontSize: '13px',
+                    color: '#ef4444',
+                    marginTop: '4px',
+                  }}>
+                    {fieldErrors.email}
+                  </div>
+                )}
               </div>
 
               {/* Phone */}
@@ -1181,6 +1280,7 @@ export default function ApplicationFormMultiStep() {
                   name="referenceEmail"
                   value={formData.referenceEmail}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   required
                   pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
                   title="Please enter a valid email address (e.g., name@example.com)"
@@ -1188,11 +1288,20 @@ export default function ApplicationFormMultiStep() {
                   style={{
                     padding: '12px',
                     fontSize: '15px',
-                    border: '1px solid var(--color-border)',
+                    border: fieldErrors.referenceEmail ? '1px solid #ef4444' : '1px solid var(--color-border)',
                     borderRadius: '4px',
                     fontFamily: 'var(--font-body)',
                   }}
                 />
+                {fieldErrors.referenceEmail && (
+                  <div style={{
+                    fontSize: '13px',
+                    color: '#ef4444',
+                    marginTop: '4px',
+                  }}>
+                    {fieldErrors.referenceEmail}
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -1550,59 +1659,14 @@ export default function ApplicationFormMultiStep() {
           </div>
         )}
 
-        {/* Navigation Buttons */}
-        <div style={{
-          borderTop: '2px solid var(--color-border)',
-          paddingTop: 'var(--space-lg)',
-          marginTop: 'var(--space-xl)',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}>
-          {/* Back Button */}
-          {currentStep > 1 && (
-            <button
-              type="button"
-              onClick={prevStep}
-              style={{
-                padding: '12px 32px',
-                fontSize: '15px',
-                fontWeight: 500,
-                color: 'var(--color-deep-navy)',
-                background: 'transparent',
-                border: '2px solid var(--color-border)',
-                borderRadius: '8px',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease',
-              }}
-            >
-              ← Back
-            </button>
-          )}
-
-          {/* Spacer when no back button */}
-          {currentStep === 1 && <div />}
-
-          {/* Next or Submit Button */}
-          {currentStep < totalSteps ? (
-            <button
-              type="button"
-              onClick={nextStep}
-              style={{
-                padding: '12px 32px',
-                fontSize: '15px',
-                fontWeight: 600,
-                color: 'var(--color-mist-white)',
-                background: 'var(--color-deep-navy)',
-                border: '2px solid var(--color-sky-blue)',
-                borderRadius: '8px',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease',
-              }}
-            >
-              Continue →
-            </button>
-          ) : (
+        {/* Submit Button - Only on final step */}
+        {currentStep === totalSteps && (
+          <div style={{
+            borderTop: '2px solid var(--color-border)',
+            paddingTop: 'var(--space-lg)',
+            marginTop: 'var(--space-xl)',
+            textAlign: 'center',
+          }}>
             <button
               type="submit"
               disabled={isSubmitting || !formData.certificationConfirmed}
@@ -1621,8 +1685,8 @@ export default function ApplicationFormMultiStep() {
             >
               {isSubmitting ? 'Submitting...' : 'Submit Application'}
             </button>
-          )}
-        </div>
+          </div>
+        )}
       </form>
       </div>
     </>
