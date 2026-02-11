@@ -210,7 +210,7 @@ export default function Resources() {
               <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <span style={{ fontSize: '18px' }}>📄</span>
                 <a 
-                  href="/governance/conflict-of-interest-policy.pdf"
+                  href="/governance/Conflict-Of-Interest-Policy.pdf"
                   style={{
                     color: 'var(--color-slate-ink)',
                     textDecoration: 'none',
