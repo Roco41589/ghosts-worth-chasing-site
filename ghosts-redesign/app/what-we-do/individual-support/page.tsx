@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import CorePrinciplesIconGrid from '../components/CorePrinciplesIconGrid'  
 
 export default function IndividualSupport() {
   return (
@@ -55,130 +56,8 @@ export default function IndividualSupport() {
           Selection is rigorous and intentional.
         </p>
 
-        {/* Our Core Principles Section */}
-        <div style={{ 
-          maxWidth: '700px',
-          margin: '0 auto var(--space-lg) auto',
-        }}>
-          <h2 style={{
-            fontSize: '24px',
-            fontWeight: 600,
-            color: 'var(--color-deep-navy)',
-            marginBottom: 'var(--space-sm)',
-          }}>
-            Our Core Principles
-          </h2>
-          
-          <p style={{
-            fontSize: '16px',
-            color: 'var(--color-text)',
-            marginBottom: 'var(--space-md)',
-            lineHeight: 1.6,
-          }}>
-            These principles guide evaluation and selection. They are applied in every review.
-          </p>
-
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 'var(--space-md)',
-          }}>
-            {/* Eternal Optimism */}
-            <div>
-              <h3 style={{
-                fontSize: '18px',
-                fontWeight: 700,
-                color: 'var(--color-deep-navy)',
-                marginBottom: '8px',
-              }}>
-                Eternal Optimism
-              </h3>
-              <p style={{
-                fontSize: '16px',
-                color: 'var(--color-text-secondary)',
-                margin: 0,
-                lineHeight: 1.6,
-              }}>
-                Belief in possibility grounded in sustained effort.
-              </p>
-            </div>
-
-            {/* Relentless Ingenuity */}
-            <div>
-              <h3 style={{
-                fontSize: '18px',
-                fontWeight: 700,
-                color: 'var(--color-deep-navy)',
-                marginBottom: '8px',
-              }}>
-                Relentless Ingenuity
-              </h3>
-              <p style={{
-                fontSize: '16px',
-                color: 'var(--color-text-secondary)',
-                margin: 0,
-                lineHeight: 1.6,
-              }}>
-                Creative problem-solving under constraint.
-              </p>
-            </div>
-
-            {/* Defiant Resolve */}
-            <div>
-              <h3 style={{
-                fontSize: '18px',
-                fontWeight: 700,
-                color: 'var(--color-deep-navy)',
-                marginBottom: '8px',
-              }}>
-                Defiant Resolve
-              </h3>
-              <p style={{
-                fontSize: '16px',
-                color: 'var(--color-text-secondary)',
-                margin: 0,
-                lineHeight: 1.6,
-              }}>
-                Commitment that persists despite resistance.
-              </p>
-            </div>
-
-            {/* Radical Pragmatism */}
-            <div>
-              <h3 style={{
-                fontSize: '18px',
-                fontWeight: 700,
-                color: 'var(--color-deep-navy)',
-                marginBottom: '8px',
-              }}>
-                Radical Pragmatism
-              </h3>
-              <p style={{
-                fontSize: '16px',
-                color: 'var(--color-text-secondary)',
-                margin: 0,
-                lineHeight: 1.6,
-              }}>
-                Clear-eyed realism paired with disciplined execution.
-              </p>
-            </div>
-
-            {/* Devoted Stewardship */}
-            <div>
-              <h3 style={{
-                fontSize: '18px',
-                fontWeight: 700,
-                color: 'var(--color-deep-navy)',
-                marginBottom: '8px',
-              }}>
-                Devoted Stewardship
-              </h3>
-              <p style={{
-                fontSize: '16px',
-                color: 'var(--color-text-secondary)',
-                margin: 0,
-                lineHeight: 1.6,
-              }}>
+<CorePrinciplesIconGrid />
+        
                 Respect for capital, responsibility, and long-term consequence.
               </p>
             </div>
