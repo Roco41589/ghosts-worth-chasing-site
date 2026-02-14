@@ -42,53 +42,58 @@ export default function EbookPage() {
 
   return (
     <div style={{
-      maxWidth: '800px',
+      maxWidth: '760px',
       margin: '0 auto',
-      padding: 'var(--space-xl) var(--space-md)',
+      padding: '56px 20px',
     }}>
+
+      {/* Hero */}
       <div style={{
         textAlign: 'center',
-        marginBottom: 'var(--space-xl)',
+        marginBottom: '48px',
       }}>
         <h1 style={{
-          fontSize: '42px',
-          fontWeight: 600,
+          fontSize: '36px',
+          fontWeight: 500,
           color: 'var(--color-deep-navy)',
-          marginBottom: 'var(--space-md)',
+          marginBottom: '16px',
         }}>
           The Transition Guide
         </h1>
+
         <p style={{
-          fontSize: '20px',
+          fontSize: '18px',
           color: 'var(--color-text-secondary)',
           lineHeight: 1.6,
-          maxWidth: '600px',
+          maxWidth: '560px',
           margin: '0 auto',
         }}>
           A practical handbook for navigating life transitions with clarity and intention.
         </p>
       </div>
 
+      {/* Product Card */}
       <div style={{
         background: 'rgba(163, 201, 226, 0.08)',
         border: '2px solid var(--color-sky-blue)',
         borderRadius: '16px',
-        padding: 'var(--space-xl)',
-        marginBottom: 'var(--space-xl)',
+        padding: '40px 28px',
+        marginBottom: '56px',
       }}>
+
         <h2 style={{
-          fontSize: '24px',
-          fontWeight: 600,
+          fontSize: '22px',
+          fontWeight: 500,
           color: 'var(--color-deep-navy)',
-          marginBottom: 'var(--space-md)',
+          marginBottom: '24px',
         }}>
           What's Inside
         </h2>
-        
+
         <ul style={{
           listStyle: 'none',
           padding: 0,
-          marginBottom: 'var(--space-lg)',
+          marginBottom: '32px',
         }}>
           {[
             'Framework for evaluating transition opportunities',
@@ -98,36 +103,43 @@ export default function EbookPage() {
             'Community connection strategies',
           ].map((item, i) => (
             <li key={i} style={{
-              padding: '12px 0',
-              borderBottom: '1px solid var(--color-border)',
+              padding: '10px 0',
+              borderBottom: '1px solid rgba(124,170,176,0.3)',
               display: 'flex',
               alignItems: 'flex-start',
-              gap: '12px',
+              gap: '10px',
             }}>
-              <span style={{ color: 'var(--color-sky-blue)', fontSize: '20px' }}>✓</span>
+              <span style={{
+                color: 'var(--color-sky-blue)',
+                fontSize: '18px',
+              }}>
+                ✓
+              </span>
               <span style={{ lineHeight: 1.6 }}>{item}</span>
             </li>
           ))}
         </ul>
 
+        {/* Pricing Block */}
         <div style={{
           background: 'white',
           borderRadius: '12px',
-          padding: 'var(--space-lg)',
+          padding: '32px 24px',
           textAlign: 'center',
         }}>
           <div style={{
-            fontSize: '48px',
-            fontWeight: 700,
+            fontSize: '42px',
+            fontWeight: 600,
             color: 'var(--color-deep-navy)',
             marginBottom: '8px',
           }}>
             $10
           </div>
+
           <p style={{
             fontSize: '14px',
             color: 'var(--color-text-secondary)',
-            marginBottom: 'var(--space-md)',
+            marginBottom: '24px',
           }}>
             One-time purchase • Instant PDF delivery
           </p>
@@ -151,16 +163,17 @@ export default function EbookPage() {
             disabled={loading}
             style={{
               width: '100%',
-              maxWidth: '300px',
-              padding: '16px 32px',
-              fontSize: '16px',
+              maxWidth: '280px',
+              padding: '14px 28px',
+              fontSize: '15px',
               fontWeight: 600,
               color: 'var(--color-mist-white)',
-              background: loading ? 'var(--color-teal-grey)' : 'var(--color-deep-navy)',
+              background: loading
+                ? 'var(--color-teal-grey)'
+                : 'var(--color-deep-navy)',
               border: 'none',
               borderRadius: '8px',
               cursor: loading ? 'not-allowed' : 'pointer',
-              transition: 'all 0.2s ease',
             }}
           >
             {loading ? 'Processing...' : 'Purchase Guide'}
@@ -176,45 +189,60 @@ export default function EbookPage() {
         </div>
       </div>
 
-      <div style={{ marginTop: 'var(--space-xl)' }}>
+      {/* FAQ */}
+      <div>
         <h3 style={{
-          fontSize: '20px',
-          fontWeight: 600,
+          fontSize: '18px',
+          fontWeight: 500,
           color: 'var(--color-deep-navy)',
-          marginBottom: 'var(--space-md)',
+          marginBottom: '24px',
         }}>
           Frequently Asked Questions
         </h3>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '20px',
+        }}>
           <div>
-            <h4 style={{ fontWeight: 600, marginBottom: '8px' }}>
+            <h4 style={{ fontWeight: 600, marginBottom: '6px' }}>
               What format is the guide?
             </h4>
-            <p style={{ color: 'var(--color-text-secondary)', lineHeight: 1.6 }}>
+            <p style={{
+              color: 'var(--color-text-secondary)',
+              lineHeight: 1.6,
+            }}>
               PDF format, optimized for both screen reading and printing.
             </p>
           </div>
 
           <div>
-            <h4 style={{ fontWeight: 600, marginBottom: '8px' }}>
+            <h4 style={{ fontWeight: 600, marginBottom: '6px' }}>
               How do I receive the guide?
             </h4>
-            <p style={{ color: 'var(--color-text-secondary)', lineHeight: 1.6 }}>
+            <p style={{
+              color: 'var(--color-text-secondary)',
+              lineHeight: 1.6,
+            }}>
               Immediately after purchase, you'll receive an email with a download link.
             </p>
           </div>
 
           <div>
-            <h4 style={{ fontWeight: 600, marginBottom: '8px' }}>
+            <h4 style={{ fontWeight: 600, marginBottom: '6px' }}>
               Can I get a refund?
             </h4>
-            <p style={{ color: 'var(--color-text-secondary)', lineHeight: 1.6 }}>
+            <p style={{
+              color: 'var(--color-text-secondary)',
+              lineHeight: 1.6,
+            }}>
               Due to the digital nature of the product, all sales are final. If you have concerns, email roconnor@ghostsworthchasing.org
             </p>
           </div>
         </div>
       </div>
+
     </div>
   )
 }
