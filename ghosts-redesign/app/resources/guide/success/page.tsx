@@ -78,7 +78,7 @@ export default function SuccessPage() {
           </h2>
 
           <a
-            href={process.env.NEXT_PUBLIC_EBOOK_PDF_URL}
+            href="/transition-guide.pdf"
             download
             style={{
               display: 'inline-block',
