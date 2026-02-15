@@ -1,4 +1,4 @@
-// app/api/checkout/route.ts
+// app/api/checkout/route.ts 
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 
