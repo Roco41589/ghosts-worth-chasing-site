@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 
 export default function Navigation() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const [isTransparencyOpen, setIsTransparencyOpen] = useState(false)
   const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false)
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
   const [isMobile, setIsMobile] = useState(false)
@@ -45,6 +46,14 @@ export default function Navigation() {
       { label: 'Philosophy', href: '/what-we-do/endowment/philosophy' },
     ],
   }
+
+  const transparencyLinks = [
+    { label: 'Dashboard',        href: '/transparency'            },
+    { label: 'Grant Registry',   href: '/transparency/grants'     },
+    { label: 'Decision Log',     href: '/transparency/decisions'  },
+    { label: 'Acceptance Rate',  href: '/transparency/acceptance' },
+    { label: '990 Reading Room', href: '/transparency/documents'  },
+  ]
 
   return (
     <header style={{
@@ -99,7 +108,7 @@ export default function Navigation() {
           justifyContent: 'flex-end',
           alignItems: 'center',
         }}>
-          {/* What We Do with Dropdown */}
+          {/* What We Do with Dropdown — unchanged */}
           <div 
             style={{ 
               position: 'relative',
@@ -179,7 +188,6 @@ export default function Navigation() {
                       Individual Support {!isMobile && '→'}
                     </Link>
                     
-                    {/* Individual Support Submenu (Desktop only) */}
                     {!isMobile && activeSubmenu === 'individual-support' && (
                       <div style={{
                         position: 'absolute',
@@ -216,7 +224,7 @@ export default function Navigation() {
                     )}
                   </div>
 
-                  {/* Organizational Grants */}
+                  {/* Organizational Grants — unchanged */}
                   <div
                     style={{ position: 'relative' }}
                     onMouseEnter={() => !isMobile && setActiveSubmenu('organizational-grants')}
@@ -244,7 +252,6 @@ export default function Navigation() {
                       Organizational Grants {!isMobile && '→'}
                     </Link>
                     
-                    {/* Organizational Grants Submenu (Desktop only) */}
                     {!isMobile && activeSubmenu === 'organizational-grants' && (
                       <div style={{
                         position: 'absolute',
@@ -281,7 +288,7 @@ export default function Navigation() {
                     )}
                   </div>
 
-                  {/* Endowment */}
+                  {/* Endowment — unchanged */}
                   <div
                     style={{ position: 'relative' }}
                     onMouseEnter={() => !isMobile && setActiveSubmenu('endowment')}
@@ -309,7 +316,6 @@ export default function Navigation() {
                       Endowment {!isMobile && '→'}
                     </Link>
                     
-                    {/* Endowment Submenu (Desktop only) */}
                     {!isMobile && activeSubmenu === 'endowment' && (
                       <div style={{
                         position: 'absolute',
@@ -350,7 +356,7 @@ export default function Navigation() {
             )}
           </div>
 
-          {/* Regular Links */}
+          {/* Impact — unchanged */}
           <Link href="/impact" style={{ 
             whiteSpace: 'nowrap',
             borderLeft: '1px solid var(--color-border)',
@@ -360,15 +366,96 @@ export default function Navigation() {
           onMouseEnter={(e) => e.currentTarget.style.borderBottom = 'none'}
           onMouseLeave={(e) => e.currentTarget.style.borderBottom = 'none'}
           >Impact</Link>
-          <Link href="/hall-of-ghosts" style={{ 
-            whiteSpace: 'nowrap',
-            borderLeft: '1px solid var(--color-border)',
-            paddingLeft: '24px',
-            borderBottom: 'none',
-          }}
-          onMouseEnter={(e) => e.currentTarget.style.borderBottom = 'none'}
-          onMouseLeave={(e) => e.currentTarget.style.borderBottom = 'none'}
-          >Hall of Ghosts</Link>
+
+          {/* ── Transparency — NEW ── */}
+          <div
+            style={{
+              position: 'relative',
+              whiteSpace: 'nowrap',
+              borderLeft: '1px solid var(--color-border)',
+              paddingLeft: '24px',
+            }}
+            onMouseEnter={() => !isMobile && setIsTransparencyOpen(true)}
+            onMouseLeave={() => !isMobile && setIsTransparencyOpen(false)}
+          >
+            <Link
+              href="/transparency"
+              style={{ color: 'inherit', textDecoration: 'none' }}
+              onClick={() => isMobile && setIsTransparencyOpen(false)}
+            >
+              Transparency
+            </Link>
+
+            {/* Hover bridge */}
+            {isTransparencyOpen && (
+              <div style={{
+                position: 'absolute',
+                top: '100%',
+                left: 0,
+                right: 0,
+                height: '8px',
+              }} />
+            )}
+
+            {isTransparencyOpen && (
+              <div style={{
+                position: 'absolute',
+                top: '100%',
+                left: 0,
+                paddingTop: '8px',
+                zIndex: 1001,
+              }}>
+                <div style={{
+                  background: 'var(--color-mist-white)',
+                  border: '1px solid var(--color-border)',
+                  borderRadius: '4px',
+                  boxShadow: '0 4px 12px rgba(11, 29, 58, 0.1)',
+                  minWidth: '220px',
+                  padding: '8px 0',
+                }}>
+                  {transparencyLinks.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      style={{
+                        display: 'block',
+                        padding: '12px 20px',
+                        color: 'var(--color-slate-ink)',
+                        textDecoration: 'none',
+                        fontSize: '15px',
+                        transition: 'background 0.2s ease',
+                      }}
+                      onClick={() => setIsTransparencyOpen(false)}
+                      onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(163, 201, 226, 0.1)'}
+                      onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                  {/* Divider + Criteria — lives outside /transparency but related */}
+                  <div style={{ borderTop: '1px solid var(--color-border)', margin: '8px 0' }} />
+                  <Link
+                    href="/criteria"
+                    style={{
+                      display: 'block',
+                      padding: '12px 20px',
+                      color: 'var(--color-teal-grey)',
+                      textDecoration: 'none',
+                      fontSize: '14px',
+                      transition: 'background 0.2s ease',
+                    }}
+                    onClick={() => setIsTransparencyOpen(false)}
+                    onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(163, 201, 226, 0.1)'}
+                    onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+                  >
+                    Grantmaking Criteria ↗
+                  </Link>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Resources — unchanged */}
           <Link href="/resources" style={{ 
             whiteSpace: 'nowrap',
             borderLeft: '1px solid var(--color-border)',
@@ -379,7 +466,7 @@ export default function Navigation() {
           onMouseLeave={(e) => e.currentTarget.style.borderBottom = 'none'}
           >Resources</Link>
           
-          {/* About with Dropdown */}
+          {/* About with Dropdown — unchanged */}
           <div 
             style={{ 
               position: 'relative',
@@ -416,7 +503,7 @@ export default function Navigation() {
               }} />
             )}
             
-            {/* About Dropdown Menu */}
+            {/* About Dropdown — unchanged */}
             {isAboutDropdownOpen && (
               <div style={{
                 position: 'absolute',
@@ -454,6 +541,7 @@ export default function Navigation() {
             )}
           </div>
           
+          {/* Donate — unchanged */}
           <Link 
             href="/donate" 
             style={{ 
@@ -489,7 +577,7 @@ export default function Navigation() {
             Donate
           </Link>
           
-          {/* Heart animation styles */}
+          {/* Heart animation — unchanged */}
           <style jsx global>{`
             @keyframes heartbeat {
               0%, 100% {
