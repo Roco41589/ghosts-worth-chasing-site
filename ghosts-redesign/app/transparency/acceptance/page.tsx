@@ -17,7 +17,26 @@ const C = {
 
 // ── Cycle Data ─────────────────────────────────────────────────────
 // Populates after each completed cycle. Empty until Q2 2026.
-const CYCLES = [
+type CycleData = {
+  id: string;
+  label: string;
+  status: string;
+  openDate: string;
+  closeDate: string;
+  decisionDate: string;
+  received: number;
+  screened: number;
+  reviewed: number;
+  funded: number;
+  totalAwarded: number;
+  acceptanceRate: number;
+  committeeNotes: string;
+  whatStoodOut: string[];
+  commonWeaknesses: string[];
+  note: string;
+};
+
+const CYCLES: CycleData[] = [
   // Example structure shown for first planned cycle:
   // {
   //   id: "Q2-2026",
