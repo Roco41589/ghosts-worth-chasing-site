@@ -97,13 +97,22 @@ const DOCUMENTS: GWCDocument[] = [
     status: "Not Yet Due", statusNote: "Due May or November 2026.",
     mandatory: true, fileUrl: null, fileSize: null,
   },
-  {
-    id: "DOC-006", title: "Conflict of Interest Policy", type: "Governance",
-    description: "The foundation's policy governing conflicts of interest among board members, officers, and key employees. Required by the IRS as part of good governance practice.",
-    year: "2024", filedDate: "September 2024", postedDate: null,
-    status: "Pending", statusNote: "Will be posted upon 501(c)(3) determination",
-    mandatory: false, fileUrl: null, fileSize: null,
-  },
+ {
+  id: "DOC-006",
+  title: "Conflict of Interest Policy",
+  type: "Governance",
+  description:
+    "Board-adopted governance policy establishing disclosure, recusal, and documentation standards for conflicts of interest among directors and officers.",
+  year: "2024",
+  filedDate: "September 2024",
+  postedDate: "October 2025",
+  status: "Available",
+  statusNote:
+    "Board-adopted governance policy. Public version available.",
+  mandatory: false,
+  fileUrl: "/documents/conflict-of-interest-policy.pdf",
+  fileSize: null,
+},
   {
     id: "DOC-007", title: "Whistleblower Policy", type: "Governance",
     description: "Policy protecting individuals who report concerns about illegal activity, misuse of funds, or other improper conduct by the foundation or its leadership.",
