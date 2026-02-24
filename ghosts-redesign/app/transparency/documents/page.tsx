@@ -176,16 +176,16 @@ function TypeFilterPill({ label, active, count, onClick }: { label: string; acti
   return (
     <button onClick={onClick} style={{
       display: "flex", alignItems: "center", gap: 8,
-      padding: "7px 14px",
-      border: `1px solid ${active ? cfg.color + "60" : C.slateInk + "20"}`,
-      background: active ? `${cfg.color}12` : "transparent",
-      borderRadius: 2, cursor: "pointer", transition: "all 0.15s ease",
+      padding: "8px 16px",
+      border: `1.5px solid ${active ? cfg.color : C.slateInk + "50"}`,
+      background: active ? `${cfg.color}18` : "white",
+      borderRadius: 2, cursor: "pointer", transition: "all 0.15s ease", outline: "none",
     }}>
       {label !== "All Documents" && (
         <span style={{ fontSize: 12, color: cfg.color }}>{DOC_TYPES[label]?.icon}</span>
       )}
-      <span style={{ fontSize: 11, color: active ? C.slateInk : C.tealGrey, fontFamily: "Hanken Grotesk, sans-serif" }}>{label}</span>
-      <span style={{ fontSize: 9, color: active ? cfg.color : C.tealGrey, background: active ? `${cfg.color}20` : "transparent", padding: "1px 6px", borderRadius: 10, fontFamily: "Hanken Grotesk, sans-serif" }}>{count}</span>
+      <span style={{ fontSize: 12, color: C.slateInk, fontWeight: active ? 600 : 400, fontFamily: "Hanken Grotesk, sans-serif" }}>{label}</span>
+      <span style={{ fontSize: 10, color: active ? cfg.color : C.slateInk, background: active ? `${cfg.color}20` : `${C.slateInk}10`, padding: "1px 7px", borderRadius: 10, fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 500 }}>{count}</span>
     </button>
   );
 }
@@ -201,10 +201,10 @@ function DocumentCard({ doc, index, mounted }: { doc: GWCDocument; index: number
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        border:      `1px solid ${hovered ? typeCfg.color + "60" : C.slateInk + "28"}`,
-        borderTop:   `2px solid ${isAvailable ? typeCfg.color : C.slateInk + "35"}`,
+        border:      `1px solid ${hovered ? typeCfg.color + "50" : "rgba(163,201,226,0.12)"}`,
+        borderTop:   `2px solid ${isAvailable ? typeCfg.color : typeCfg.color + "50"}`,
         borderRadius: 2, padding: "24px",
-        background:  hovered ? `${typeCfg.color}04` : "white",
+        background:  hovered ? `#0F2444` : C.navy,
         transition:  "all 0.2s ease",
         opacity:     mounted ? 1 : 0,
         transform:   mounted ? "translateY(0)" : "translateY(8px)",
@@ -224,33 +224,33 @@ function DocumentCard({ doc, index, mounted }: { doc: GWCDocument; index: number
         </span>
       </div>
 
-      <h3 style={{ fontSize: 14, fontWeight: 600, color: C.slateInk, fontFamily: "Hanken Grotesk, sans-serif", margin: "0 0 4px", lineHeight: 1.3 }}>{doc.title}</h3>
+      <h3 style={{ fontSize: 14, fontWeight: 600, color: C.mist, fontFamily: "Hanken Grotesk, sans-serif", margin: "0 0 4px", lineHeight: 1.3 }}>{doc.title}</h3>
       {doc.subtitle && <p style={{ fontSize: 11, color: C.tealGrey, margin: "0 0 12px", fontFamily: "Hanken Grotesk, sans-serif" }}>{doc.subtitle}</p>}
-      <p style={{ fontSize: 12, color: C.slateInk, lineHeight: 1.75, fontFamily: "Hanken Grotesk, sans-serif", margin: "0 0 16px" }}>{doc.description}</p>
+      <p style={{ fontSize: 12, color: C.orchid, lineHeight: 1.75, fontFamily: "Hanken Grotesk, sans-serif", margin: "0 0 16px" }}>{doc.description}</p>
 
-      <div style={{ borderTop: `1px solid ${C.slateInk}15`, paddingTop: 16 }}>
-        <p style={{ fontSize: 10, color: "#7A6E80", fontFamily: "Hanken Grotesk, sans-serif", margin: "0 0 12px", lineHeight: 1.6, fontStyle: "italic" }}>{doc.statusNote}</p>
+      <div style={{ borderTop: "1px solid rgba(163,201,226,0.12)", paddingTop: 16 }}>
+        <p style={{ fontSize: 10, color: C.tealGrey, fontFamily: "Hanken Grotesk, sans-serif", margin: "0 0 12px", lineHeight: 1.6, fontStyle: "italic" }}>{doc.statusNote}</p>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <div style={{ display: "flex", gap: 16 }}>
             {doc.filedDate && (
               <div>
                 <p style={{ fontSize: 9, color: C.tealGrey, margin: "0 0 2px", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "Hanken Grotesk, sans-serif" }}>Filed</p>
-                <p style={{ fontSize: 11, color: C.slateInk, margin: 0, fontFamily: "Hanken Grotesk, sans-serif" }}>{doc.filedDate}</p>
+                <p style={{ fontSize: 11, color: C.mist, margin: 0, fontFamily: "Hanken Grotesk, sans-serif" }}>{doc.filedDate}</p>
               </div>
             )}
             {doc.postedDate && (
               <div>
                 <p style={{ fontSize: 9, color: C.tealGrey, margin: "0 0 2px", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "Hanken Grotesk, sans-serif" }}>Posted</p>
-                <p style={{ fontSize: 11, color: C.slateInk, margin: 0, fontFamily: "Hanken Grotesk, sans-serif" }}>{doc.postedDate}</p>
+                <p style={{ fontSize: 11, color: C.mist, margin: 0, fontFamily: "Hanken Grotesk, sans-serif" }}>{doc.postedDate}</p>
               </div>
             )}
           </div>
           {isAvailable && doc.fileUrl ? (
-            <a href={doc.fileUrl} download style={{ display: "flex", alignItems: "center", gap: 6, padding: "8px 16px", background: C.navy, color: C.mist, fontSize: 11, fontFamily: "Hanken Grotesk, sans-serif", textDecoration: "none", borderRadius: 2, letterSpacing: "0.06em" }}>
-              ↓ Download PDF {doc.fileSize && <span style={{ color: C.tealGrey, fontSize: 9 }}>({doc.fileSize})</span>}
+            <a href={doc.fileUrl} download style={{ display: "flex", alignItems: "center", gap: 6, padding: "8px 16px", background: C.sky, color: C.navy, fontSize: 11, fontFamily: "Hanken Grotesk, sans-serif", textDecoration: "none", borderRadius: 2, letterSpacing: "0.06em", fontWeight: 600 }}>
+              ↓ Download PDF {doc.fileSize && <span style={{ fontSize: 9 }}>({doc.fileSize})</span>}
             </a>
           ) : (
-            <span style={{ padding: "8px 16px", border: `1px solid ${C.slateInk}15`, color: C.tealGrey, fontSize: 11, fontFamily: "Hanken Grotesk, sans-serif", borderRadius: 2, letterSpacing: "0.06em" }}>Not yet available</span>
+            <span style={{ padding: "8px 16px", border: "1px solid rgba(163,201,226,0.2)", color: C.tealGrey, fontSize: 11, fontFamily: "Hanken Grotesk, sans-serif", borderRadius: 2, letterSpacing: "0.06em" }}>Not yet available</span>
           )}
         </div>
       </div>
@@ -266,12 +266,12 @@ function FilingTimeline() {
         const cfg = DOC_TYPES[event.type] || { color: C.orchid };
         return (
           <div key={i} style={{ display: "flex", gap: 20, marginBottom: i < TIMELINE_EVENTS.length - 1 ? 20 : 0, position: "relative" }}>
-            <div style={{ width: 22, height: 22, borderRadius: 2, border: `1.5px solid ${event.done ? cfg.color : C.slateInk + "30"}`, background: event.done ? `${cfg.color}20` : C.mist, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, zIndex: 1, transform: "rotate(45deg)", marginTop: 2 }}>
+            <div style={{ width: 22, height: 22, borderRadius: 2, border: `1.5px solid ${event.done ? cfg.color : C.slateInk + "40"}`, background: event.done ? C.navy : `${C.slateInk}12`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, zIndex: 1, transform: "rotate(45deg)", marginTop: 2 }}>
               {event.done && <span style={{ fontSize: 8, color: cfg.color, transform: "rotate(-45deg)" }}>✓</span>}
             </div>
             <div style={{ paddingBottom: 4 }}>
-              <p style={{ fontSize: 10, color: event.done ? cfg.color : C.tealGrey, margin: "0 0 3px", letterSpacing: "0.08em", fontFamily: "Hanken Grotesk, sans-serif" }}>{event.date}</p>
-              <p style={{ fontSize: 12, color: event.done ? C.slateInk : C.tealGrey, margin: 0, fontFamily: "Hanken Grotesk, sans-serif", lineHeight: 1.4 }}>{event.label}</p>
+              <p style={{ fontSize: 10, color: event.done ? cfg.color : C.slateInk, margin: "0 0 3px", letterSpacing: "0.08em", fontFamily: "Hanken Grotesk, sans-serif" }}>{event.date}</p>
+              <p style={{ fontSize: 12, color: C.slateInk, fontWeight: event.done ? 500 : 400, margin: 0, fontFamily: "Hanken Grotesk, sans-serif", lineHeight: 1.4 }}>{event.label}</p>
             </div>
           </div>
         );
@@ -283,24 +283,24 @@ function FilingTimeline() {
 function GuideRow({ section }: { section: GuideSection }) {
   const [open, setOpen] = useState(false);
   return (
-    <div style={{ borderBottom: `1px solid ${C.slateInk}10` }}>
-      <button onClick={() => setOpen(o => !o)} style={{ width: "100%", padding: "16px 0", background: "transparent", border: "none", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center", textAlign: "left" }}>
-        <div style={{ display: "flex", gap: 16, alignItems: "baseline" }}>
-          <span style={{ fontSize: 10, color: C.sky, fontFamily: "monospace", letterSpacing: "0.06em", flexShrink: 0, background: `${C.sky}10`, padding: "2px 8px", borderRadius: 2 }}>{section.part}</span>
-          <span style={{ fontSize: 13, fontWeight: 500, color: C.slateInk, fontFamily: "Hanken Grotesk, sans-serif" }}>{section.title}</span>
+    <div style={{ borderBottom: `1px solid ${C.slateInk}20` }}>
+      <button onClick={() => setOpen(o => !o)} style={{ width: "100%", padding: "16px 12px", background: "transparent", border: "none", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center", textAlign: "left" }}>
+        <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+          <span style={{ fontSize: 10, color: C.mist, fontFamily: "monospace", letterSpacing: "0.06em", flexShrink: 0, background: C.navy, padding: "3px 10px", borderRadius: 2 }}>{section.part}</span>
+          <span style={{ fontSize: 13, fontWeight: 600, color: C.slateInk, fontFamily: "Hanken Grotesk, sans-serif" }}>{section.title}</span>
         </div>
-        <span style={{ fontSize: 11, color: C.tealGrey, transform: open ? "rotate(180deg)" : "none", transition: "transform 0.2s", flexShrink: 0, marginLeft: 16 }}>↓</span>
+        <span style={{ fontSize: 11, color: C.slateInk, transform: open ? "rotate(180deg)" : "none", transition: "transform 0.2s", flexShrink: 0, marginLeft: 16 }}>↓</span>
       </button>
       {open && (
-        <div style={{ paddingBottom: 20 }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
-            <div style={{ borderLeft: `2px solid ${C.sky}40`, paddingLeft: 14 }}>
-              <p style={{ fontSize: 9, letterSpacing: "0.14em", textTransform: "uppercase", color: C.tealGrey, margin: "0 0 6px", fontFamily: "Hanken Grotesk, sans-serif" }}>What It Contains</p>
-              <p style={{ fontSize: 12, color: C.slateInk, lineHeight: 1.7, margin: 0, fontFamily: "Hanken Grotesk, sans-serif" }}>{section.explains}</p>
+        <div style={{ marginBottom: 12, borderRadius: 2, background: C.navy, padding: "24px 20px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
+            <div style={{ borderLeft: `2px solid ${C.sky}`, paddingLeft: 16 }}>
+              <p style={{ fontSize: 9, letterSpacing: "0.14em", textTransform: "uppercase", color: C.tealGrey, margin: "0 0 8px", fontFamily: "Hanken Grotesk, sans-serif" }}>What It Contains</p>
+              <p style={{ fontSize: 12, color: C.orchid, lineHeight: 1.75, margin: 0, fontFamily: "Hanken Grotesk, sans-serif" }}>{section.explains}</p>
             </div>
-            <div style={{ borderLeft: `2px solid ${C.neonMint}40`, paddingLeft: 14 }}>
-              <p style={{ fontSize: 9, letterSpacing: "0.14em", textTransform: "uppercase", color: C.tealGrey, margin: "0 0 6px", fontFamily: "Hanken Grotesk, sans-serif" }}>Why It Matters</p>
-              <p style={{ fontSize: 12, color: C.slateInk, lineHeight: 1.7, margin: 0, fontFamily: "Hanken Grotesk, sans-serif" }}>{section.whyMatters}</p>
+            <div style={{ borderLeft: `2px solid ${C.neonMint}`, paddingLeft: 16 }}>
+              <p style={{ fontSize: 9, letterSpacing: "0.14em", textTransform: "uppercase", color: C.tealGrey, margin: "0 0 8px", fontFamily: "Hanken Grotesk, sans-serif" }}>Why It Matters</p>
+              <p style={{ fontSize: 12, color: C.mist, lineHeight: 1.75, margin: 0, fontFamily: "Hanken Grotesk, sans-serif" }}>{section.whyMatters}</p>
             </div>
           </div>
         </div>
@@ -325,7 +325,7 @@ export default function ReadingRoom() {
   const availableCount = DOCUMENTS.filter(d => d.status === "Available").length;
 
   return (
-    <div style={{ background: C.mist, minHeight: "100vh", fontFamily: "Hanken Grotesk, sans-serif" }}>
+    <div style={{ background: "#EDF2F7", minHeight: "100vh", fontFamily: "Hanken Grotesk, sans-serif" }}>
 
       {/* ── Masthead ── */}
       <div style={{ background: C.navy, padding: "64px 48px 52px", opacity: mounted ? 1 : 0, transition: "opacity 0.5s ease" }}>
@@ -394,40 +394,40 @@ export default function ReadingRoom() {
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40, marginTop: 56 }}>
           <div>
             <SectionRule label="Filing Timeline" />
-            <p style={{ fontSize: 12, color: C.tealGrey, lineHeight: 1.75, marginBottom: 28 }}>Key milestones in the foundation's public filing history and upcoming obligations.</p>
+            <p style={{ fontSize: 12, color: C.slateInk, lineHeight: 1.75, marginBottom: 28 }}>Key milestones in the foundation's public filing history and upcoming obligations.</p>
             <FilingTimeline />
           </div>
           <div>
             <SectionRule label="How to Read a 990-PF" />
-            <p style={{ fontSize: 12, color: C.tealGrey, lineHeight: 1.75, marginBottom: 20 }}>The 990-PF is a dense document. This guide explains the sections most relevant to understanding a foundation's grantmaking, governance, and financial health. Click any part to expand.</p>
+            <p style={{ fontSize: 12, color: C.slateInk, lineHeight: 1.75, marginBottom: 20 }}>The 990-PF is a dense document. This guide explains the sections most relevant to understanding a foundation's grantmaking, governance, and financial health. Click any part to expand.</p>
             {GUIDE_SECTIONS.map((section, i) => <GuideRow key={i} section={section} />)}
           </div>
         </div>
 
         {/* ── Third-party sources ── */}
         <SectionRule label="Third-Party Sources" />
-        <p style={{ fontSize: 13, color: C.tealGrey, lineHeight: 1.8, marginBottom: 24, maxWidth: 680 }}>
+        <p style={{ fontSize: 13, color: C.slateInk, lineHeight: 1.8, marginBottom: 24, maxWidth: 680 }}>
           Our filings will also appear in the following public databases once processed. We list them here because applicants and donors should not have to rely on us as the sole source of our own public records.
         </p>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 16 }}>
           {THIRD_PARTY_SOURCES.map((source, i) => (
-            <div key={i} style={{ border: `1px solid ${C.slateInk}15`, borderRadius: 2, padding: "20px", background: "white" }}>
-              <a href={source.url} target="_blank" rel="noopener noreferrer" style={{ fontSize: 13, fontWeight: 600, color: C.slateInk, fontFamily: "Hanken Grotesk, sans-serif", textDecoration: "none", display: "block", marginBottom: 8 }}>
+            <div key={i} style={{ border: "1px solid rgba(163,201,226,0.12)", borderRadius: 2, padding: "20px", background: C.navy }}>
+              <a href={source.url} target="_blank" rel="noopener noreferrer" style={{ fontSize: 13, fontWeight: 600, color: C.mist, fontFamily: "Hanken Grotesk, sans-serif", textDecoration: "none", display: "block", marginBottom: 8 }}>
                 {source.name} ↗
               </a>
-              <p style={{ fontSize: 11, color: C.slateInk, lineHeight: 1.65, margin: "0 0 12px", fontFamily: "Hanken Grotesk, sans-serif" }}>{source.desc}</p>
-              <div style={{ borderTop: `1px solid ${C.slateInk}08`, paddingTop: 10 }}>
+              <p style={{ fontSize: 11, color: C.orchid, lineHeight: 1.65, margin: "0 0 12px", fontFamily: "Hanken Grotesk, sans-serif" }}>{source.desc}</p>
+              <div style={{ borderTop: "1px solid rgba(163,201,226,0.12)", paddingTop: 10 }}>
                 <p style={{ fontSize: 9, color: C.tealGrey, margin: "0 0 2px", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "Hanken Grotesk, sans-serif" }}>Posting Lag</p>
-                <p style={{ fontSize: 11, color: C.orchid, margin: 0, fontFamily: "Hanken Grotesk, sans-serif" }}>{source.delay}</p>
+                <p style={{ fontSize: 11, color: C.sky, margin: 0, fontFamily: "Hanken Grotesk, sans-serif" }}>{source.delay}</p>
               </div>
             </div>
           ))}
         </div>
 
         {/* ── Discrepancy note ── */}
-        <div style={{ marginTop: 48, padding: "24px 28px", border: `1px solid ${C.slateInk}15`, borderLeft: `3px solid ${C.neonMint}`, borderRadius: 2, background: "white" }}>
+        <div style={{ marginTop: 48, padding: "24px 28px", border: "1px solid rgba(163,201,226,0.15)", borderLeft: `3px solid ${C.neonMint}`, borderRadius: 2, background: C.navy }}>
           <p style={{ fontSize: 9, letterSpacing: "0.16em", textTransform: "uppercase", color: C.tealGrey, margin: "0 0 10px", fontFamily: "Hanken Grotesk, sans-serif" }}>Notice a Discrepancy?</p>
-          <p style={{ fontSize: 13, color: C.slateInk, lineHeight: 1.8, margin: "0 0 14px", maxWidth: 680 }}>
+          <p style={{ fontSize: 13, color: C.orchid, lineHeight: 1.8, margin: "0 0 14px", maxWidth: 680 }}>
             If you believe a document listed here differs from the version on file with the IRS or another database, please contact us. We treat all discrepancy reports seriously. The version filed with the IRS is the governing legal record.
           </p>
           <a href="mailto:roconnor@ghostsworthchasing.org" style={{ fontSize: 12, color: C.sky, fontFamily: "Hanken Grotesk, sans-serif", textDecoration: "none" }}>
