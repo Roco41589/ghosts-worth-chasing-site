@@ -55,13 +55,22 @@ type ThirdPartySource = {
 
 // ── Document Registry ──────────────────────────────────────────────
 const DOCUMENTS: GWCDocument[] = [
-  {
-    id: "DOC-001", title: "Articles of Incorporation", type: "Formation",
-    description: "The founding legal document establishing Ghosts Worth Chasing as a nonprofit corporation. Filed with the relevant state authority.",
-    year: "2024", filedDate: "September 2024", postedDate: null,
-    status: "Pending", statusNote: "Will be posted upon 501(c)(3) determination",
-    mandatory: true, fileUrl: null, fileSize: null,
-  },
+{
+  id: "DOC-001",
+  title: "Articles of Incorporation",
+  type: "Formation",
+  description:
+    "The founding legal document establishing Ghosts Worth Chasing as a Pennsylvania nonprofit corporation.",
+  year: "2025",
+  filedDate: "October 1, 2025",
+  postedDate: "October 2025",
+  status: "Filed",
+  statusNote:
+    "Public version available. Residential information redacted for privacy.",
+  mandatory: true,
+  fileUrl: "/documents/articles-of-incorporation.pdf",
+  fileSize: null,
+},
   {
     id: "DOC-002", title: "IRS Form 1023", type: "Tax Exemption",
     description: "Application for recognition of exemption under Section 501(c)(3) of the Internal Revenue Code. Includes organizational narrative, program descriptions, and financial projections.",
