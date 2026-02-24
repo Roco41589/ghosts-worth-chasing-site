@@ -14,7 +14,7 @@ const C = {
 };
 
 // ── Types ───────────────────────────────────────────────────────────
-type DocStatus = "Available" | "Pending" | "Not Yet Due" | "Filed — Not Yet Posted" | "Filed";
+type DocStatus = "Available" | "Pending" | "Not Yet Due" | "Filed — Not Yet Posted";
 
 type GWCDocument = {
   id:          string;
@@ -64,9 +64,9 @@ const DOCUMENTS: GWCDocument[] = [
   year: "2025",
   filedDate: "October 1, 2025",
   postedDate: "October 2025",
-  status: "Filed",
+  status: "Available",
   statusNote:
-    "Public version available. Residential information redacted for privacy.",
+    "Filed October 1, 2025. Public version available. Residential information redacted for privacy.",
   mandatory: true,
   fileUrl: "/documents/articles-of-incorporation.pdf",
   fileSize: null,
