@@ -215,18 +215,18 @@ function DocumentCard({ doc, index, mounted }: { doc: GWCDocument; index: number
         <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
           <span style={{ fontSize: 18, color: typeCfg.color }}>{typeCfg.icon}</span>
           <div>
-            <span style={{ fontSize: 9, letterSpacing: "0.14em", textTransform: "uppercase", color: typeCfg.color, fontFamily: "Hanken Grotesk, sans-serif", display: "block", marginBottom: 2 }}>{doc.type}</span>
-            <span style={{ fontSize: 11, color: C.tealGrey, fontFamily: "Hanken Grotesk, sans-serif" }}>{doc.id} · {doc.year}</span>
+            <span style={{ fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", color: typeCfg.color, fontFamily: "Hanken Grotesk, sans-serif", display: "block", marginBottom: 2 }}>{doc.type}</span>
+            <span style={{ fontSize: 12, color: C.tealGrey, fontFamily: "Hanken Grotesk, sans-serif" }}>{doc.id} · {doc.year}</span>
           </div>
         </div>
-        <span style={{ fontSize: 11, color: statusCfg.color, fontFamily: "Hanken Grotesk, sans-serif", display: "flex", alignItems: "center", gap: 5 }}>
+        <span style={{ fontSize: 13, color: statusCfg.color, fontFamily: "Hanken Grotesk, sans-serif", display: "flex", alignItems: "center", gap: 5 }}>
           <span style={{ fontSize: 10 }}>{statusCfg.dot}</span>{statusCfg.label}
         </span>
       </div>
 
-      <h3 style={{ fontSize: 14, fontWeight: 600, color: C.mist, fontFamily: "Hanken Grotesk, sans-serif", margin: "0 0 4px", lineHeight: 1.3 }}>{doc.title}</h3>
-      {doc.subtitle && <p style={{ fontSize: 11, color: C.tealGrey, margin: "0 0 12px", fontFamily: "Hanken Grotesk, sans-serif" }}>{doc.subtitle}</p>}
-      <p style={{ fontSize: 12, color: C.orchid, lineHeight: 1.75, fontFamily: "Hanken Grotesk, sans-serif", margin: "0 0 16px" }}>{doc.description}</p>
+      <h3 style={{ fontSize: 17, fontWeight: 600, color: C.mist, fontFamily: "Hanken Grotesk, sans-serif", margin: "0 0 4px", lineHeight: 1.3 }}>{doc.title}</h3>
+      {doc.subtitle && <p style={{ fontSize: 13, color: C.tealGrey, margin: "0 0 12px", fontFamily: "Hanken Grotesk, sans-serif" }}>{doc.subtitle}</p>}
+      <p style={{ fontSize: 13, color: C.orchid, lineHeight: 1.75, fontFamily: "Hanken Grotesk, sans-serif", margin: "0 0 16px" }}>{doc.description}</p>
 
       <div style={{ borderTop: "1px solid rgba(163,201,226,0.12)", paddingTop: 16 }}>
         <p style={{ fontSize: 10, color: C.tealGrey, fontFamily: "Hanken Grotesk, sans-serif", margin: "0 0 12px", lineHeight: 1.6, fontStyle: "italic" }}>{doc.statusNote}</p>
@@ -246,11 +246,11 @@ function DocumentCard({ doc, index, mounted }: { doc: GWCDocument; index: number
             )}
           </div>
           {isAvailable && doc.fileUrl ? (
-            <a href={doc.fileUrl} download style={{ display: "flex", alignItems: "center", gap: 6, padding: "8px 16px", background: C.sky, color: C.navy, fontSize: 11, fontFamily: "Hanken Grotesk, sans-serif", textDecoration: "none", borderRadius: 16, letterSpacing: "0.06em", fontWeight: 600 }}>
-              ↓ Download PDF {doc.fileSize && <span style={{ fontSize: 9 }}>({doc.fileSize})</span>}
+            <a href={doc.fileUrl} download style={{ display: "flex", alignItems: "center", gap: 6, padding: "10px 20px", background: C.sky, color: C.navy, fontSize: 13, fontFamily: "Hanken Grotesk, sans-serif", textDecoration: "none", borderRadius: 16, letterSpacing: "0.06em", fontWeight: 600 }}>
+              ↓ Download PDF {doc.fileSize && <span style={{ fontSize: 10 }}>({doc.fileSize})</span>}
             </a>
           ) : (
-            <span style={{ padding: "8px 16px", border: "1px solid rgba(163,201,226,0.2)", color: C.tealGrey, fontSize: 11, fontFamily: "Hanken Grotesk, sans-serif", borderRadius: 16, letterSpacing: "0.06em" }}>Not yet available</span>
+            <span style={{ padding: "10px 20px", border: "1px solid rgba(163,201,226,0.2)", color: C.tealGrey, fontSize: 13, fontFamily: "Hanken Grotesk, sans-serif", borderRadius: 16, letterSpacing: "0.06em" }}>Not yet available</span>
           )}
         </div>
       </div>
