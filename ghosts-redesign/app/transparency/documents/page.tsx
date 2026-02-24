@@ -201,8 +201,8 @@ function DocumentCard({ doc, index, mounted }: { doc: GWCDocument; index: number
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        border:      `1px solid ${hovered ? typeCfg.color + "40" : C.slateInk + "15"}`,
-        borderTop:   `2px solid ${isAvailable ? typeCfg.color : C.slateInk + "20"}`,
+        border:      `1px solid ${hovered ? typeCfg.color + "60" : C.slateInk + "28"}`,
+        borderTop:   `2px solid ${isAvailable ? typeCfg.color : C.slateInk + "35"}`,
         borderRadius: 2, padding: "24px",
         background:  hovered ? `${typeCfg.color}04` : "white",
         transition:  "all 0.2s ease",
@@ -226,10 +226,10 @@ function DocumentCard({ doc, index, mounted }: { doc: GWCDocument; index: number
 
       <h3 style={{ fontSize: 14, fontWeight: 600, color: C.slateInk, fontFamily: "Hanken Grotesk, sans-serif", margin: "0 0 4px", lineHeight: 1.3 }}>{doc.title}</h3>
       {doc.subtitle && <p style={{ fontSize: 11, color: C.tealGrey, margin: "0 0 12px", fontFamily: "Hanken Grotesk, sans-serif" }}>{doc.subtitle}</p>}
-      <p style={{ fontSize: 12, color: C.tealGrey, lineHeight: 1.75, fontFamily: "Hanken Grotesk, sans-serif", margin: "0 0 16px" }}>{doc.description}</p>
+      <p style={{ fontSize: 12, color: C.slateInk, lineHeight: 1.75, fontFamily: "Hanken Grotesk, sans-serif", margin: "0 0 16px" }}>{doc.description}</p>
 
-      <div style={{ borderTop: `1px solid ${C.slateInk}08`, paddingTop: 16 }}>
-        <p style={{ fontSize: 10, color: C.orchid, fontFamily: "Hanken Grotesk, sans-serif", margin: "0 0 12px", lineHeight: 1.6, fontStyle: "italic" }}>{doc.statusNote}</p>
+      <div style={{ borderTop: `1px solid ${C.slateInk}15`, paddingTop: 16 }}>
+        <p style={{ fontSize: 10, color: "#7A6E80", fontFamily: "Hanken Grotesk, sans-serif", margin: "0 0 12px", lineHeight: 1.6, fontStyle: "italic" }}>{doc.statusNote}</p>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <div style={{ display: "flex", gap: 16 }}>
             {doc.filedDate && (
@@ -415,7 +415,7 @@ export default function ReadingRoom() {
               <a href={source.url} target="_blank" rel="noopener noreferrer" style={{ fontSize: 13, fontWeight: 600, color: C.slateInk, fontFamily: "Hanken Grotesk, sans-serif", textDecoration: "none", display: "block", marginBottom: 8 }}>
                 {source.name} ↗
               </a>
-              <p style={{ fontSize: 11, color: C.tealGrey, lineHeight: 1.65, margin: "0 0 12px", fontFamily: "Hanken Grotesk, sans-serif" }}>{source.desc}</p>
+              <p style={{ fontSize: 11, color: C.slateInk, lineHeight: 1.65, margin: "0 0 12px", fontFamily: "Hanken Grotesk, sans-serif" }}>{source.desc}</p>
               <div style={{ borderTop: `1px solid ${C.slateInk}08`, paddingTop: 10 }}>
                 <p style={{ fontSize: 9, color: C.tealGrey, margin: "0 0 2px", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "Hanken Grotesk, sans-serif" }}>Posting Lag</p>
                 <p style={{ fontSize: 11, color: C.orchid, margin: 0, fontFamily: "Hanken Grotesk, sans-serif" }}>{source.delay}</p>
