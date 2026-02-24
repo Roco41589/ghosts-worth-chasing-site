@@ -98,3 +98,78 @@ const FILTER_OPTIONS = {
   status: ["All Statuses", "Active", "Closed", "Renewed"],
   type: ["All Types", "Individual", "Organizational"],
 };
+
+
+// ── More Types (for strict TS builds) ───────────────────────────────
+type SortDir = "asc" | "desc";
+
+type AreaBreakdownEntry = {
+  name: string;
+  value: number;
+  color: string;
+};
+
+type SectionRuleProps = { label: string };
+
+type StatCardProps = {
+  label: string;
+  value: string | number;
+  sub?: string;
+  highlight?: boolean;
+};
+
+type FilterPillProps = {
+  label: string;
+  active: boolean;
+  onClick: () => void;
+};
+
+type SelectFilterProps = {
+  label: string;
+  options: string[];
+  value: string;
+  onChange: (value: string) => void;
+};
+
+type GrantRowProps = {
+  grant: Grant;
+  index: number;
+};
+
+type SortHeaderProps = {
+  label: string;
+  field: keyof Grant;
+  sortField: keyof Grant;
+  sortDir: SortDir;
+  onSort: (field: keyof Grant) => void;
+};
+
+// ── Helpers (typed) ────────────────────────────────────────────────
+const fmt = (n: number | null | undefined) => (n == null ? "—" : `$${n.toLocaleString()}`);
+
+const computeStats = (grants: Grant[]) => {
+  if (!grants.length) return { total: 0, count: 0, avgSize: 0, individuals: 0, orgs: 0 };
+  const total = grants.reduce((s, g) => s + (g.amount || 0), 0);
+  const individuals = grants.filter(g => g.type === "individual").length;
+  const orgs = grants.filter(g => g.type === "organizational").length;
+  return {
+    total,
+    count: grants.length,
+    avgSize: Math.round(total / grants.length),
+    individuals,
+    orgs,
+  };
+};
+
+const computeAreaBreakdown = (grants: Grant[]): AreaBreakdownEntry[] => {
+  const map: Record<string, number> = {};
+  grants.forEach(g => {
+    if (!g.area || g.area === "—") return;
+    map[g.area] = (map[g.area] || 0) + (g.amount || 0);
+  });
+  return Object.entries(map).map(([name, value]) => ({
+    name,
+    value,
+    color: AREA_COLORS[name] || C.orchid,
+  }));
+};
