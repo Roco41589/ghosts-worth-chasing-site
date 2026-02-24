@@ -179,13 +179,13 @@ function TypeFilterPill({ label, active, count, onClick }: { label: string; acti
       padding: "8px 16px",
       border: `1.5px solid ${active ? cfg.color : C.slateInk + "50"}`,
       background: active ? `${cfg.color}18` : "white",
-      borderRadius: 2, cursor: "pointer", transition: "all 0.15s ease", outline: "none",
+      borderRadius: 32, cursor: "pointer", transition: "all 0.15s ease", outline: "none",
     }}>
       {label !== "All Documents" && (
         <span style={{ fontSize: 12, color: cfg.color }}>{DOC_TYPES[label]?.icon}</span>
       )}
       <span style={{ fontSize: 12, color: C.slateInk, fontWeight: active ? 600 : 400, fontFamily: "Hanken Grotesk, sans-serif" }}>{label}</span>
-      <span style={{ fontSize: 10, color: active ? cfg.color : C.slateInk, background: active ? `${cfg.color}20` : `${C.slateInk}10`, padding: "1px 7px", borderRadius: 10, fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 500 }}>{count}</span>
+      <span style={{ fontSize: 10, color: active ? cfg.color : C.slateInk, background: active ? `${cfg.color}20` : `${C.slateInk}10`, padding: "1px 7px", borderRadius: 32, fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 500 }}>{count}</span>
     </button>
   );
 }
@@ -203,7 +203,7 @@ function DocumentCard({ doc, index, mounted }: { doc: GWCDocument; index: number
       style={{
         border:      `1px solid ${hovered ? typeCfg.color + "50" : "rgba(163,201,226,0.12)"}`,
         borderTop:   `2px solid ${isAvailable ? typeCfg.color : typeCfg.color + "50"}`,
-        borderRadius: 2, padding: "24px",
+        borderRadius: 16, padding: "24px",
         background:  hovered ? `#0F2444` : C.navy,
         transition:  "all 0.2s ease",
         opacity:     mounted ? 1 : 0,
@@ -246,11 +246,11 @@ function DocumentCard({ doc, index, mounted }: { doc: GWCDocument; index: number
             )}
           </div>
           {isAvailable && doc.fileUrl ? (
-            <a href={doc.fileUrl} download style={{ display: "flex", alignItems: "center", gap: 6, padding: "8px 16px", background: C.sky, color: C.navy, fontSize: 11, fontFamily: "Hanken Grotesk, sans-serif", textDecoration: "none", borderRadius: 2, letterSpacing: "0.06em", fontWeight: 600 }}>
+            <a href={doc.fileUrl} download style={{ display: "flex", alignItems: "center", gap: 6, padding: "8px 16px", background: C.sky, color: C.navy, fontSize: 11, fontFamily: "Hanken Grotesk, sans-serif", textDecoration: "none", borderRadius: 16, letterSpacing: "0.06em", fontWeight: 600 }}>
               ↓ Download PDF {doc.fileSize && <span style={{ fontSize: 9 }}>({doc.fileSize})</span>}
             </a>
           ) : (
-            <span style={{ padding: "8px 16px", border: "1px solid rgba(163,201,226,0.2)", color: C.tealGrey, fontSize: 11, fontFamily: "Hanken Grotesk, sans-serif", borderRadius: 2, letterSpacing: "0.06em" }}>Not yet available</span>
+            <span style={{ padding: "8px 16px", border: "1px solid rgba(163,201,226,0.2)", color: C.tealGrey, fontSize: 11, fontFamily: "Hanken Grotesk, sans-serif", borderRadius: 16, letterSpacing: "0.06em" }}>Not yet available</span>
           )}
         </div>
       </div>
@@ -266,7 +266,7 @@ function FilingTimeline() {
         const cfg = DOC_TYPES[event.type] || { color: C.orchid };
         return (
           <div key={i} style={{ display: "flex", gap: 20, marginBottom: i < TIMELINE_EVENTS.length - 1 ? 20 : 0, position: "relative" }}>
-            <div style={{ width: 22, height: 22, borderRadius: 2, border: `1.5px solid ${event.done ? cfg.color : C.slateInk + "40"}`, background: event.done ? C.navy : `${C.slateInk}12`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, zIndex: 1, transform: "rotate(45deg)", marginTop: 2 }}>
+            <div style={{ width: 22, height: 22, borderRadius: 16, border: `1.5px solid ${event.done ? cfg.color : C.slateInk + "40"}`, background: event.done ? C.navy : `${C.slateInk}12`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, zIndex: 1, transform: "rotate(45deg)", marginTop: 2 }}>
               {event.done && <span style={{ fontSize: 8, color: cfg.color, transform: "rotate(-45deg)" }}>✓</span>}
             </div>
             <div style={{ paddingBottom: 4 }}>
@@ -286,13 +286,13 @@ function GuideRow({ section }: { section: GuideSection }) {
     <div style={{ borderBottom: `1px solid ${C.slateInk}20` }}>
       <button onClick={() => setOpen(o => !o)} style={{ width: "100%", padding: "16px 12px", background: "transparent", border: "none", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center", textAlign: "left" }}>
         <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
-          <span style={{ fontSize: 10, color: C.mist, fontFamily: "monospace", letterSpacing: "0.06em", flexShrink: 0, background: C.navy, padding: "3px 10px", borderRadius: 2 }}>{section.part}</span>
+          <span style={{ fontSize: 10, color: C.mist, fontFamily: "monospace", letterSpacing: "0.06em", flexShrink: 0, background: C.navy, padding: "3px 10px", borderRadius: 16 }}>{section.part}</span>
           <span style={{ fontSize: 13, fontWeight: 600, color: C.slateInk, fontFamily: "Hanken Grotesk, sans-serif" }}>{section.title}</span>
         </div>
         <span style={{ fontSize: 11, color: C.slateInk, transform: open ? "rotate(180deg)" : "none", transition: "transform 0.2s", flexShrink: 0, marginLeft: 16 }}>↓</span>
       </button>
       {open && (
-        <div style={{ marginBottom: 12, borderRadius: 2, background: C.navy, padding: "24px 20px" }}>
+        <div style={{ marginBottom: 12, borderRadius: 16, background: C.navy, padding: "24px 20px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
             <div style={{ borderLeft: `2px solid ${C.sky}`, paddingLeft: 16 }}>
               <p style={{ fontSize: 9, letterSpacing: "0.14em", textTransform: "uppercase", color: C.tealGrey, margin: "0 0 8px", fontFamily: "Hanken Grotesk, sans-serif" }}>What It Contains</p>
@@ -411,7 +411,7 @@ export default function ReadingRoom() {
         </p>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 16 }}>
           {THIRD_PARTY_SOURCES.map((source, i) => (
-            <div key={i} style={{ border: "1px solid rgba(163,201,226,0.12)", borderRadius: 2, padding: "20px", background: C.navy }}>
+            <div key={i} style={{ border: "1px solid rgba(163,201,226,0.12)", borderRadius: 16, padding: "20px", background: C.navy }}>
               <a href={source.url} target="_blank" rel="noopener noreferrer" style={{ fontSize: 13, fontWeight: 600, color: C.mist, fontFamily: "Hanken Grotesk, sans-serif", textDecoration: "none", display: "block", marginBottom: 8 }}>
                 {source.name} ↗
               </a>
@@ -425,7 +425,7 @@ export default function ReadingRoom() {
         </div>
 
         {/* ── Discrepancy note ── */}
-        <div style={{ marginTop: 48, padding: "24px 28px", border: "1px solid rgba(163,201,226,0.15)", borderLeft: `3px solid ${C.neonMint}`, borderRadius: 2, background: C.navy }}>
+        <div style={{ marginTop: 48, padding: "24px 28px", border: "1px solid rgba(163,201,226,0.15)", borderLeft: `3px solid ${C.neonMint}`, borderRadius: 16, background: C.navy }}>
           <p style={{ fontSize: 9, letterSpacing: "0.16em", textTransform: "uppercase", color: C.tealGrey, margin: "0 0 10px", fontFamily: "Hanken Grotesk, sans-serif" }}>Notice a Discrepancy?</p>
           <p style={{ fontSize: 13, color: C.orchid, lineHeight: 1.8, margin: "0 0 14px", maxWidth: 680 }}>
             If you believe a document listed here differs from the version on file with the IRS or another database, please contact us. We treat all discrepancy reports seriously. The version filed with the IRS is the governing legal record.
