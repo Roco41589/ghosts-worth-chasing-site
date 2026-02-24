@@ -55,22 +55,20 @@ type ThirdPartySource = {
 
 // ── Document Registry ──────────────────────────────────────────────
 const DOCUMENTS: GWCDocument[] = [
-{
-  id: "DOC-001",
-  title: "Articles of Incorporation",
-  type: "Formation",
-  description:
-    "The founding legal document establishing Ghosts Worth Chasing as a Pennsylvania nonprofit corporation.",
-  year: "2025",
-  filedDate: "October 1, 2025",
-  postedDate: "October 2025",
-  status: "Available",
-  statusNote:
-    "Filed October 1, 2025. Public version available. Residential information redacted for privacy.",
-  mandatory: true,
-  fileUrl: "/documents/articles-of-incorporation.pdf",
-  fileSize: null,
-},
+  {
+    id: "DOC-001",
+    title: "Articles of Incorporation",
+    type: "Formation",
+    description: "The founding legal document establishing Ghosts Worth Chasing as a Pennsylvania nonprofit corporation.",
+    year: "2025",
+    filedDate: "October 1, 2025",
+    postedDate: "October 2025",
+    status: "Available",
+    statusNote: "Filed October 1, 2025. Public version available. Residential information redacted for privacy.",
+    mandatory: true,
+    fileUrl: "/documents/articles-of-incorporation.pdf",
+    fileSize: null,
+  },
   {
     id: "DOC-002", title: "IRS Form 1023", type: "Tax Exemption",
     description: "Application for recognition of exemption under Section 501(c)(3) of the Internal Revenue Code. Includes organizational narrative, program descriptions, and financial projections.",
@@ -130,58 +128,62 @@ const DOCUMENTS: GWCDocument[] = [
 ];
 
 // ── Config ─────────────────────────────────────────────────────────
-const DOC_TYPES: Record<string, { color: string; icon: string }> = {
-  "Formation":     { color: C.sky,      icon: "◈" },
-  "Tax Exemption": { color: C.tealGrey, icon: "◉" },
-  "Annual Filing": { color: C.neonMint, icon: "◎" },
-  "Governance":    { color: C.orchid,   icon: "◆" },
-  "Financial":     { color: "#E8C97A",  icon: "◇" },
+// color = light version (for use on navy backgrounds)
+// darkColor = dark version (for use inside white sub-containers)
+const DOC_TYPES: Record<string, { color: string; darkColor: string; icon: string }> = {
+  "Formation":     { color: C.sky,      darkColor: "#1A6E8A", icon: "◈" },
+  "Tax Exemption": { color: C.tealGrey, darkColor: "#2E5F65", icon: "◉" },
+  "Annual Filing": { color: C.neonMint, darkColor: "#0D7A54", icon: "◎" },
+  "Governance":    { color: C.orchid,   darkColor: "#5A4E6E", icon: "◆" },
+  "Financial":     { color: "#E8C97A",  darkColor: "#7A5A00", icon: "◇" },
 };
 
-const STATUS_CONFIG: Record<string, { color: string; dot: string; label: string }> = {
-  "Available":               { color: C.neonMint, dot: "●", label: "Available" },
-  "Pending":                 { color: C.orchid,   dot: "◌", label: "Pending" },
-  "Not Yet Due":             { color: C.tealGrey, dot: "○", label: "Not Yet Due" },
-  "Filed — Not Yet Posted":  { color: C.sky,      dot: "◍", label: "Filed — Not Yet Posted" },
+const STATUS_CONFIG: Record<string, { color: string; darkColor: string; dot: string; label: string }> = {
+  "Available":               { color: C.neonMint, darkColor: "#0D7A54", dot: "●", label: "Available" },
+  "Pending":                 { color: C.orchid,   darkColor: "#5A4E6E", dot: "◌", label: "Pending" },
+  "Not Yet Due":             { color: C.tealGrey, darkColor: "#2E5F65", dot: "○", label: "Not Yet Due" },
+  "Filed — Not Yet Posted":  { color: C.sky,      darkColor: "#1A6E8A", dot: "◍", label: "Filed — Not Yet Posted" },
 };
 
 const GUIDE_SECTIONS: GuideSection[] = [
-  { part: "Part I",     title: "Revenue & Expenses",                   explains: "What the foundation earned (investment returns, contributions) and spent (grants, operating costs, professional fees) during the year.", whyMatters: "Shows whether the foundation is spending responsibly and where money comes from." },
-  { part: "Part II",    title: "Balance Sheet",                        explains: "Assets (what the foundation owns) and liabilities (what it owes) at year end.", whyMatters: "Reveals the foundation's financial health and endowment size." },
-  { part: "Part VII-A", title: "Statements Regarding Activities",      explains: "Yes/no questions about lobbying, political activity, grants to individuals, and international grants.", whyMatters: "Confirms the foundation is operating within IRS rules." },
-  { part: "Part VIII",  title: "Information About Officers, Directors", explains: "Names, titles, hours worked, and compensation of key individuals.", whyMatters: "Shows who controls the foundation and whether compensation is reasonable." },
+  { part: "Part I",     title: "Revenue & Expenses",                      explains: "What the foundation earned (investment returns, contributions) and spent (grants, operating costs, professional fees) during the year.", whyMatters: "Shows whether the foundation is spending responsibly and where money comes from." },
+  { part: "Part II",    title: "Balance Sheet",                           explains: "Assets (what the foundation owns) and liabilities (what it owes) at year end.", whyMatters: "Reveals the foundation's financial health and endowment size." },
+  { part: "Part VII-A", title: "Statements Regarding Activities",         explains: "Yes/no questions about lobbying, political activity, grants to individuals, and international grants.", whyMatters: "Confirms the foundation is operating within IRS rules." },
+  { part: "Part VIII",  title: "Information About Officers, Directors",   explains: "Names, titles, hours worked, and compensation of key individuals.", whyMatters: "Shows who controls the foundation and whether compensation is reasonable." },
   { part: "Part IX-A",  title: "Summary of Direct Charitable Activities", explains: "Description of the foundation's charitable programs and what they accomplished.", whyMatters: "The mission in practice — what actually happened." },
-  { part: "Part XV",    title: "Grants & Contributions Paid",          explains: "Every grant paid during the year — recipient, address, purpose, and amount.", whyMatters: "The most scrutinized section. Full grantmaking record." },
+  { part: "Part XV",    title: "Grants & Contributions Paid",             explains: "Every grant paid during the year — recipient, address, purpose, and amount.", whyMatters: "The most scrutinized section. Full grantmaking record." },
 ];
 
 const THIRD_PARTY_SOURCES: ThirdPartySource[] = [
-  { name: "ProPublica Nonprofit Explorer", url: "https://projects.propublica.org/nonprofits", desc: "Free searchable database of 990s. Typically lags filing by 12–18 months.", delay: "12–18 months after filing" },
-  { name: "Candid / GuideStar",            url: "https://candid.org",                        desc: "Sector's primary funder research database. Includes 990s and self-reported data.", delay: "Variable — we update our profile directly" },
-  { name: "IRS Tax Exempt Organization Search", url: "https://apps.irs.gov/app/eos",         desc: "Official IRS tool confirming our tax-exempt status and filing history.", delay: "Near real-time after determination" },
+  { name: "ProPublica Nonprofit Explorer",      url: "https://projects.propublica.org/nonprofits", desc: "Free searchable database of 990s. Typically lags filing by 12–18 months.", delay: "12–18 months after filing" },
+  { name: "Candid / GuideStar",                 url: "https://candid.org",                         desc: "Sector's primary funder research database. Includes 990s and self-reported data.", delay: "Variable — we update our profile directly" },
+  { name: "IRS Tax Exempt Organization Search", url: "https://apps.irs.gov/app/eos",               desc: "Official IRS tool confirming our tax-exempt status and filing history.", delay: "Near real-time after determination" },
 ];
 
 const TIMELINE_EVENTS: TimelineEvent[] = [
-  { date: "Sep 2024",     label: "Foundation incorporated",                         done: true,  type: "Formation" },
-  { date: "Sep 2024",     label: "Form 1023 filed with IRS",                        done: true,  type: "Tax Exemption" },
-  { date: "2025–2026",    label: "IRS 501(c)(3) determination expected",            done: false, type: "Tax Exemption" },
-  { date: "May/Nov 2025", label: "First 990-PF due (Tax Year 2024)",                done: false, type: "Annual Filing" },
+  { date: "Sep 2024",     label: "Foundation incorporated",                           done: true,  type: "Formation" },
+  { date: "Sep 2024",     label: "Form 1023 filed with IRS",                          done: true,  type: "Tax Exemption" },
+  { date: "2025–2026",    label: "IRS 501(c)(3) determination expected",              done: false, type: "Tax Exemption" },
+  { date: "May/Nov 2025", label: "First 990-PF due (Tax Year 2024)",                  done: false, type: "Annual Filing" },
   { date: "Q3 2026",      label: "Governance documents published post-determination", done: false, type: "Governance" },
-  { date: "May/Nov 2026", label: "Second 990-PF due (Tax Year 2025)",               done: false, type: "Annual Filing" },
+  { date: "May/Nov 2026", label: "Second 990-PF due (Tax Year 2025)",                 done: false, type: "Annual Filing" },
 ];
 
 // ── Sub-components ─────────────────────────────────────────────────
 
+// CHANGE 1: Centered, darker section rule
 function SectionRule({ label }: { label: string }) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 16, margin: "52px 0 24px" }}>
-      <span style={{ fontSize: 9, letterSpacing: "0.22em", textTransform: "uppercase", color: C.tealGrey, fontFamily: "Hanken Grotesk, sans-serif", flexShrink: 0 }}>{label}</span>
-      <div style={{ flex: 1, height: 1, background: `linear-gradient(90deg, ${C.slateInk}25, transparent)` }} />
+      <div style={{ flex: 1, height: 1, background: `linear-gradient(270deg, ${C.slateInk}50, transparent)` }} />
+      <span style={{ fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase", color: C.slateInk, fontFamily: "Hanken Grotesk, sans-serif", flexShrink: 0, fontWeight: 700 }}>{label}</span>
+      <div style={{ flex: 1, height: 1, background: `linear-gradient(90deg, ${C.slateInk}50, transparent)` }} />
     </div>
   );
 }
 
 function TypeFilterPill({ label, active, count, onClick }: { label: string; active: boolean; count: number; onClick: () => void }) {
-  const cfg = label === "All Documents" ? { color: C.sky } : DOC_TYPES[label] || { color: C.orchid };
+  const cfg = label === "All Documents" ? { color: C.sky, darkColor: "#1A6E8A" } : DOC_TYPES[label] || { color: C.orchid, darkColor: "#5A4E6E" };
   return (
     <button onClick={onClick} style={{
       display: "flex", alignItems: "center", gap: 8,
@@ -191,7 +193,7 @@ function TypeFilterPill({ label, active, count, onClick }: { label: string; acti
       borderRadius: 32, cursor: "pointer", transition: "all 0.15s ease", outline: "none",
     }}>
       {label !== "All Documents" && (
-        <span style={{ fontSize: 12, color: cfg.color }}>{DOC_TYPES[label]?.icon}</span>
+        <span style={{ fontSize: 12, color: active ? cfg.color : cfg.darkColor }}>{DOC_TYPES[label]?.icon}</span>
       )}
       <span style={{ fontSize: 12, color: C.slateInk, fontWeight: active ? 600 : 400, fontFamily: "Hanken Grotesk, sans-serif" }}>{label}</span>
       <span style={{ fontSize: 10, color: active ? cfg.color : C.slateInk, background: active ? `${cfg.color}20` : `${C.slateInk}10`, padding: "1px 7px", borderRadius: 32, fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 500 }}>{count}</span>
@@ -201,8 +203,8 @@ function TypeFilterPill({ label, active, count, onClick }: { label: string; acti
 
 function DocumentCard({ doc, index, mounted }: { doc: GWCDocument; index: number; mounted: boolean }) {
   const [hovered, setHovered] = useState(false);
-  const typeCfg   = DOC_TYPES[doc.type]      || { color: C.orchid, icon: "◈" };
-  const statusCfg = STATUS_CONFIG[doc.status] || { color: C.tealGrey, dot: "○", label: doc.status };
+  const typeCfg   = DOC_TYPES[doc.type]      || { color: C.orchid, darkColor: "#5A4E6E", icon: "◈" };
+  const statusCfg = STATUS_CONFIG[doc.status] || { color: C.tealGrey, darkColor: "#2E5F65", dot: "○", label: doc.status };
   const isAvailable = doc.status === "Available";
 
   return (
@@ -210,34 +212,39 @@ function DocumentCard({ doc, index, mounted }: { doc: GWCDocument; index: number
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        border:      `1px solid ${hovered ? typeCfg.color + "50" : "rgba(163,201,226,0.12)"}`,
-        borderTop:   `2px solid ${isAvailable ? typeCfg.color : typeCfg.color + "50"}`,
-        borderRadius: 16, padding: "24px",
-        background:  hovered ? `#0F2444` : C.navy,
-        transition:  "all 0.2s ease",
-        opacity:     mounted ? 1 : 0,
-        transform:   mounted ? "translateY(0)" : "translateY(8px)",
-        transitionDelay: `${index * 0.04}s`,
+        border:       `1px solid ${hovered ? typeCfg.color + "50" : "rgba(163,201,226,0.12)"}`,
+        borderTop:    `2px solid ${isAvailable ? typeCfg.color : typeCfg.color + "50"}`,
+        borderRadius: 16, padding: "20px",
+        background:   hovered ? "#0F2444" : C.navy,
+        transition:   "all 0.2s ease",
+        opacity:      mounted ? 1 : 0,
+        transform:    mounted ? "translateY(0)" : "translateY(8px)",
+        transitionDelay: `${index * 0.04}s`, display: "flex", flexDirection: "column",
       }}
     >
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 14 }}>
-        <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-          <span style={{ fontSize: 18, color: typeCfg.color }}>{typeCfg.icon}</span>
-          <div>
-            <span style={{ fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", color: typeCfg.color, fontFamily: "Hanken Grotesk, sans-serif", display: "block", marginBottom: 2 }}>{doc.type}</span>
-            <span style={{ fontSize: 12, color: C.tealGrey, fontFamily: "Hanken Grotesk, sans-serif" }}>{doc.id} · {doc.year}</span>
-          </div>
+      {/* CHANGE 3: White sub-container for type + status */}
+      <div style={{
+        display: "flex", justifyContent: "space-between", alignItems: "center",
+        background: "white", borderRadius: 10, padding: "10px 14px", marginBottom: 18,
+      }}>
+        {/* Type — left side */}
+        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+          <span style={{ fontSize: 16, color: typeCfg.darkColor }}>{typeCfg.icon}</span>
+          <span style={{ fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase", color: typeCfg.darkColor, fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 700 }}>{doc.type}</span>
+          <span style={{ fontSize: 11, color: C.slateInk, fontFamily: "Hanken Grotesk, sans-serif", opacity: 0.5 }}>·</span>
+          <span style={{ fontSize: 11, color: C.slateInk, fontFamily: "Hanken Grotesk, sans-serif" }}>{doc.id} · {doc.year}</span>
         </div>
-        <span style={{ fontSize: 13, color: statusCfg.color, fontFamily: "Hanken Grotesk, sans-serif", display: "flex", alignItems: "center", gap: 5 }}>
-          <span style={{ fontSize: 10 }}>{statusCfg.dot}</span>{statusCfg.label}
+        {/* Status — right side */}
+        <span style={{ fontSize: 12, color: statusCfg.darkColor, fontFamily: "Hanken Grotesk, sans-serif", display: "flex", alignItems: "center", gap: 5, fontWeight: 600 }}>
+          <span>{statusCfg.dot}</span>{statusCfg.label}
         </span>
       </div>
 
-      <h3 style={{ fontSize: 17, fontWeight: 600, color: C.mist, fontFamily: "Hanken Grotesk, sans-serif", margin: "0 0 4px", lineHeight: 1.3 }}>{doc.title}</h3>
+      <h3 style={{ fontSize: 17, fontWeight: 600, color: C.mist, fontFamily: "Hanken Grotesk, sans-serif", margin: "0 0 4px", lineHeight: 1.3, textAlign: "center" }}>{doc.title}</h3>
       {doc.subtitle && <p style={{ fontSize: 13, color: C.tealGrey, margin: "0 0 12px", fontFamily: "Hanken Grotesk, sans-serif" }}>{doc.subtitle}</p>}
-      <p style={{ fontSize: 13, color: C.orchid, lineHeight: 1.75, fontFamily: "Hanken Grotesk, sans-serif", margin: "0 0 16px" }}>{doc.description}</p>
+      <p style={{ fontSize: 13, color: C.orchid, lineHeight: 1.75, fontFamily: "Hanken Grotesk, sans-serif", margin: "0 0 16px", flexGrow: 1 }}>{doc.description}</p>
 
-      <div style={{ borderTop: "1px solid rgba(163,201,226,0.12)", paddingTop: 16 }}>
+      <div style={{ borderTop: "1px solid rgba(163,201,226,0.12)", paddingTop: 16, marginTop: "auto" }}>
         <p style={{ fontSize: 10, color: C.tealGrey, fontFamily: "Hanken Grotesk, sans-serif", margin: "0 0 12px", lineHeight: 1.6, fontStyle: "italic" }}>{doc.statusNote}</p>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <div style={{ display: "flex", gap: 16 }}>
@@ -254,9 +261,10 @@ function DocumentCard({ doc, index, mounted }: { doc: GWCDocument; index: number
               </div>
             )}
           </div>
+          {/* CHANGE 2: "Download" — no arrow */}
           {isAvailable && doc.fileUrl ? (
             <a href={doc.fileUrl} download style={{ display: "flex", alignItems: "center", gap: 6, padding: "10px 20px", background: C.sky, color: C.navy, fontSize: 13, fontFamily: "Hanken Grotesk, sans-serif", textDecoration: "none", borderRadius: 16, letterSpacing: "0.06em", fontWeight: 600 }}>
-              ↓ Download PDF {doc.fileSize && <span style={{ fontSize: 10 }}>({doc.fileSize})</span>}
+              Download {doc.fileSize && <span style={{ fontSize: 10 }}>({doc.fileSize})</span>}
             </a>
           ) : (
             <span style={{ padding: "10px 20px", border: "1px solid rgba(163,201,226,0.2)", color: C.tealGrey, fontSize: 13, fontFamily: "Hanken Grotesk, sans-serif", borderRadius: 16, letterSpacing: "0.06em" }}>Not yet available</span>
@@ -272,7 +280,7 @@ function FilingTimeline() {
     <div style={{ position: "relative" }}>
       <div style={{ position: "absolute", left: 11, top: 8, bottom: 8, width: 1, background: `linear-gradient(180deg, ${C.sky}, rgba(163,201,226,0.1))` }} />
       {TIMELINE_EVENTS.map((event, i) => {
-        const cfg = DOC_TYPES[event.type] || { color: C.orchid };
+        const cfg = DOC_TYPES[event.type] || { color: C.orchid, darkColor: "#5A4E6E" };
         return (
           <div key={i} style={{ display: "flex", gap: 20, marginBottom: i < TIMELINE_EVENTS.length - 1 ? 20 : 0, position: "relative" }}>
             <div style={{ width: 22, height: 22, borderRadius: 16, border: `1.5px solid ${event.done ? cfg.color : C.slateInk + "40"}`, background: event.done ? C.navy : `${C.slateInk}12`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, zIndex: 1, transform: "rotate(45deg)", marginTop: 2 }}>
@@ -366,10 +374,10 @@ export default function ReadingRoom() {
           </div>
           <div style={{ marginTop: 36, paddingTop: 24, borderTop: "1px solid rgba(163,201,226,0.15)", display: "flex", gap: 40, flexWrap: "wrap" }}>
             {[
-              { label: "Posting Policy",      value: "Within 30 days of filing" },
-              { label: "Redaction Policy",    value: "None beyond legal requirement" },
-              { label: "Format",              value: "PDF — original as filed" },
-              { label: "Third-party copies",  value: "Also on ProPublica Nonprofit Explorer" },
+              { label: "Posting Policy",     value: "Within 30 days of filing" },
+              { label: "Redaction Policy",   value: "None beyond legal requirement" },
+              { label: "Format",             value: "PDF — original as filed" },
+              { label: "Third-party copies", value: "Also on ProPublica Nonprofit Explorer" },
             ].map(m => (
               <div key={m.label}>
                 <p style={{ fontSize: 9, letterSpacing: "0.14em", textTransform: "uppercase", color: C.tealGrey, margin: "0 0 4px" }}>{m.label}</p>
