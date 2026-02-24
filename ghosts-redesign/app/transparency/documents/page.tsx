@@ -14,7 +14,7 @@ const C = {
 };
 
 // ── Types ───────────────────────────────────────────────────────────
-type DocStatus = "Available" | "Pending" | "Not Yet Due" | "Filed — Not Yet Posted";
+type DocStatus = "Available" | "Pending" | "Not Yet Due" | "Filed — Not Yet Posted" | "Filed";
 
 type GWCDocument = {
   id:          string;
