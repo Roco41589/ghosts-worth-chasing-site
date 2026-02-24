@@ -336,7 +336,7 @@ export default function GrantRegistryClient() {
           <div style={{ marginTop: 32, paddingTop: 24, borderTop: "1px solid rgba(163,201,226,0.15)" }}>
             <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
               <span style={{ fontSize: 10, color: C.tealGrey, letterSpacing: "0.1em", textTransform: "uppercase" }}>
-                2026 target: $2,000
+                2026 target: $1,000
               </span>
               <span style={{ fontSize: 10, color: C.tealGrey }}>
                 {fmt(stats.total)} awarded
@@ -345,14 +345,14 @@ export default function GrantRegistryClient() {
             <div style={{ height: 4, background: "rgba(163,201,226,0.15)", borderRadius: 2, overflow: "hidden" }}>
               <div style={{
                 height: "100%",
-                width: `${Math.min(100, (stats.total / 2000) * 100)}%`,
+                width: `${Math.min(100, (stats.total / 1000) * 100)}%`,
                 background: C.neonMint,
                 borderRadius: 2,
                 transition: "width 1s ease",
               }} />
             </div>
             <p style={{ fontSize: 10, color: C.orchid, margin: "8px 0 0", fontStyle: "italic" }}>
-              Target based on four $500 learning grants — designed to develop process, not maximize impact.
+              Two cycles planned for 2026 — Q3 and Q4, one grant of $500 each. Designed to develop process, not maximize impact.
             </p>
           </div>
         </div>
@@ -363,13 +363,33 @@ export default function GrantRegistryClient() {
         {/* ── Stat cards ── */}
         <SectionRule label="At a Glance" />
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: 16 }}>
-          <StatCard label="Total Granted"           value={fmt(stats.total)}                          highlight={stats.total > 0} />
-          <StatCard label="Grants Awarded"          value={stats.count}                               sub="Across all programs" />
-          <StatCard label="Individuals Supported"   value={isEmpty ? "0" : stats.individuals}        sub="Individual Support program" />
-          <StatCard label="Organizations Supported" value={isEmpty ? "0" : stats.orgs}               sub="Organizational grants" />
-          <StatCard label="Average Grant Size"      value={isEmpty ? "—" : fmt(stats.avgSize)}       sub="Across all grant types" />
-          <StatCard label="Acceptance Rate"         value="—"                                         sub="No cycles completed" />
+          <StatCard label="Total Granted"           value={fmt(stats.total)}                    highlight={stats.total > 0} />
+          <StatCard label="Grants Awarded"          value={stats.count}                         sub="Across all programs" />
+          <StatCard label="Individuals Supported"   value={isEmpty ? "0" : stats.individuals}  sub="Individual Support program" />
+          <StatCard label="Organizations Supported" value={isEmpty ? "0" : stats.orgs}         sub="Organizational grants" />
+          <StatCard label="Average Grant Size"      value={isEmpty ? "—" : fmt(stats.avgSize)} sub="Across all grant types" />
+          <StatCard label="Total Applications"      value="—"                                   sub="Opens Q3 2026" />
+          <StatCard label="Acceptance Rate"         value="—"                                   sub="Applications funded ÷ received" />
         </div>
+
+        {/* Applications context note — shown when no cycles have run */}
+        {isEmpty && (
+          <div style={{
+            marginTop: 16,
+            padding: "14px 20px",
+            border: `1px solid ${C.slateInk}15`,
+            borderLeft: `3px solid ${C.sky}`,
+            borderRadius: 2,
+            background: "white",
+          }}>
+            <p style={{ fontSize: 12, color: C.tealGrey, margin: 0, lineHeight: 1.7, fontFamily: "Hanken Grotesk, sans-serif" }}>
+              Total applications received and acceptance rate will populate after Q3 2026 closes.
+              Both figures are published within 45 days of each cycle closing —
+              see <a href="/transparency/acceptance" style={{ color: C.sky, textDecoration: "none" }}>Acceptance Rate</a> for
+              the full cycle-by-cycle breakdown including what the committee observed.
+            </p>
+          </div>
+        )}
 
         {/* ── Charts — only when data exists ── */}
         {!isEmpty && (
