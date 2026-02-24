@@ -173,3 +173,7 @@ const computeAreaBreakdown = (grants: Grant[]): AreaBreakdownEntry[] => {
     color: AREA_COLORS[name] || C.orchid,
   }));
 };
+
+export default function GrantRegistryClient() {
+  return <GrantRegistry />;
+}
