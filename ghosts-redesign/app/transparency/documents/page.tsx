@@ -492,7 +492,7 @@ export default function ReadingRoom() {
                   display: "flex", flexDirection: "column", gap: 6,
                 }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <span style={{ fontSize: 12, fontWeight: 600, color: C.mist, fontFamily: "Hanken Grotesk, sans-serif" }}>{item.label}</span>
+                    <span style={{ fontSize: 14, fontWeight: 700, color: C.mist, fontFamily: "Hanken Grotesk, sans-serif" }}>{item.label}</span>
                     <span style={{ fontSize: 10, color: item.darkColor, background: "white", padding: "2px 10px", borderRadius: 32, fontWeight: 700, fontFamily: "Hanken Grotesk, sans-serif", letterSpacing: "0.06em" }}>{item.status}</span>
                   </div>
                   <p style={{ fontSize: 11, color: C.orchid, margin: 0, lineHeight: 1.65, fontFamily: "Hanken Grotesk, sans-serif" }}>{item.detail}</p>
