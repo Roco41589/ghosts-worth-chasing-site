@@ -252,6 +252,40 @@ function TypeFilterPill({ label, active, count, onClick }: { label: string; acti
   );
 }
 
+function IconBubble({ label, Icon }: { label: string; Icon: LucideIcon }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <span
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{ position: "relative", display: "inline-flex" }}
+    >
+      <span style={{
+        display: "inline-flex", alignItems: "center", justifyContent: "center",
+        width: 28, height: 28, borderRadius: "50%",
+        background: "white", cursor: "default",
+        transition: "box-shadow 0.15s ease",
+        boxShadow: hovered ? `0 0 0 2px ${C.sky}` : "none",
+      }}>
+        <Icon size={14} color={C.navy} strokeWidth={2} />
+      </span>
+      {hovered && (
+        <span style={{
+          position: "absolute", bottom: "calc(100% + 6px)", left: "50%",
+          transform: "translateX(-50%)",
+          background: C.slateInk, color: C.mist,
+          fontSize: 10, letterSpacing: "0.1em", textTransform: "uppercase",
+          fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 600,
+          padding: "4px 8px", borderRadius: 6, whiteSpace: "nowrap",
+          pointerEvents: "none",
+        }}>
+          {label}
+        </span>
+      )}
+    </span>
+  );
+}
+
 function DocumentCard({ doc, index, mounted }: { doc: GWCDocument; index: number; mounted: boolean }) {
   const [hovered, setHovered] = useState(false);
   const primaryCfg = DOC_TYPES[doc.type[0]] || { color: C.orchid, darkColor: "#5A4E6E", Icon: Gavel };
@@ -289,13 +323,7 @@ function DocumentCard({ doc, index, mounted }: { doc: GWCDocument; index: number
           if (!cfg) return null;
           const { Icon } = cfg;
           return (
-            <span key={t} style={{
-              display: "inline-flex", alignItems: "center", justifyContent: "center",
-              width: 28, height: 28, borderRadius: "50%",
-              background: "white",
-            }}>
-              <Icon size={14} color={C.navy} strokeWidth={2} />
-            </span>
+            <IconBubble key={t} label={t} Icon={Icon} />
           );
         })}
       </div>
