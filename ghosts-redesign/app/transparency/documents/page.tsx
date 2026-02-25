@@ -77,7 +77,7 @@ const DOCUMENTS: GWCDocument[] = [
     "Application for recognition of exemption under Section 501(c)(3) of the Internal Revenue Code. Includes organizational narrative, program descriptions, governance disclosures, and financial projections.",
   year: "2025",
   filedDate: "NOV-14-2025",
-  postedDate: "FEB-26-2026",
+  postedDate: "FEB-24-2026",
   status: "Available",
   statusNote:
     "Filed Nov 14th, 2025. Public version available. Residential and personal contact information redacted for privacy.",
