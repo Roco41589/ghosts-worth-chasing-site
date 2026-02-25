@@ -113,8 +113,8 @@ const DOCUMENTS: GWCDocument[] = [
   description:
     "Board-adopted governance policy establishing disclosure, recusal, and documentation standards for conflicts of interest among directors and officers.",
   year: "2024",
-  filedDate: "September 2024",
-  postedDate: "October 2025",
+ filedDate: "OCT-01-2025",
+ postedDate: "FEB-24-2026",
   status: "Available",
   statusNote:
     "Board-adopted governance policy. Public version available.",
