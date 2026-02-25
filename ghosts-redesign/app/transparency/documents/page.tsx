@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Scroll, Receipt, CalendarCheck, Gavel } from "lucide-react";
+import { Scroll, Receipt, CalendarCheck, Gavel, type LucideIcon } from "lucide-react";
 
 // ── GWC Design Tokens ──────────────────────────────────────────────
 const C = {
@@ -189,8 +189,7 @@ const DOCUMENTS: GWCDocument[] = [
 ];
 
 // ── Config ─────────────────────────────────────────────────────────
-// Icons are now Lucide React components — rendered inline in components below
-const DOC_TYPES: Record<string, { color: string; darkColor: string; Icon: React.ComponentType<{ size?: number; color?: string; strokeWidth?: number }> }> = {
+const DOC_TYPES: Record<string, { color: string; darkColor: string; Icon: LucideIcon }> = {
   "Formation":     { color: C.sky,      darkColor: "#1A6E8A", Icon: Scroll },
   "Tax Exemption": { color: C.tealGrey, darkColor: "#2E5F65", Icon: Receipt },
   "Annual Filing": { color: C.neonMint, darkColor: "#0D7A54", Icon: CalendarCheck },
