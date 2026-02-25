@@ -276,32 +276,32 @@ function DocumentCard({ doc, index, mounted }: { doc: GWCDocument; index: number
       <div style={{
         background: "white", borderRadius: 10, padding: "12px 16px", marginBottom: 18, textAlign: "center",
       }}>
-        <h3 style={{ fontSize: 15, fontWeight: 700, color: C.slateInk, fontFamily: "Hanken Grotesk, sans-serif", margin: 0, lineHeight: 1.3 }}>{doc.title}</h3>
+        <h3 style={{ fontSize: 17, fontWeight: 700, color: C.slateInk, fontFamily: "Hanken Grotesk, sans-serif", margin: 0, lineHeight: 1.3 }}>{doc.title}</h3>
         {doc.subtitle && <p style={{ fontSize: 12, color: C.tealGrey, margin: "4px 0 0", fontFamily: "Hanken Grotesk, sans-serif" }}>{doc.subtitle}</p>}
       </div>
 
       <p style={{ fontSize: 13, color: C.orchid, lineHeight: 1.75, fontFamily: "Hanken Grotesk, sans-serif", margin: "0 0 16px", flexGrow: 1 }}>{doc.description}</p>
 
+      {/* Icon bubbles — above the footer line */}
+      <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 12 }}>
+        {doc.type.map((t) => {
+          const cfg = DOC_TYPES[t];
+          if (!cfg) return null;
+          const { Icon } = cfg;
+          return (
+            <span key={t} style={{
+              display: "inline-flex", alignItems: "center", justifyContent: "center",
+              width: 28, height: 28, borderRadius: "50%",
+              background: "white",
+            }}>
+              <Icon size={14} color={C.navy} strokeWidth={2} />
+            </span>
+          );
+        })}
+      </div>
+
       <div style={{ borderTop: "1px solid rgba(163,201,226,0.12)", paddingTop: 16, marginTop: "auto" }}>
         <p style={{ fontSize: 10, color: C.tealGrey, fontFamily: "Hanken Grotesk, sans-serif", margin: "0 0 12px", lineHeight: 1.6, fontStyle: "italic" }}>{doc.statusNote}</p>
-
-        {/* Icon bubbles row */}
-        <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 12 }}>
-          {doc.type.map((t) => {
-            const cfg = DOC_TYPES[t];
-            if (!cfg) return null;
-            const { Icon } = cfg;
-            return (
-              <span key={t} style={{
-                display: "inline-flex", alignItems: "center", justifyContent: "center",
-                width: 28, height: 28, borderRadius: "50%",
-                background: "white",
-              }}>
-                <Icon size={14} color={C.navy} strokeWidth={2} />
-              </span>
-            );
-          })}
-        </div>
 
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <div style={{ display: "flex", gap: 16 }}>
