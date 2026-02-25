@@ -255,7 +255,6 @@ function TypeFilterPill({ label, active, count, onClick }: { label: string; acti
 function DocumentCard({ doc, index, mounted }: { doc: GWCDocument; index: number; mounted: boolean }) {
   const [hovered, setHovered] = useState(false);
   const primaryCfg = DOC_TYPES[doc.type[0]] || { color: C.orchid, darkColor: "#5A4E6E", Icon: Gavel };
-  const statusCfg  = STATUS_CONFIG[doc.status] || { color: C.tealGrey, darkColor: "#2E5F65", dot: "○", label: doc.status };
   const isAvailable = doc.status === "Available";
 
   return (
@@ -264,7 +263,7 @@ function DocumentCard({ doc, index, mounted }: { doc: GWCDocument; index: number
       onMouseLeave={() => setHovered(false)}
       style={{
         border:       `1px solid ${hovered ? primaryCfg.color + "50" : "rgba(163,201,226,0.12)"}`,
-        borderTop:    `2px solid ${isAvailable ? primaryCfg.color : primaryCfg.color + "50"}`,
+        borderTop:    `2px solid ${primaryCfg.color}`,
         borderRadius: 16, padding: "20px",
         background:   hovered ? "#0F2444" : C.navy,
         transition:   "all 0.2s ease",
@@ -273,38 +272,36 @@ function DocumentCard({ doc, index, mounted }: { doc: GWCDocument; index: number
         transitionDelay: `${index * 0.04}s`, display: "flex", flexDirection: "column",
       }}
     >
-      {/* Card header — multiple type icons supported */}
+      {/* Top white container — title only */}
       <div style={{
-        display: "flex", justifyContent: "space-between", alignItems: "center",
-        background: "white", borderRadius: 10, padding: "10px 14px", marginBottom: 18,
+        background: "white", borderRadius: 10, padding: "12px 16px", marginBottom: 18, textAlign: "center",
       }}>
-        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-          {/* Render one icon per type */}
+        <h3 style={{ fontSize: 15, fontWeight: 700, color: C.slateInk, fontFamily: "Hanken Grotesk, sans-serif", margin: 0, lineHeight: 1.3 }}>{doc.title}</h3>
+        {doc.subtitle && <p style={{ fontSize: 12, color: C.tealGrey, margin: "4px 0 0", fontFamily: "Hanken Grotesk, sans-serif" }}>{doc.subtitle}</p>}
+      </div>
+
+      <p style={{ fontSize: 13, color: C.orchid, lineHeight: 1.75, fontFamily: "Hanken Grotesk, sans-serif", margin: "0 0 16px", flexGrow: 1 }}>{doc.description}</p>
+
+      <div style={{ borderTop: "1px solid rgba(163,201,226,0.12)", paddingTop: 16, marginTop: "auto" }}>
+        <p style={{ fontSize: 10, color: C.tealGrey, fontFamily: "Hanken Grotesk, sans-serif", margin: "0 0 12px", lineHeight: 1.6, fontStyle: "italic" }}>{doc.statusNote}</p>
+
+        {/* Icons + DOC-ID row */}
+        <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 12 }}>
           {doc.type.map((t, i) => {
             const cfg = DOC_TYPES[t];
             if (!cfg) return null;
             const { Icon } = cfg;
             return (
-              <span key={t} style={{ display: "flex", alignItems: "center", gap: i === 0 ? 0 : 4 }}>
-                {i > 0 && <span style={{ fontSize: 10, color: C.slateInk, opacity: 0.3, marginRight: 2 }}>+</span>}
-                <Icon size={14} color={cfg.darkColor} strokeWidth={2} />
+              <span key={t} style={{ display: "flex", alignItems: "center", gap: 4 }}>
+                {i > 0 && <span style={{ fontSize: 10, color: C.tealGrey, opacity: 0.5 }}>+</span>}
+                <Icon size={13} color={cfg.color} strokeWidth={1.75} />
               </span>
             );
           })}
-          <span style={{ fontSize: 11, color: C.slateInk, fontFamily: "Hanken Grotesk, sans-serif", opacity: 0.5 }}>·</span>
-          <span style={{ fontSize: 11, color: C.slateInk, fontFamily: "Hanken Grotesk, sans-serif" }}>{doc.id}</span>
+          <span style={{ fontSize: 10, color: C.tealGrey, opacity: 0.4 }}>·</span>
+          <span style={{ fontSize: 11, color: C.tealGrey, fontFamily: "Hanken Grotesk, sans-serif", letterSpacing: "0.06em" }}>{doc.id}</span>
         </div>
-        <span style={{ fontSize: 12, color: statusCfg.darkColor, fontFamily: "Hanken Grotesk, sans-serif", display: "flex", alignItems: "center", gap: 5, fontWeight: 600 }}>
-          <span>{statusCfg.dot}</span>{statusCfg.label}
-        </span>
-      </div>
 
-      <h3 style={{ fontSize: 17, fontWeight: 600, color: C.mist, fontFamily: "Hanken Grotesk, sans-serif", margin: "0 0 4px", lineHeight: 1.3, textAlign: "center" }}>{doc.title}</h3>
-      {doc.subtitle && <p style={{ fontSize: 13, color: C.tealGrey, margin: "0 0 12px", fontFamily: "Hanken Grotesk, sans-serif" }}>{doc.subtitle}</p>}
-      <p style={{ fontSize: 13, color: C.orchid, lineHeight: 1.75, fontFamily: "Hanken Grotesk, sans-serif", margin: "0 0 16px", flexGrow: 1 }}>{doc.description}</p>
-
-      <div style={{ borderTop: "1px solid rgba(163,201,226,0.12)", paddingTop: 16, marginTop: "auto" }}>
-        <p style={{ fontSize: 10, color: C.tealGrey, fontFamily: "Hanken Grotesk, sans-serif", margin: "0 0 12px", lineHeight: 1.6, fontStyle: "italic" }}>{doc.statusNote}</p>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <div style={{ display: "flex", gap: 16 }}>
             {doc.filedDate && (
