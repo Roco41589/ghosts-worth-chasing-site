@@ -285,21 +285,22 @@ function DocumentCard({ doc, index, mounted }: { doc: GWCDocument; index: number
       <div style={{ borderTop: "1px solid rgba(163,201,226,0.12)", paddingTop: 16, marginTop: "auto" }}>
         <p style={{ fontSize: 10, color: C.tealGrey, fontFamily: "Hanken Grotesk, sans-serif", margin: "0 0 12px", lineHeight: 1.6, fontStyle: "italic" }}>{doc.statusNote}</p>
 
-        {/* Icons + DOC-ID row */}
+        {/* Icon bubbles row */}
         <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 12 }}>
-          {doc.type.map((t, i) => {
+          {doc.type.map((t) => {
             const cfg = DOC_TYPES[t];
             if (!cfg) return null;
             const { Icon } = cfg;
             return (
-              <span key={t} style={{ display: "flex", alignItems: "center", gap: 4 }}>
-                {i > 0 && <span style={{ fontSize: 10, color: C.tealGrey, opacity: 0.5 }}>+</span>}
-                <Icon size={13} color={cfg.color} strokeWidth={1.75} />
+              <span key={t} style={{
+                display: "inline-flex", alignItems: "center", justifyContent: "center",
+                width: 28, height: 28, borderRadius: "50%",
+                background: "white",
+              }}>
+                <Icon size={14} color={C.navy} strokeWidth={2} />
               </span>
             );
           })}
-          <span style={{ fontSize: 10, color: C.tealGrey, opacity: 0.4 }}>·</span>
-          <span style={{ fontSize: 11, color: C.tealGrey, fontFamily: "Hanken Grotesk, sans-serif", letterSpacing: "0.06em" }}>{doc.id}</span>
         </div>
 
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
