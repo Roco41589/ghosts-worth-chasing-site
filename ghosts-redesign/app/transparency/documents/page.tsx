@@ -273,7 +273,7 @@ function IconBubble({ label, Icon }: { label: string; Icon: LucideIcon }) {
         <span style={{
           position: "absolute", bottom: "calc(100% + 6px)", left: "50%",
           transform: "translateX(-50%)",
-          background: C.slateInk, color: C.mist,
+          background: "white", color: C.navy,
           fontSize: 10, letterSpacing: "0.1em", textTransform: "uppercase",
           fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 600,
           padding: "4px 8px", borderRadius: 6, whiteSpace: "nowrap",
