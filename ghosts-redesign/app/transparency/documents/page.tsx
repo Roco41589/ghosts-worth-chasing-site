@@ -39,13 +39,6 @@ type GuideSection = {
   whyMatters:  string;
 };
 
-type TimelineEvent = {
-  date:  string;
-  label: string;
-  done:  boolean;
-  type:  string;
-};
-
 type ThirdPartySource = {
   name:  string;
   url:   string;
@@ -69,22 +62,22 @@ const DOCUMENTS: GWCDocument[] = [
     fileUrl: "/documents/articles-of-incorporation.pdf",
     fileSize: null,
   },
- {
-  id: "DOC-002",
-  title: "IRS Form 1023",
-  type: "Tax Exemption",
-  description:
-    "Application for recognition of exemption under Section 501(c)(3) of the Internal Revenue Code. Includes organizational narrative, program descriptions, governance disclosures, and financial projections.",
-  year: "2025",
-  filedDate: "NOV-14-2025",
-  postedDate: "FEB-24-2026",
-  status: "Available",
-  statusNote:
-    "Filed Nov 14th, 2025. Public version available. Residential and personal contact information redacted for privacy.",
-  mandatory: true,
-  fileUrl: "/documents/form-1023-public-version.pdf",
-  fileSize: null,
-},
+  {
+    id: "DOC-002",
+    title: "IRS Form 1023",
+    type: "Tax Exemption",
+    description:
+      "Application for recognition of exemption under Section 501(c)(3) of the Internal Revenue Code. Includes organizational narrative, program descriptions, governance disclosures, and financial projections.",
+    year: "2025",
+    filedDate: "NOV-14-2025",
+    postedDate: "FEB-24-2026",
+    status: "Available",
+    statusNote:
+      "Filed Nov 14th, 2025. Public version available. Residential and personal contact information redacted for privacy.",
+    mandatory: true,
+    fileUrl: "/documents/form-1023-public-version.pdf",
+    fileSize: null,
+  },
   {
     id: "DOC-003", title: "IRS Determination Letter", type: "Tax Exemption",
     description: "Official IRS letter confirming 501(c)(3) status. This document is the legal basis for the foundation's tax-exempt operations and donors' ability to deduct contributions.",
@@ -106,22 +99,21 @@ const DOCUMENTS: GWCDocument[] = [
     status: "Not Yet Due", statusNote: "Due May or November 2026.",
     mandatory: true, fileUrl: null, fileSize: null,
   },
- {
-  id: "DOC-006",
-  title: "Conflict of Interest Policy",
-  type: "Governance",
-  description:
-    "Board-adopted governance policy establishing disclosure, recusal, and documentation standards for conflicts of interest among directors and officers.",
-  year: "2024",
- filedDate: "OCT-01-2025",
- postedDate: "FEB-24-2026",
-  status: "Available",
-  statusNote:
-    "Board-adopted governance policy. Public version available.",
-  mandatory: false,
-  fileUrl: "/documents/conflict-of-interest-policy.pdf",
-  fileSize: null,
-},
+  {
+    id: "DOC-006",
+    title: "Conflict of Interest Policy",
+    type: "Governance",
+    description:
+      "Board-adopted governance policy establishing disclosure, recusal, and documentation standards for conflicts of interest among directors and officers.",
+    year: "2024",
+    filedDate: "OCT-01-2025",
+    postedDate: "FEB-24-2026",
+    status: "Available",
+    statusNote: "Board-adopted governance policy. Public version available.",
+    mandatory: false,
+    fileUrl: "/documents/conflict-of-interest-policy.pdf",
+    fileSize: null,
+  },
   {
     id: "DOC-007", title: "Whistleblower Policy", type: "Governance",
     description: "Policy protecting individuals who report concerns about illegal activity, misuse of funds, or other improper conduct by the foundation or its leadership.",
@@ -136,72 +128,66 @@ const DOCUMENTS: GWCDocument[] = [
     status: "Pending", statusNote: "Will be posted upon 501(c)(3) determination",
     mandatory: false, fileUrl: null, fileSize: null,
   },
-{
-  id: "DOC-009",
-  title: "Endowment & Investment Policy",
-  type: "Governance",
-  description:
-    "Board-adopted policy establishing standards for the stewardship, investment oversight, and long-term management of endowment-designated assets.",
-  year: "2025",
-  filedDate: "OCT-01-2025",
-  postedDate: "FEB-24-2026",
-  status: "Available",
-  statusNote:
-    "Board-adopted governance policy. Public version available.",
-  mandatory: false,
-  fileUrl: "/documents/endowment-investment-policy.pdf",
-  fileSize: null,
-},
-{
-  id: "DOC-010",
-  title: "Gift Acceptance Policy",
-  type: "Governance",
-  description: "Board-adopted policy establishing standards for the review, acceptance, and stewardship of charitable contributions to Ghosts Worth Chasing.",
-  year: "2025",
-  filedDate: "OCT-01-2025",
-  postedDate: "FEB-24-2026",
-  status: "Available",
-  statusNote: "Adopted by the Board of Directors. Public version available.",
-  mandatory: false,
-  fileUrl: "/documents/gift-acceptance-policy.pdf",
-  fileSize: null,
-},
   {
-  id: "DOC-011", title: "Whistleblower Policy", type: "Governance",
-  description: "Policy establishing procedures for reporting suspected illegal, unethical, or improper conduct and protections against retaliation.",
-  year: "2024", filedDate: "September 2024", postedDate: null,
-  status: "Pending", statusNote: "Will be posted upon 501(c)(3) determination",
-  mandatory: false, fileUrl: null, fileSize: null,
-},
-{
-  id: "DOC-012", title: "Grantmaking Policy", type: "Governance",
-  description: "Policy outlining eligibility criteria, review procedures, conflict safeguards, and documentation standards for the foundation’s grantmaking activities.",
-  year: "2024", filedDate: "September 2024", postedDate: null,
-  status: "Pending", statusNote: "Will be posted upon 501(c)(3) determination",
-  mandatory: false, fileUrl: null, fileSize: null,
-},
-{
-  id: "DOC-013", title: "Investment Policy Statement", type: "Governance",
-  description: "Policy governing the management, allocation, and oversight of foundation assets, including endowment investment objectives and risk parameters.",
-  year: "2024", filedDate: "September 2024", postedDate: null,
-  status: "Pending", statusNote: "Will be posted upon 501(c)(3) determination",
-  mandatory: false, fileUrl: null, fileSize: null,
-},
-{
-  id: "DOC-014", title: "Financial Controls & Procedures Policy", type: "Governance",
-  description: "Policy establishing internal financial controls, approval authority, segregation of duties, and reporting standards for foundation operations.",
-  year: "2024", filedDate: "September 2024", postedDate: null,
-  status: "Pending", statusNote: "Will be posted upon 501(c)(3) determination",
-  mandatory: false, fileUrl: null, fileSize: null,
-},
-
-
-  
+    id: "DOC-009",
+    title: "Endowment & Investment Policy",
+    type: "Governance",
+    description:
+      "Board-adopted policy establishing standards for the stewardship, investment oversight, and long-term management of endowment-designated assets.",
+    year: "2025",
+    filedDate: "OCT-01-2025",
+    postedDate: "FEB-24-2026",
+    status: "Available",
+    statusNote: "Board-adopted governance policy. Public version available.",
+    mandatory: false,
+    fileUrl: "/documents/endowment-investment-policy.pdf",
+    fileSize: null,
+  },
+  {
+    id: "DOC-010",
+    title: "Gift Acceptance Policy",
+    type: "Governance",
+    description: "Board-adopted policy establishing standards for the review, acceptance, and stewardship of charitable contributions to Ghosts Worth Chasing.",
+    year: "2025",
+    filedDate: "OCT-01-2025",
+    postedDate: "FEB-24-2026",
+    status: "Available",
+    statusNote: "Adopted by the Board of Directors. Public version available.",
+    mandatory: false,
+    fileUrl: "/documents/gift-acceptance-policy.pdf",
+    fileSize: null,
+  },
+  {
+    id: "DOC-011", title: "Whistleblower Policy", type: "Governance",
+    description: "Policy establishing procedures for reporting suspected illegal, unethical, or improper conduct and protections against retaliation.",
+    year: "2024", filedDate: "September 2024", postedDate: null,
+    status: "Pending", statusNote: "Will be posted upon 501(c)(3) determination",
+    mandatory: false, fileUrl: null, fileSize: null,
+  },
+  {
+    id: "DOC-012", title: "Grantmaking Policy", type: "Governance",
+    description: "Policy outlining eligibility criteria, review procedures, conflict safeguards, and documentation standards for the foundation's grantmaking activities.",
+    year: "2024", filedDate: "September 2024", postedDate: null,
+    status: "Pending", statusNote: "Will be posted upon 501(c)(3) determination",
+    mandatory: false, fileUrl: null, fileSize: null,
+  },
+  {
+    id: "DOC-013", title: "Investment Policy Statement", type: "Governance",
+    description: "Policy governing the management, allocation, and oversight of foundation assets, including endowment investment objectives and risk parameters.",
+    year: "2024", filedDate: "September 2024", postedDate: null,
+    status: "Pending", statusNote: "Will be posted upon 501(c)(3) determination",
+    mandatory: false, fileUrl: null, fileSize: null,
+  },
+  {
+    id: "DOC-014", title: "Financial Controls & Procedures Policy", type: "Governance",
+    description: "Policy establishing internal financial controls, approval authority, segregation of duties, and reporting standards for foundation operations.",
+    year: "2024", filedDate: "September 2024", postedDate: null,
+    status: "Pending", statusNote: "Will be posted upon 501(c)(3) determination",
+    mandatory: false, fileUrl: null, fileSize: null,
+  },
 ];
 
 // ── Config ─────────────────────────────────────────────────────────
-// color = light version (for use on navy backgrounds)
-// darkColor = dark version (for use inside white sub-containers)
 const DOC_TYPES: Record<string, { color: string; darkColor: string; icon: string }> = {
   "Formation":     { color: C.sky,      darkColor: "#1A6E8A", icon: "◈" },
   "Tax Exemption": { color: C.tealGrey, darkColor: "#2E5F65", icon: "◉" },
@@ -232,18 +218,8 @@ const THIRD_PARTY_SOURCES: ThirdPartySource[] = [
   { name: "IRS Tax Exempt Organization Search", url: "https://apps.irs.gov/app/eos",               desc: "Official IRS tool confirming our tax-exempt status and filing history.", delay: "Near real-time after determination" },
 ];
 
-const TIMELINE_EVENTS: TimelineEvent[] = [
-  { date: "Sep 2024",     label: "Foundation incorporated",                           done: true,  type: "Formation" },
-  { date: "Sep 2024",     label: "Form 1023 filed with IRS",                          done: true,  type: "Tax Exemption" },
-  { date: "2025–2026",    label: "IRS 501(c)(3) determination expected",              done: false, type: "Tax Exemption" },
-  { date: "May/Nov 2025", label: "First 990-PF due (Tax Year 2024)",                  done: false, type: "Annual Filing" },
-  { date: "Q3 2026",      label: "Governance documents published post-determination", done: false, type: "Governance" },
-  { date: "May/Nov 2026", label: "Second 990-PF due (Tax Year 2025)",                 done: false, type: "Annual Filing" },
-];
-
 // ── Sub-components ─────────────────────────────────────────────────
 
-// CHANGE 1: Centered, darker section rule
 function SectionRule({ label }: { label: string }) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 16, margin: "52px 0 24px" }}>
@@ -294,19 +270,16 @@ function DocumentCard({ doc, index, mounted }: { doc: GWCDocument; index: number
         transitionDelay: `${index * 0.04}s`, display: "flex", flexDirection: "column",
       }}
     >
-      {/* CHANGE 3: White sub-container for type + status */}
       <div style={{
         display: "flex", justifyContent: "space-between", alignItems: "center",
         background: "white", borderRadius: 10, padding: "10px 14px", marginBottom: 18,
       }}>
-        {/* Type — left side */}
         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
           <span style={{ fontSize: 16, color: typeCfg.darkColor }}>{typeCfg.icon}</span>
           <span style={{ fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase", color: typeCfg.darkColor, fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 700 }}>{doc.type}</span>
           <span style={{ fontSize: 11, color: C.slateInk, fontFamily: "Hanken Grotesk, sans-serif", opacity: 0.5 }}>·</span>
           <span style={{ fontSize: 11, color: C.slateInk, fontFamily: "Hanken Grotesk, sans-serif" }}>{doc.id} · {doc.year}</span>
         </div>
-        {/* Status — right side */}
         <span style={{ fontSize: 12, color: statusCfg.darkColor, fontFamily: "Hanken Grotesk, sans-serif", display: "flex", alignItems: "center", gap: 5, fontWeight: 600 }}>
           <span>{statusCfg.dot}</span>{statusCfg.label}
         </span>
@@ -333,7 +306,6 @@ function DocumentCard({ doc, index, mounted }: { doc: GWCDocument; index: number
               </div>
             )}
           </div>
-          {/* CHANGE 2: "Download" — no arrow */}
           {isAvailable && doc.fileUrl ? (
             <a href={doc.fileUrl} download style={{ display: "flex", alignItems: "center", gap: 6, padding: "10px 20px", background: C.sky, color: C.navy, fontSize: 13, fontFamily: "Hanken Grotesk, sans-serif", textDecoration: "none", borderRadius: 16, letterSpacing: "0.06em", fontWeight: 600 }}>
               Download {doc.fileSize && <span style={{ fontSize: 10 }}>({doc.fileSize})</span>}
@@ -343,28 +315,6 @@ function DocumentCard({ doc, index, mounted }: { doc: GWCDocument; index: number
           )}
         </div>
       </div>
-    </div>
-  );
-}
-
-function FilingTimeline() {
-  return (
-    <div style={{ position: "relative" }}>
-      <div style={{ position: "absolute", left: 11, top: 8, bottom: 8, width: 1, background: `linear-gradient(180deg, ${C.sky}, rgba(163,201,226,0.1))` }} />
-      {TIMELINE_EVENTS.map((event, i) => {
-        const cfg = DOC_TYPES[event.type] || { color: C.orchid, darkColor: "#5A4E6E" };
-        return (
-          <div key={i} style={{ display: "flex", gap: 20, marginBottom: i < TIMELINE_EVENTS.length - 1 ? 20 : 0, position: "relative" }}>
-            <div style={{ width: 22, height: 22, borderRadius: 16, border: `1.5px solid ${event.done ? cfg.color : C.slateInk + "40"}`, background: event.done ? C.navy : `${C.slateInk}12`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, zIndex: 1, transform: "rotate(45deg)", marginTop: 2 }}>
-              {event.done && <span style={{ fontSize: 8, color: cfg.color, transform: "rotate(-45deg)" }}>✓</span>}
-            </div>
-            <div style={{ paddingBottom: 4 }}>
-              <p style={{ fontSize: 10, color: event.done ? cfg.color : C.slateInk, margin: "0 0 3px", letterSpacing: "0.08em", fontFamily: "Hanken Grotesk, sans-serif" }}>{event.date}</p>
-              <p style={{ fontSize: 12, color: C.slateInk, fontWeight: event.done ? 500 : 400, margin: 0, fontFamily: "Hanken Grotesk, sans-serif", lineHeight: 1.4 }}>{event.label}</p>
-            </div>
-          </div>
-        );
-      })}
     </div>
   );
 }
@@ -479,12 +429,77 @@ export default function ReadingRoom() {
           Showing {filtered.length} of {DOCUMENTS.length} tracked documents
         </p>
 
-        {/* ── Two column: Timeline + Guide ── */}
+        {/* ── Two column: Verification + Guide ── */}
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40, marginTop: 56 }}>
           <div>
-            <SectionRule label="Filing Timeline" />
-            <p style={{ fontSize: 12, color: C.slateInk, lineHeight: 1.75, marginBottom: 28 }}>Key milestones in the foundation's public filing history and upcoming obligations.</p>
-            <FilingTimeline />
+            <SectionRule label="Independent Verification" />
+            <p style={{ fontSize: 12, color: C.slateInk, lineHeight: 1.75, marginBottom: 24 }}>
+              Every claim about this foundation can be verified through an independent third party.
+              We list these sources so you never have to take our word for it.
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              {[
+                {
+                  label:    "IRS Tax-Exempt Status",
+                  status:   "Confirmed",
+                  detail:   "501(c)(3) private foundation. Listed on IRS Publication 78 — contributions are tax-deductible.",
+                  url:      "https://apps.irs.gov/app/eos",
+                  urlLabel: "Verify on IRS.gov",
+                  color:    C.neonMint,
+                  darkColor:"#0D7A54",
+                },
+                {
+                  label:    "Employer Identification Number",
+                  status:   "Active",
+                  detail:   "EIN 39-4369238. Issued by the IRS and tied to all public filings.",
+                  url:      "https://apps.irs.gov/app/eos",
+                  urlLabel: "Search IRS TEOS",
+                  color:    C.sky,
+                  darkColor:"#1A6E8A",
+                },
+                {
+                  label:    "Publication 78 Listing",
+                  status:   "Listed",
+                  detail:   "Ghosts Worth Chasing appears on the IRS cumulative list of organizations eligible to receive tax-deductible contributions.",
+                  url:      "https://apps.irs.gov/app/eos",
+                  urlLabel: "Confirm listing",
+                  color:    C.sky,
+                  darkColor:"#1A6E8A",
+                },
+                {
+                  label:    "Candid / GuideStar Profile",
+                  status:   "Pending",
+                  detail:   "Profile claim in progress. Will display Candid Seal level upon completion.",
+                  url:      "https://candid.org",
+                  urlLabel: "Search Candid",
+                  color:    C.orchid,
+                  darkColor:"#5A4E6E",
+                },
+                {
+                  label:    "ProPublica Nonprofit Explorer",
+                  status:   "Pending",
+                  detail:   "Will appear after first 990-PF is filed and processed. Typically 12–18 months after filing.",
+                  url:      "https://projects.propublica.org/nonprofits",
+                  urlLabel: "Search Explorer",
+                  color:    C.orchid,
+                  darkColor:"#5A4E6E",
+                },
+              ].map((item, i) => (
+                <div key={i} style={{
+                  background: C.navy, borderRadius: 16, padding: "16px 20px",
+                  border: `1px solid rgba(163,201,226,0.12)`,
+                  borderLeft: `3px solid ${item.color}`,
+                  display: "flex", flexDirection: "column", gap: 6,
+                }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <span style={{ fontSize: 12, fontWeight: 600, color: C.mist, fontFamily: "Hanken Grotesk, sans-serif" }}>{item.label}</span>
+                    <span style={{ fontSize: 10, color: item.darkColor, background: "white", padding: "2px 10px", borderRadius: 32, fontWeight: 700, fontFamily: "Hanken Grotesk, sans-serif", letterSpacing: "0.06em" }}>{item.status}</span>
+                  </div>
+                  <p style={{ fontSize: 11, color: C.orchid, margin: 0, lineHeight: 1.65, fontFamily: "Hanken Grotesk, sans-serif" }}>{item.detail}</p>
+                  <a href={item.url} target="_blank" rel="noopener noreferrer" style={{ fontSize: 11, color: item.color, fontFamily: "Hanken Grotesk, sans-serif", textDecoration: "none" }}>{item.urlLabel} ↗</a>
+                </div>
+              ))}
+            </div>
           </div>
           <div>
             <SectionRule label="How to Read a 990-PF" />
