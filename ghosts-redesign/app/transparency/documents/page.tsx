@@ -136,13 +136,22 @@ const DOCUMENTS: GWCDocument[] = [
     status: "Pending", statusNote: "Will be posted upon 501(c)(3) determination",
     mandatory: false, fileUrl: null, fileSize: null,
   },
-  {
-    id: "DOC-009", title: "Investment Policy Statement", type: "Financial",
-    description: "The foundation's policy governing the investment of endowment assets, including target allocation, risk tolerance, spending policy, and manager selection criteria.",
-    year: "2026", filedDate: null, postedDate: null,
-    status: "Not Yet Due", statusNote: "To be established post-501(c)(3) determination",
-    mandatory: false, fileUrl: null, fileSize: null,
-  },
+{
+  id: "DOC-009",
+  title: "Endowment & Investment Policy",
+  type: "Governance",
+  description:
+    "Board-adopted policy establishing standards for the stewardship, investment oversight, and long-term management of endowment-designated assets.",
+  year: "2025",
+  filedDate: "OCT-01-2025",
+  postedDate: "FEB-24-2026",
+  status: "Available",
+  statusNote:
+    "Board-adopted governance policy. Public version available.",
+  mandatory: false,
+  fileUrl: "/documents/endowment-investment-policy.pdf",
+  fileSize: null,
+},
 {
   id: "DOC-010",
   title: "Gift Acceptance Policy",
