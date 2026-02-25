@@ -64,7 +64,7 @@ const DOCUMENTS: GWCDocument[] = [
     filedDate: "OCT-01-2025",
     postedDate: "FEB-24-2026",
     status: "Available",
-    statusNote: "Filed October 1st, 2025. Public version available. Residential information redacted for privacy.",
+    statusNote: "Filed Oct 1st, 2025. Public version available. Residential information redacted for privacy.",
     mandatory: true,
     fileUrl: "/documents/articles-of-incorporation.pdf",
     fileSize: null,
@@ -80,7 +80,7 @@ const DOCUMENTS: GWCDocument[] = [
   postedDate: "FEB-26-2026",
   status: "Available",
   statusNote:
-    "Filed November 14th, 2025. Public version available. Residential and personal contact information redacted for privacy.",
+    "Filed Nov 14th, 2025. Public version available. Residential and personal contact information redacted for privacy.",
   mandatory: true,
   fileUrl: "/documents/form-1023-public-version.pdf",
   fileSize: null,
