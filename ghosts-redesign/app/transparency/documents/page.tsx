@@ -143,6 +143,51 @@ const DOCUMENTS: GWCDocument[] = [
     status: "Not Yet Due", statusNote: "To be established post-501(c)(3) determination",
     mandatory: false, fileUrl: null, fileSize: null,
   },
+{
+  id: "DOC-010",
+  title: "Gift Acceptance Policy",
+  type: "Governance",
+  description: "Board-adopted policy establishing standards for the review, acceptance, and stewardship of charitable contributions to Ghosts Worth Chasing.",
+  year: "2025",
+  filedDate: "OCT-01-2025",
+  postedDate: "FEB-24-2026",
+  status: "Available",
+  statusNote: "Adopted by the Board of Directors. Public version available.",
+  mandatory: false,
+  fileUrl: "/documents/gift-acceptance-policy.pdf",
+  fileSize: null,
+},
+  {
+  id: "DOC-011", title: "Whistleblower Policy", type: "Governance",
+  description: "Policy establishing procedures for reporting suspected illegal, unethical, or improper conduct and protections against retaliation.",
+  year: "2024", filedDate: "September 2024", postedDate: null,
+  status: "Pending", statusNote: "Will be posted upon 501(c)(3) determination",
+  mandatory: false, fileUrl: null, fileSize: null,
+},
+{
+  id: "DOC-012", title: "Grantmaking Policy", type: "Governance",
+  description: "Policy outlining eligibility criteria, review procedures, conflict safeguards, and documentation standards for the foundation’s grantmaking activities.",
+  year: "2024", filedDate: "September 2024", postedDate: null,
+  status: "Pending", statusNote: "Will be posted upon 501(c)(3) determination",
+  mandatory: false, fileUrl: null, fileSize: null,
+},
+{
+  id: "DOC-013", title: "Investment Policy Statement", type: "Governance",
+  description: "Policy governing the management, allocation, and oversight of foundation assets, including endowment investment objectives and risk parameters.",
+  year: "2024", filedDate: "September 2024", postedDate: null,
+  status: "Pending", statusNote: "Will be posted upon 501(c)(3) determination",
+  mandatory: false, fileUrl: null, fileSize: null,
+},
+{
+  id: "DOC-014", title: "Financial Controls & Procedures Policy", type: "Governance",
+  description: "Policy establishing internal financial controls, approval authority, segregation of duties, and reporting standards for foundation operations.",
+  year: "2024", filedDate: "September 2024", postedDate: null,
+  status: "Pending", statusNote: "Will be posted upon 501(c)(3) determination",
+  mandatory: false, fileUrl: null, fileSize: null,
+},
+
+
+  
 ];
 
 // ── Config ─────────────────────────────────────────────────────────
