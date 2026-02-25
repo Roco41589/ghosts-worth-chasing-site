@@ -21,7 +21,7 @@ type GWCDocument = {
   id:          string;
   title:       string;
   subtitle?:   string;
-  type:        string;
+  type:        string[];
   description: string;
   year:        string;
   filedDate:   string | null;
@@ -52,7 +52,7 @@ const DOCUMENTS: GWCDocument[] = [
   {
     id: "DOC-001",
     title: "Articles of Incorporation",
-    type: "Formation",
+    type: ["Formation"],
     description: "The founding legal document establishing Ghosts Worth Chasing as a Pennsylvania nonprofit corporation.",
     year: "2025",
     filedDate: "OCT-01-2025",
@@ -66,7 +66,7 @@ const DOCUMENTS: GWCDocument[] = [
   {
     id: "DOC-002",
     title: "IRS Form 1023",
-    type: "Tax Exemption",
+    type: ["Formation", "Tax Exemption"],
     description:
       "Application for recognition of exemption under Section 501(c)(3) of the Internal Revenue Code. Includes organizational narrative, program descriptions, governance disclosures, and financial projections.",
     year: "2025",
@@ -80,21 +80,21 @@ const DOCUMENTS: GWCDocument[] = [
     fileSize: null,
   },
   {
-    id: "DOC-003", title: "IRS Determination Letter", type: "Tax Exemption",
+    id: "DOC-003", title: "IRS Determination Letter", type: ["Formation", "Tax Exemption"],
     description: "Official IRS letter confirming 501(c)(3) status. This document is the legal basis for the foundation's tax-exempt operations and donors' ability to deduct contributions.",
     year: "2025 or 2026", filedDate: null, postedDate: null,
     status: "Pending", statusNote: "Awaiting IRS determination — typically 6–18 months from filing",
     mandatory: true, fileUrl: null, fileSize: null,
   },
   {
-    id: "DOC-004", title: "Form 990-PF (Private Foundation Return)", subtitle: "Tax Year 2024", type: "Annual Filing",
+    id: "DOC-004", title: "Form 990-PF (Private Foundation Return)", subtitle: "Tax Year 2024", type: ["Annual Filing"],
     description: "The annual information return required of all private foundations. Discloses assets, grants made, operating expenses, compensation, and investment activity.",
     year: "2024", filedDate: null, postedDate: null,
     status: "Not Yet Due", statusNote: "Due by November 15, 2025 (extended) or May 15, 2025 (standard). Will be posted within 30 days of filing.",
     mandatory: true, fileUrl: null, fileSize: null,
   },
   {
-    id: "DOC-005", title: "Form 990-PF (Private Foundation Return)", subtitle: "Tax Year 2025", type: "Annual Filing",
+    id: "DOC-005", title: "Form 990-PF (Private Foundation Return)", subtitle: "Tax Year 2025", type: ["Annual Filing"],
     description: "Annual information return for fiscal year 2025.",
     year: "2025", filedDate: null, postedDate: null,
     status: "Not Yet Due", statusNote: "Due May or November 2026.",
@@ -103,7 +103,7 @@ const DOCUMENTS: GWCDocument[] = [
   {
     id: "DOC-006",
     title: "Conflict of Interest Policy",
-    type: "Governance",
+    type: ["Governance"],
     description:
       "Board-adopted governance policy establishing disclosure, recusal, and documentation standards for conflicts of interest among directors and officers.",
     year: "2024",
@@ -116,14 +116,14 @@ const DOCUMENTS: GWCDocument[] = [
     fileSize: null,
   },
   {
-    id: "DOC-007", title: "Whistleblower Policy", type: "Governance",
+    id: "DOC-007", title: "Whistleblower Policy", type: ["Governance"],
     description: "Policy protecting individuals who report concerns about illegal activity, misuse of funds, or other improper conduct by the foundation or its leadership.",
     year: "2024", filedDate: "September 2024", postedDate: null,
     status: "Pending", statusNote: "Will be posted upon 501(c)(3) determination",
     mandatory: false, fileUrl: null, fileSize: null,
   },
   {
-    id: "DOC-008", title: "Document Retention Policy", type: "Governance",
+    id: "DOC-008", title: "Document Retention Policy", type: ["Governance"],
     description: "Policy governing how long the foundation retains various categories of records and the procedures for their secure disposal.",
     year: "2024", filedDate: "September 2024", postedDate: null,
     status: "Pending", statusNote: "Will be posted upon 501(c)(3) determination",
@@ -132,7 +132,7 @@ const DOCUMENTS: GWCDocument[] = [
   {
     id: "DOC-009",
     title: "Endowment & Investment Policy",
-    type: "Governance",
+    type: ["Governance"],
     description:
       "Board-adopted policy establishing standards for the stewardship, investment oversight, and long-term management of endowment-designated assets.",
     year: "2025",
@@ -147,7 +147,7 @@ const DOCUMENTS: GWCDocument[] = [
   {
     id: "DOC-010",
     title: "Gift Acceptance Policy",
-    type: "Governance",
+    type: ["Governance"],
     description: "Board-adopted policy establishing standards for the review, acceptance, and stewardship of charitable contributions to Ghosts Worth Chasing.",
     year: "2025",
     filedDate: "OCT-01-2025",
@@ -159,28 +159,28 @@ const DOCUMENTS: GWCDocument[] = [
     fileSize: null,
   },
   {
-    id: "DOC-011", title: "Whistleblower Policy", type: "Governance",
+    id: "DOC-011", title: "Whistleblower Policy", type: ["Governance"],
     description: "Policy establishing procedures for reporting suspected illegal, unethical, or improper conduct and protections against retaliation.",
     year: "2024", filedDate: "September 2024", postedDate: null,
     status: "Pending", statusNote: "Will be posted upon 501(c)(3) determination",
     mandatory: false, fileUrl: null, fileSize: null,
   },
   {
-    id: "DOC-012", title: "Grantmaking Policy", type: "Governance",
+    id: "DOC-012", title: "Grantmaking Policy", type: ["Governance"],
     description: "Policy outlining eligibility criteria, review procedures, conflict safeguards, and documentation standards for the foundation's grantmaking activities.",
     year: "2024", filedDate: "September 2024", postedDate: null,
     status: "Pending", statusNote: "Will be posted upon 501(c)(3) determination",
     mandatory: false, fileUrl: null, fileSize: null,
   },
   {
-    id: "DOC-013", title: "Investment Policy Statement", type: "Governance",
+    id: "DOC-013", title: "Investment Policy Statement", type: ["Governance"],
     description: "Policy governing the management, allocation, and oversight of foundation assets, including endowment investment objectives and risk parameters.",
     year: "2024", filedDate: "September 2024", postedDate: null,
     status: "Pending", statusNote: "Will be posted upon 501(c)(3) determination",
     mandatory: false, fileUrl: null, fileSize: null,
   },
   {
-    id: "DOC-014", title: "Financial Controls & Procedures Policy", type: "Governance",
+    id: "DOC-014", title: "Financial Controls & Procedures Policy", type: ["Governance"],
     description: "Policy establishing internal financial controls, approval authority, segregation of duties, and reporting standards for foundation operations.",
     year: "2024", filedDate: "September 2024", postedDate: null,
     status: "Pending", statusNote: "Will be posted upon 501(c)(3) determination",
@@ -254,18 +254,17 @@ function TypeFilterPill({ label, active, count, onClick }: { label: string; acti
 
 function DocumentCard({ doc, index, mounted }: { doc: GWCDocument; index: number; mounted: boolean }) {
   const [hovered, setHovered] = useState(false);
-  const typeCfg   = DOC_TYPES[doc.type]      || { color: C.orchid, darkColor: "#5A4E6E", Icon: Gavel };
-  const statusCfg = STATUS_CONFIG[doc.status] || { color: C.tealGrey, darkColor: "#2E5F65", dot: "○", label: doc.status };
+  const primaryCfg = DOC_TYPES[doc.type[0]] || { color: C.orchid, darkColor: "#5A4E6E", Icon: Gavel };
+  const statusCfg  = STATUS_CONFIG[doc.status] || { color: C.tealGrey, darkColor: "#2E5F65", dot: "○", label: doc.status };
   const isAvailable = doc.status === "Available";
-  const { Icon } = typeCfg;
 
   return (
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        border:       `1px solid ${hovered ? typeCfg.color + "50" : "rgba(163,201,226,0.12)"}`,
-        borderTop:    `2px solid ${isAvailable ? typeCfg.color : typeCfg.color + "50"}`,
+        border:       `1px solid ${hovered ? primaryCfg.color + "50" : "rgba(163,201,226,0.12)"}`,
+        borderTop:    `2px solid ${isAvailable ? primaryCfg.color : primaryCfg.color + "50"}`,
         borderRadius: 16, padding: "20px",
         background:   hovered ? "#0F2444" : C.navy,
         transition:   "all 0.2s ease",
@@ -274,16 +273,25 @@ function DocumentCard({ doc, index, mounted }: { doc: GWCDocument; index: number
         transitionDelay: `${index * 0.04}s`, display: "flex", flexDirection: "column",
       }}
     >
-      {/* Card header — year removed, icon swapped to Lucide */}
+      {/* Card header — multiple type icons supported */}
       <div style={{
         display: "flex", justifyContent: "space-between", alignItems: "center",
         background: "white", borderRadius: 10, padding: "10px 14px", marginBottom: 18,
       }}>
         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-          <Icon size={14} color={typeCfg.darkColor} strokeWidth={2} />
-          <span style={{ fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase", color: typeCfg.darkColor, fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 700 }}>{doc.type}</span>
+          {/* Render one icon per type */}
+          {doc.type.map((t, i) => {
+            const cfg = DOC_TYPES[t];
+            if (!cfg) return null;
+            const { Icon } = cfg;
+            return (
+              <span key={t} style={{ display: "flex", alignItems: "center", gap: i === 0 ? 0 : 4 }}>
+                {i > 0 && <span style={{ fontSize: 10, color: C.slateInk, opacity: 0.3, marginRight: 2 }}>+</span>}
+                <Icon size={14} color={cfg.darkColor} strokeWidth={2} />
+              </span>
+            );
+          })}
           <span style={{ fontSize: 11, color: C.slateInk, fontFamily: "Hanken Grotesk, sans-serif", opacity: 0.5 }}>·</span>
-          {/* Year removed — filed/posted dates in footer carry this info */}
           <span style={{ fontSize: 11, color: C.slateInk, fontFamily: "Hanken Grotesk, sans-serif" }}>{doc.id}</span>
         </div>
         <span style={{ fontSize: 12, color: statusCfg.darkColor, fontFamily: "Hanken Grotesk, sans-serif", display: "flex", alignItems: "center", gap: 5, fontWeight: 600 }}>
@@ -362,11 +370,11 @@ export default function ReadingRoom() {
   useEffect(() => { setTimeout(() => setMounted(true), 80); }, []);
 
   const typeCounts = DOCUMENTS.reduce<Record<string, number>>((acc, d) => {
-    acc[d.type] = (acc[d.type] || 0) + 1;
+    d.type.forEach(t => { acc[t] = (acc[t] || 0) + 1; });
     return acc;
   }, {});
 
-  const filtered       = activeType === "All Documents" ? DOCUMENTS : DOCUMENTS.filter(d => d.type === activeType);
+  const filtered       = activeType === "All Documents" ? DOCUMENTS : DOCUMENTS.filter(d => d.type.includes(activeType));
   const availableCount = DOCUMENTS.filter(d => d.status === "Available").length;
 
   return (
