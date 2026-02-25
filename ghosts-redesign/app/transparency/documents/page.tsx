@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { Scroll, Receipt, CalendarCheck, Gavel } from "lucide-react";
 
 // ── GWC Design Tokens ──────────────────────────────────────────────
 const C = {
@@ -188,12 +189,12 @@ const DOCUMENTS: GWCDocument[] = [
 ];
 
 // ── Config ─────────────────────────────────────────────────────────
-const DOC_TYPES: Record<string, { color: string; darkColor: string; icon: string }> = {
-  "Formation":     { color: C.sky,      darkColor: "#1A6E8A", icon: "◈" },
-  "Tax Exemption": { color: C.tealGrey, darkColor: "#2E5F65", icon: "◉" },
-  "Annual Filing": { color: C.neonMint, darkColor: "#0D7A54", icon: "◎" },
-  "Governance":    { color: C.orchid,   darkColor: "#5A4E6E", icon: "◆" },
-  "Financial":     { color: "#E8C97A",  darkColor: "#7A5A00", icon: "◇" },
+// Icons are now Lucide React components — rendered inline in components below
+const DOC_TYPES: Record<string, { color: string; darkColor: string; Icon: React.ComponentType<{ size?: number; color?: string; strokeWidth?: number }> }> = {
+  "Formation":     { color: C.sky,      darkColor: "#1A6E8A", Icon: Scroll },
+  "Tax Exemption": { color: C.tealGrey, darkColor: "#2E5F65", Icon: Receipt },
+  "Annual Filing": { color: C.neonMint, darkColor: "#0D7A54", Icon: CalendarCheck },
+  "Governance":    { color: C.orchid,   darkColor: "#5A4E6E", Icon: Gavel },
 };
 
 const STATUS_CONFIG: Record<string, { color: string; darkColor: string; dot: string; label: string }> = {
@@ -231,29 +232,33 @@ function SectionRule({ label }: { label: string }) {
 }
 
 function TypeFilterPill({ label, active, count, onClick }: { label: string; active: boolean; count: number; onClick: () => void }) {
-  const cfg = label === "All Documents" ? { color: C.sky, darkColor: "#1A6E8A" } : DOC_TYPES[label] || { color: C.orchid, darkColor: "#5A4E6E" };
+  const cfg = label === "All Documents"
+    ? { color: C.sky, darkColor: "#1A6E8A", Icon: null }
+    : DOC_TYPES[label] || { color: C.orchid, darkColor: "#5A4E6E", Icon: null };
+
   return (
     <button onClick={onClick} style={{
       display: "flex", alignItems: "center", gap: 8,
       padding: "8px 16px",
-      border: `1.5px solid ${active ? cfg.color : C.slateInk + "50"}`,
+      border: `1.5px solid ${C.navy}`,
       background: active ? `${cfg.color}18` : "white",
       borderRadius: 32, cursor: "pointer", transition: "all 0.15s ease", outline: "none",
     }}>
-      {label !== "All Documents" && (
-        <span style={{ fontSize: 12, color: active ? cfg.color : cfg.darkColor }}>{DOC_TYPES[label]?.icon}</span>
+      {label !== "All Documents" && cfg.Icon && (
+        <cfg.Icon size={13} color={C.navy} strokeWidth={2} />
       )}
-      <span style={{ fontSize: 12, color: C.slateInk, fontWeight: active ? 600 : 400, fontFamily: "Hanken Grotesk, sans-serif" }}>{label}</span>
-      <span style={{ fontSize: 10, color: active ? cfg.color : C.slateInk, background: active ? `${cfg.color}20` : `${C.slateInk}10`, padding: "1px 7px", borderRadius: 32, fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 500 }}>{count}</span>
+      <span style={{ fontSize: 12, color: C.navy, fontWeight: active ? 600 : 400, fontFamily: "Hanken Grotesk, sans-serif" }}>{label}</span>
+      <span style={{ fontSize: 10, color: C.navy, background: active ? `${cfg.color}20` : `${C.slateInk}10`, padding: "1px 7px", borderRadius: 32, fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 500, border: `1.5px solid ${C.navy}` }}>{count}</span>
     </button>
   );
 }
 
 function DocumentCard({ doc, index, mounted }: { doc: GWCDocument; index: number; mounted: boolean }) {
   const [hovered, setHovered] = useState(false);
-  const typeCfg   = DOC_TYPES[doc.type]      || { color: C.orchid, darkColor: "#5A4E6E", icon: "◈" };
+  const typeCfg   = DOC_TYPES[doc.type]      || { color: C.orchid, darkColor: "#5A4E6E", Icon: Gavel };
   const statusCfg = STATUS_CONFIG[doc.status] || { color: C.tealGrey, darkColor: "#2E5F65", dot: "○", label: doc.status };
   const isAvailable = doc.status === "Available";
+  const { Icon } = typeCfg;
 
   return (
     <div
@@ -270,15 +275,17 @@ function DocumentCard({ doc, index, mounted }: { doc: GWCDocument; index: number
         transitionDelay: `${index * 0.04}s`, display: "flex", flexDirection: "column",
       }}
     >
+      {/* Card header — year removed, icon swapped to Lucide */}
       <div style={{
         display: "flex", justifyContent: "space-between", alignItems: "center",
         background: "white", borderRadius: 10, padding: "10px 14px", marginBottom: 18,
       }}>
         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-          <span style={{ fontSize: 16, color: typeCfg.darkColor }}>{typeCfg.icon}</span>
+          <Icon size={14} color={typeCfg.darkColor} strokeWidth={2} />
           <span style={{ fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase", color: typeCfg.darkColor, fontFamily: "Hanken Grotesk, sans-serif", fontWeight: 700 }}>{doc.type}</span>
           <span style={{ fontSize: 11, color: C.slateInk, fontFamily: "Hanken Grotesk, sans-serif", opacity: 0.5 }}>·</span>
-          <span style={{ fontSize: 11, color: C.slateInk, fontFamily: "Hanken Grotesk, sans-serif" }}>{doc.id} · {doc.year}</span>
+          {/* Year removed — filed/posted dates in footer carry this info */}
+          <span style={{ fontSize: 11, color: C.slateInk, fontFamily: "Hanken Grotesk, sans-serif" }}>{doc.id}</span>
         </div>
         <span style={{ fontSize: 12, color: statusCfg.darkColor, fontFamily: "Hanken Grotesk, sans-serif", display: "flex", alignItems: "center", gap: 5, fontWeight: 600 }}>
           <span>{statusCfg.dot}</span>{statusCfg.label}
@@ -412,9 +419,9 @@ export default function ReadingRoom() {
 
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 48px 80px" }}>
 
-        {/* ── Type filters ── */}
+        {/* ── Type filters — centered ── */}
         <SectionRule label="Document Archive" />
-        <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 28 }}>
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 28, justifyContent: "center" }}>
           <TypeFilterPill label="All Documents" active={activeType === "All Documents"} count={DOCUMENTS.length} onClick={() => setActiveType("All Documents")} />
           {Object.keys(DOC_TYPES).map(type => typeCounts[type] ? (
             <TypeFilterPill key={type} label={type} active={activeType === type} count={typeCounts[type]} onClick={() => setActiveType(type)} />
