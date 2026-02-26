@@ -83,7 +83,7 @@ const DOCUMENTS: GWCDocument[] = [
     id: "DOC-003", title: "IRS Determination Letter", type: ["Formation", "Tax Exemption"],
     description: "Official IRS letter confirming 501(c)(3) status. This document is the legal basis for the foundation's tax-exempt operations and donors' ability to deduct contributions.",
     year: "2025 or 2026", filedDate: null, postedDate: null,
-    status: "Pending", statusNote: "Awaiting physical IRS determination letter — status confirmed via IRS EO Search and Candid listing.",
+    status: "Pending", statusNote: "Tax-exempt status effective December 2025 per IRS records and ProPublica. Physical determination letter in transit.",
     mandatory: true, fileUrl: null, fileSize: null,
   },
   {
@@ -214,7 +214,7 @@ const GUIDE_SECTIONS: GuideSection[] = [
 ];
 
 const THIRD_PARTY_SOURCES: ThirdPartySource[] = [
-  { name: "ProPublica Nonprofit Explorer",      url: "https://projects.propublica.org/nonprofits", desc: "Free searchable database of 990s. Typically lags filing by 12–18 months.", delay: "12–18 months after filing" },
+  { name: "ProPublica Nonprofit Explorer",      url: "https://projects.propublica.org/nonprofits/organizations/394369238", desc: "Free searchable database of 990s. Typically lags filing by 12–18 months.", delay: "12–18 months after filing" },
   { name: "Candid / GuideStar",                 url: "https://www.guidestar.org/profile/39-4369238",                         desc: "Sector's primary funder research database. Includes 990s and self-reported data.", delay: "Variable — we update our profile directly" },
   { name: "IRS Tax Exempt Organization Search", url: "https://apps.irs.gov/app/eos",               desc: "Official IRS tool confirming our tax-exempt status and filing history.", delay: "Near real-time after determination" },
 ];
@@ -518,9 +518,9 @@ export default function ReadingRoom() {
                 },
                 {
                   label:    "ProPublica Nonprofit Explorer",
-                  status:   "Pending",
-                  detail:   "Will appear after first 990-EZ is filed and processed. Typically 12–18 months after filing.",
-                  url:      "https://projects.propublica.org/nonprofits",
+                  status:   "Listed",
+                  detail:   "Listed. Tax-exempt since December 2025. Revenue and filing data will appear after first 990-EZ is filed and processed.",
+                  url:      "https://projects.propublica.org/nonprofits/organizations/394369238",
                   urlLabel: "Search Explorer",
                   color:    C.orchid,
                   darkColor:"#5A4E6E",
