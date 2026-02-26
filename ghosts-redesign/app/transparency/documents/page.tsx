@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Scroll, Receipt, CalendarCheck, Gavel, type LucideIcon } from "lucide-react";
+import { Scroll, Receipt, CalendarCheck, Landmark, type LucideIcon } from "lucide-react";
 
 // ── GWC Design Tokens ──────────────────────────────────────────────
 const C = {
@@ -193,7 +193,7 @@ const DOC_TYPES: Record<string, { color: string; darkColor: string; Icon: Lucide
   "Formation":     { color: C.sky,      darkColor: "#1A6E8A", Icon: Scroll },
   "Tax Exemption": { color: C.tealGrey, darkColor: "#2E5F65", Icon: Receipt },
   "Annual Filing": { color: C.neonMint, darkColor: "#0D7A54", Icon: CalendarCheck },
-  "Governance":    { color: C.orchid,   darkColor: "#5A4E6E", Icon: Gavel },
+  "Governance":    { color: C.orchid,   darkColor: "#5A4E6E", Icon: Landmark },
 };
 
 const STATUS_CONFIG: Record<string, { color: string; darkColor: string; dot: string; label: string }> = {
@@ -288,7 +288,7 @@ function IconBubble({ label, Icon }: { label: string; Icon: LucideIcon }) {
 
 function DocumentCard({ doc, index, mounted }: { doc: GWCDocument; index: number; mounted: boolean }) {
   const [hovered, setHovered] = useState(false);
-  const primaryCfg = DOC_TYPES[doc.type[0]] || { color: C.orchid, darkColor: "#5A4E6E", Icon: Gavel };
+  const primaryCfg = DOC_TYPES[doc.type[0]] || { color: C.orchid, darkColor: "#5A4E6E", Icon: Landmark };
   const isAvailable = doc.status === "Available";
 
   return (
