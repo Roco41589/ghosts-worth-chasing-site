@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&display=swap');
-
 :root {
   /* Midnight Clarity Palette */
   --color-deep-navy: #0B1D3A;
@@ -31,25 +30,21 @@
   --space-lg: 80px;
   --space-xl: 120px;
   
-  --max-text-width: 680px;
+  --max-text-width: 750px;
   --max-content-width: 1200px;
 }
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 html {
   scroll-behavior: smooth;
 }
-
 html, body {
   height: 100%;
   background: var(--color-mist-white);
 }
-
 body {
   font-family: var(--font-body);
   font-size: 18px;
@@ -59,7 +54,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 /* Typography - Restrained Hierarchy */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
@@ -69,28 +63,23 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: var(--space-sm);
   color: var(--color-text);
 }
-
 h1 {
   font-size: 48px;
   font-weight: 400;
 }
-
 h2 {
   font-size: 32px;
   font-weight: 500;
   color: var(--color-deep-navy);
 }
-
 h3 {
   font-size: 20px;
   font-weight: 500;
 }
-
 p {
   margin-bottom: var(--space-sm);
   max-width: var(--max-text-width);
 }
-
 /* Links - Subtle, not loud */
 a {
   color: inherit;
@@ -98,20 +87,16 @@ a {
   border-bottom: 1px solid transparent;
   transition: border-color 0.2s ease, color 0.2s ease;
 }
-
 a:hover {
   border-bottom-color: var(--color-sky-blue);
 }
-
 /* Lists - Clean structure */
 ul, ol {
   margin-bottom: var(--space-sm);
 }
-
 li {
   margin-bottom: 8px;
 }
-
 /* Dividers - Subtle structure */
 hr {
   border: none;
@@ -119,28 +104,23 @@ hr {
   margin: var(--space-lg) 0;
   opacity: 0.3;
 }
-
 /* Section styling */
 .section {
   padding: var(--space-xl) var(--space-lg);
   max-width: var(--max-content-width);
   margin: 0 auto;
 }
-
 .section--narrow {
   max-width: var(--max-text-width);
   margin: 0 auto;
 }
-
 .section--centered {
   text-align: center;
 }
-
 .section--centered p {
   margin-left: auto;
   margin-right: auto;
 }
-
 /* Mobile responsive - proper scaling */
 @media (max-width: 768px) {
   :root {
@@ -168,7 +148,6 @@ hr {
     padding: var(--space-lg) var(--space-md);
   }
 }
-
 @media (max-width: 480px) {
   :root {
     --space-md: 24px;
