@@ -215,7 +215,7 @@ const GUIDE_SECTIONS: GuideSection[] = [
 
 const THIRD_PARTY_SOURCES: ThirdPartySource[] = [
   { name: "ProPublica Nonprofit Explorer",      url: "https://projects.propublica.org/nonprofits", desc: "Free searchable database of 990s. Typically lags filing by 12–18 months.", delay: "12–18 months after filing" },
-  { name: "Candid / GuideStar",                 url: "https://candid.org",                         desc: "Sector's primary funder research database. Includes 990s and self-reported data.", delay: "Variable — we update our profile directly" },
+  { name: "Candid / GuideStar",                 url: "https://www.guidestar.org/profile/394369238",                         desc: "Sector's primary funder research database. Includes 990s and self-reported data.", delay: "Variable — we update our profile directly" },
   { name: "IRS Tax Exempt Organization Search", url: "https://apps.irs.gov/app/eos",               desc: "Official IRS tool confirming our tax-exempt status and filing history.", delay: "Near real-time after determination" },
 ];
 
@@ -511,7 +511,7 @@ export default function ReadingRoom() {
                   label:    "Candid / GuideStar Profile",
                   status:   "Pending",
                   detail:   "Profile claim in progress. Will display Candid Seal level upon completion.",
-                  url:      "https://candid.org",
+                  url:      "https://www.guidestar.org/profile/394369238",
                   urlLabel: "Search Candid",
                   color:    C.orchid,
                   darkColor:"#5A4E6E",
