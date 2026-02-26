@@ -7,8 +7,8 @@ export default function Impact() {
           color: 'var(--color-text-secondary)',
           fontWeight: 300,
         }}>
-          This organization is in formation. Operations will begin upon 501(c)(3) determination. 
-          What follows is a transparent account of organizational readiness, not claims of effectiveness.
+          This organization is in its first operational year. What follows is a transparent account
+          of organizational readiness, not claims of effectiveness.
         </p>
       </section>
 
@@ -24,22 +24,23 @@ export default function Impact() {
         <div style={{ maxWidth: '800px' }}>
           <h2>Current Status</h2>
           <p>
-            Ghosts Worth Chasing has applied for 501(c)(3) status with the IRS. While awaiting 
-            determination, the foundation is:
+            Ghosts Worth Chasing received 501(c)(3) determination from the IRS in February 2026.
+            The organization is now tax-exempt and authorized to receive tax-deductible contributions.
+            In this first operational year, the organization is:
           </p>
           <ul style={{ 
-            marginLeft: '24px', 
+            marginLeft: '24px',
             marginBottom: 'var(--space-sm)',
             color: 'var(--color-text)',
           }}>
-            <li>Finalizing governance infrastructure</li>
-            <li>Developing grantmaking criteria and processes</li>
-            <li>Building board composition</li>
+            <li>Completing board composition</li>
+            <li>Finalizing grantmaking criteria and processes</li>
             <li>Establishing financial management systems</li>
+            <li>Preparing for first grant cycle</li>
           </ul>
           <p>
-            No grants have been made. No donations have been accepted. Operations are scheduled 
-            to begin upon federal determination.
+            No grants have been made to date. Donations are being accepted. First grants are
+            expected in 2026.
           </p>
         </div>
       </section>
@@ -56,10 +57,10 @@ export default function Impact() {
         <div style={{ maxWidth: '800px' }}>
           <h2>Planned Approach</h2>
           <p>
-            When operational, the foundation will prioritize:
+            When fully operational, the organization will prioritize:
           </p>
           <ul style={{ 
-            marginLeft: '24px', 
+            marginLeft: '24px',
             marginBottom: 'var(--space-sm)',
             color: 'var(--color-text)',
           }}>
@@ -81,8 +82,8 @@ export default function Impact() {
 
       <section className="section section--narrow section--centered">
         <p style={{ fontWeight: 300 }}>
-          Annual reports will be published each January covering the prior calendar year. 
-          Reports will include financial statements, grant lists, and operational reflections. 
+          Annual reports will be published each January covering the prior calendar year.
+          Reports will include financial statements, grant lists, and operational reflections.
           They will not include storytelling or promotional content.
         </p>
       </section>
