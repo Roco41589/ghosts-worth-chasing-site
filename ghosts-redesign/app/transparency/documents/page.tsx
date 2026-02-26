@@ -83,22 +83,38 @@ const DOCUMENTS: GWCDocument[] = [
     id: "DOC-003", title: "IRS Determination Letter", type: ["Formation", "Tax Exemption"],
     description: "Official IRS letter confirming 501(c)(3) status. This document is the legal basis for the foundation's tax-exempt operations and donors' ability to deduct contributions.",
     year: "2025 or 2026", filedDate: null, postedDate: null,
-    status: "Pending", statusNote: "Awaiting IRS determination — typically 6–18 months from filing",
+    status: "Pending", statusNote: "Awaiting physical IRS determination letter — status confirmed via IRS EO Search and Candid listing.",
     mandatory: true, fileUrl: null, fileSize: null,
   },
   {
-    id: "DOC-004", title: "Form 990-PF (Private Foundation Return)", subtitle: "Tax Year 2024", type: ["Annual Filing"],
-    description: "The annual information return required of all private foundations. Discloses assets, grants made, operating expenses, compensation, and investment activity.",
-    year: "2024", filedDate: null, postedDate: null,
-    status: "Not Yet Due", statusNote: "Due by November 15, 2025 (extended) or May 15, 2025 (standard). Will be posted within 30 days of filing.",
-    mandatory: true, fileUrl: null, fileSize: null,
+    id: "DOC-004",
+    title: "Form 990-N (e-Postcard)",
+    subtitle: "Tax Year 2025",
+    type: ["Annual Filing"],
+    description: "The minimal annual filing required of tax-exempt organizations with gross receipts under $50,000. Confirms the organization remains active and tax-exempt. No financial data required.",
+    year: "2025",
+    filedDate: null,
+    postedDate: null,
+    status: "Not Yet Due",
+    statusNote: "Due May 15, 2026. Will be posted within 30 days of filing. Formation year — no financial activity.",
+    mandatory: true,
+    fileUrl: null,
+    fileSize: null,
   },
   {
-    id: "DOC-005", title: "Form 990-PF (Private Foundation Return)", subtitle: "Tax Year 2025", type: ["Annual Filing"],
-    description: "Annual information return for fiscal year 2025.",
-    year: "2025", filedDate: null, postedDate: null,
-    status: "Not Yet Due", statusNote: "Due May or November 2026.",
-    mandatory: true, fileUrl: null, fileSize: null,
+    id: "DOC-005",
+    title: "Form 990-EZ (Return of Organization Exempt From Income Tax)",
+    subtitle: "Tax Year 2026",
+    type: ["Annual Filing"],
+    description: "Annual information return for fiscal year 2026. First full operating year filing. Required of public charities with gross receipts under $200,000 and total assets under $500,000.",
+    year: "2026",
+    filedDate: null,
+    postedDate: null,
+    status: "Not Yet Due",
+    statusNote: "Due May or November 2027.",
+    mandatory: true,
+    fileUrl: null,
+    fileSize: null,
   },
   {
     id: "DOC-006",
@@ -204,12 +220,12 @@ const STATUS_CONFIG: Record<string, { color: string; darkColor: string; dot: str
 };
 
 const GUIDE_SECTIONS: GuideSection[] = [
-  { part: "Part I",     title: "Revenue & Expenses",                      explains: "What the foundation earned (investment returns, contributions) and spent (grants, operating costs, professional fees) during the year.", whyMatters: "Shows whether the foundation is spending responsibly and where money comes from." },
-  { part: "Part II",    title: "Balance Sheet",                           explains: "Assets (what the foundation owns) and liabilities (what it owes) at year end.", whyMatters: "Reveals the foundation's financial health and endowment size." },
-  { part: "Part VII-A", title: "Statements Regarding Activities",         explains: "Yes/no questions about lobbying, political activity, grants to individuals, and international grants.", whyMatters: "Confirms the foundation is operating within IRS rules." },
-  { part: "Part VIII",  title: "Information About Officers, Directors",   explains: "Names, titles, hours worked, and compensation of key individuals.", whyMatters: "Shows who controls the foundation and whether compensation is reasonable." },
-  { part: "Part IX-A",  title: "Summary of Direct Charitable Activities", explains: "Description of the foundation's charitable programs and what they accomplished.", whyMatters: "The mission in practice — what actually happened." },
-  { part: "Part XV",    title: "Grants & Contributions Paid",             explains: "Every grant paid during the year — recipient, address, purpose, and amount.", whyMatters: "The most scrutinized section. Full grantmaking record." },
+  { part: "Part I",    title: "Revenue & Expenses",                    explains: "What the organization earned (contributions, program revenue) and spent (grants, operating costs, professional fees) during the year.", whyMatters: "Shows whether the organization is spending responsibly and where money comes from." },
+  { part: "Part II",   title: "Balance Sheet",                         explains: "Assets (what the organization owns) and liabilities (what it owes) at year end.", whyMatters: "Reveals the organization's financial health and reserve levels." },
+  { part: "Part III",  title: "Statement of Program Service Accomplishments", explains: "Description of the organization's charitable programs and what they accomplished during the year.", whyMatters: "The mission in practice — what actually happened and who was served." },
+  { part: "Part IV",   title: "List of Officers, Directors & Trustees", explains: "Names, titles, hours worked, and compensation of key individuals.", whyMatters: "Shows who controls the organization and whether compensation is reasonable." },
+  { part: "Part V",    title: "Other Information",                     explains: "Yes/no questions about lobbying, political activity, and compliance with IRS rules.", whyMatters: "Confirms the organization is operating within the boundaries of its tax-exempt status." },
+  { part: "Schedule O", title: "Supplemental Information",             explains: "Narrative explanations required or chosen by the organization to clarify other parts of the filing.", whyMatters: "Often contains the most candid, plain-language description of activities and governance." },
 ];
 
 const THIRD_PARTY_SOURCES: ThirdPartySource[] = [
@@ -410,7 +426,7 @@ export default function ReadingRoom() {
       <div style={{ background: C.navy, padding: "64px 48px 52px", opacity: mounted ? 1 : 0, transition: "opacity 0.5s ease" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <p style={{ fontSize: 9, letterSpacing: "0.22em", textTransform: "uppercase", color: C.tealGrey, margin: "0 0 16px", fontFamily: "Hanken Grotesk, sans-serif" }}>
-            Ghosts Worth Chasing — Private Foundation
+            Ghosts Worth Chasing — 501(c)(3) Public Charity
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 64, alignItems: "end" }}>
             <div>
@@ -482,7 +498,7 @@ export default function ReadingRoom() {
                 {
                   label:    "IRS Tax-Exempt Status",
                   status:   "Confirmed",
-                  detail:   "501(c)(3) private foundation. Listed on IRS Publication 78 — contributions are tax-deductible.",
+                  detail:   "501(c)(3) public charity. Listed on IRS Publication 78 — contributions are tax-deductible.",
                   url:      "https://apps.irs.gov/app/eos",
                   urlLabel: "Verify on IRS.gov",
                   color:    C.neonMint,
@@ -518,7 +534,7 @@ export default function ReadingRoom() {
                 {
                   label:    "ProPublica Nonprofit Explorer",
                   status:   "Pending",
-                  detail:   "Will appear after first 990-PF is filed and processed. Typically 12–18 months after filing.",
+                  detail:   "Will appear after first 990-EZ is filed and processed. Typically 12–18 months after filing.",
                   url:      "https://projects.propublica.org/nonprofits",
                   urlLabel: "Search Explorer",
                   color:    C.orchid,
@@ -542,8 +558,8 @@ export default function ReadingRoom() {
             </div>
           </div>
           <div>
-            <SectionRule label="How to Read a 990-PF" />
-            <p style={{ fontSize: 12, color: C.slateInk, lineHeight: 1.75, marginBottom: 20 }}>The 990-PF is a dense document. This guide explains the sections most relevant to understanding a foundation's grantmaking, governance, and financial health. Click any part to expand.</p>
+            <SectionRule label="How to Read a 990-EZ" />
+            <p style={{ fontSize: 12, color: C.slateInk, lineHeight: 1.75, marginBottom: 20 }}>The 990-EZ is a condensed annual return filed by smaller public charities. This guide explains the sections most relevant to understanding an organization's programs, governance, and financial health. Click any part to expand.</p>
             {GUIDE_SECTIONS.map((section, i) => <GuideRow key={i} section={section} />)}
           </div>
         </div>
