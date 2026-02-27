@@ -28,7 +28,6 @@ export default function DonationForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Later: integrate with Stripe or payment processor
     console.log({
       donationType,
       amount: customAmount || amount,
@@ -57,11 +56,11 @@ export default function DonationForm() {
         marginBottom: 'var(--space-md)',
         lineHeight: 1.6,
       }}>
-        <strong>Thank you for supporting</strong> individuals in transition, mission-aligned 
+        <strong>Thank you for supporting</strong> individuals in transition, mission-aligned
         organizations, and long-term institutional capacity.
       </p>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} autoComplete="on">
         {/* Donation Type Toggle */}
         <div style={{ marginBottom: 'var(--space-md)' }}>
           <h3 style={{
@@ -188,6 +187,8 @@ export default function DonationForm() {
                 type="number"
                 placeholder="Other"
                 min="1"
+                inputMode="numeric"
+                autoComplete="off"
                 value={customAmount}
                 onChange={(e) => setCustomAmount(e.target.value)}
                 style={{
@@ -248,7 +249,6 @@ export default function DonationForm() {
             </span>
           </label>
 
-          {/* Conditional Dedication Fields */}
           {dedication && (
             <div style={{
               marginTop: '16px',
@@ -269,6 +269,7 @@ export default function DonationForm() {
                 </label>
                 <select
                   id="dedicationType"
+                  autoComplete="off"
                   style={{
                     width: '100%',
                     padding: '12px',
@@ -297,6 +298,8 @@ export default function DonationForm() {
                 <input
                   type="text"
                   id="honoreeName"
+                  name="honoree-name"
+                  autoComplete="off"
                   style={{
                     width: '100%',
                     padding: '12px',
@@ -320,6 +323,8 @@ export default function DonationForm() {
                 </label>
                 <textarea
                   id="dedicationMessage"
+                  name="dedication-message"
+                  autoComplete="off"
                   rows={3}
                   style={{
                     width: '100%',
@@ -346,7 +351,7 @@ export default function DonationForm() {
           }}>
             Billing Information
           </h3>
-          
+
           {/* First/Last Name */}
           <div style={{
             display: 'grid',
@@ -367,6 +372,8 @@ export default function DonationForm() {
               <input
                 type="text"
                 id="firstName"
+                name="given-name"
+                autoComplete="given-name"
                 required
                 value={formData.firstName}
                 onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
@@ -393,6 +400,8 @@ export default function DonationForm() {
               <input
                 type="text"
                 id="lastName"
+                name="family-name"
+                autoComplete="family-name"
                 required
                 value={formData.lastName}
                 onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
@@ -432,7 +441,6 @@ export default function DonationForm() {
             </label>
           </div>
 
-          {/* Conditional Company Name Field */}
           {formData.isCompany && (
             <div style={{ marginBottom: '16px' }}>
               <label htmlFor="companyName" style={{
@@ -447,6 +455,8 @@ export default function DonationForm() {
               <input
                 type="text"
                 id="companyName"
+                name="organization"
+                autoComplete="organization"
                 required
                 style={{
                   width: '100%',
@@ -474,6 +484,8 @@ export default function DonationForm() {
             <input
               type="text"
               id="address1"
+              name="address-line1"
+              autoComplete="address-line1"
               required
               value={formData.address1}
               onChange={(e) => setFormData({ ...formData, address1: e.target.value })}
@@ -502,6 +514,8 @@ export default function DonationForm() {
             <input
               type="text"
               id="address2"
+              name="address-line2"
+              autoComplete="address-line2"
               placeholder="Apt, ste, bldg."
               value={formData.address2}
               onChange={(e) => setFormData({ ...formData, address2: e.target.value })}
@@ -536,6 +550,8 @@ export default function DonationForm() {
               <input
                 type="text"
                 id="city"
+                name="address-level2"
+                autoComplete="address-level2"
                 required
                 value={formData.city}
                 onChange={(e) => setFormData({ ...formData, city: e.target.value })}
@@ -562,6 +578,8 @@ export default function DonationForm() {
               <input
                 type="text"
                 id="state"
+                name="address-level1"
+                autoComplete="address-level1"
                 required
                 value={formData.state}
                 onChange={(e) => setFormData({ ...formData, state: e.target.value })}
@@ -597,6 +615,9 @@ export default function DonationForm() {
               <input
                 type="text"
                 id="zipCode"
+                name="postal-code"
+                autoComplete="postal-code"
+                inputMode="numeric"
                 required
                 value={formData.zipCode}
                 onChange={(e) => setFormData({ ...formData, zipCode: e.target.value })}
@@ -622,6 +643,8 @@ export default function DonationForm() {
               </label>
               <select
                 id="country"
+                name="country"
+                autoComplete="country-name"
                 value={formData.country}
                 onChange={(e) => setFormData({ ...formData, country: e.target.value })}
                 style={{
@@ -655,6 +678,9 @@ export default function DonationForm() {
             <input
               type="tel"
               id="phone"
+              name="tel"
+              autoComplete="tel"
+              inputMode="tel"
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               style={{
@@ -707,6 +733,9 @@ export default function DonationForm() {
             <input
               type="email"
               id="email"
+              name="email"
+              autoComplete="email"
+              inputMode="email"
               required
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -724,7 +753,7 @@ export default function DonationForm() {
               color: 'var(--color-text-secondary)',
               marginTop: '6px',
             }}>
-              You'll receive periodic email updates. You can unsubscribe at any time.
+              You'll receive a tax receipt and periodic updates. You can unsubscribe at any time.
             </p>
           </div>
 
@@ -765,6 +794,8 @@ export default function DonationForm() {
             </label>
             <textarea
               id="comments"
+              name="comments"
+              autoComplete="off"
               rows={3}
               value={formData.comments}
               onChange={(e) => setFormData({ ...formData, comments: e.target.value })}
@@ -791,7 +822,7 @@ export default function DonationForm() {
           }}>
             Payment Information
           </h3>
-          
+
           <div style={{
             padding: 'var(--space-md)',
             background: 'rgba(163, 201, 226, 0.1)',
@@ -804,14 +835,14 @@ export default function DonationForm() {
               color: 'var(--color-text-secondary)',
               marginBottom: '8px',
             }}>
-              Payment processing via Stripe will be available once 501(c)(3) status is confirmed.
+              Secure payment processing via Stripe.
             </p>
             <p style={{
               fontSize: '14px',
               color: 'var(--color-text-secondary)',
               marginBottom: 0,
             }}>
-              Accepted: Card, Direct Debit, Google Pay, PayPal, Venmo
+              Accepted: Card, Direct Debit, Google Pay, Apple Pay, PayPal, Venmo
             </p>
           </div>
         </div>
