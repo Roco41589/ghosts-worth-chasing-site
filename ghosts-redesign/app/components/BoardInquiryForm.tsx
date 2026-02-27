@@ -15,7 +15,6 @@ export default function BoardInquiryForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     
-    // Create email body
     const emailBody = `
 Board Service Inquiry
 
@@ -27,14 +26,11 @@ Areas of Expertise: ${formData.expertise}
 ${formData.message ? `Additional Information:\n${formData.message}` : ''}
     `.trim()
     
-    // Send via mailto (opens user's email client)
     const mailtoLink = `mailto:contact@ghostsworthchasing.org?subject=Board%20Service%20Inquiry%20-%20${encodeURIComponent(formData.name)}&body=${encodeURIComponent(emailBody)}`
     window.location.href = mailtoLink
     
-    // Show success message
     setSubmitted(true)
     
-    // Reset form after 5 seconds
     setTimeout(() => {
       setSubmitted(false)
       setFormData({
@@ -105,7 +101,7 @@ ${formData.message ? `Additional Information:\n${formData.message}` : ''}
         Share your background and areas of expertise
       </p>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} autoComplete="on">
         <div style={{
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
@@ -129,6 +125,7 @@ ${formData.message ? `Additional Information:\n${formData.message}` : ''}
               type="text"
               id="name"
               name="name"
+              autoComplete="name"
               required
               value={formData.name}
               onChange={handleChange}
@@ -160,6 +157,8 @@ ${formData.message ? `Additional Information:\n${formData.message}` : ''}
               type="email"
               id="email"
               name="email"
+              autoComplete="email"
+              inputMode="email"
               required
               value={formData.email}
               onChange={handleChange}
@@ -192,6 +191,7 @@ ${formData.message ? `Additional Information:\n${formData.message}` : ''}
             type="text"
             id="background"
             name="background"
+            autoComplete="organization-title"
             required
             placeholder="e.g., Former CFO, nonprofit consultant, impact investor"
             value={formData.background}
@@ -224,6 +224,7 @@ ${formData.message ? `Additional Information:\n${formData.message}` : ''}
             type="text"
             id="expertise"
             name="expertise"
+            autoComplete="off"
             required
             placeholder="e.g., Nonprofit governance, endowment management, social services"
             value={formData.expertise}
@@ -255,6 +256,7 @@ ${formData.message ? `Additional Information:\n${formData.message}` : ''}
           <textarea
             id="message"
             name="message"
+            autoComplete="off"
             rows={4}
             value={formData.message}
             onChange={handleChange}
